@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu Apr 14 22:08:52 2016 Thauvin
+** Last update Thu Apr 28 14:59:41 2016 Theo Labory
 */
 
 #include "shell.h"
@@ -103,7 +103,9 @@ int		main(int ac, char **av, char **env)
 {
   t_env		ini2;
   t_second	ini;
+  int		i;
 
+  i = 1;
   (void)av;
   (void)ac;
   if (env[0] == NULL)
@@ -111,7 +113,7 @@ int		main(int ac, char **av, char **env)
   signal(SIGINT, control_reach);
   while (42)
     {
-      write(1, "$>", 2);
+      my_printf("\033[1m\033[34mshell\033[37m@\033[31m42sh\033[0m-[%d]->", i);
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
 	exit(0);
@@ -122,6 +124,7 @@ int		main(int ac, char **av, char **env)
 	with_separator(&ini, env, &ini2);
       else
 	normal(&ini, env, &ini2);
+      i++;
     }
   return (0);
 }

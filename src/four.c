@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Apr 14 05:04:54 2016 Thauvin
-** Last update Thu Apr 14 21:48:10 2016 Thauvin
+** Last update Thu Apr 28 15:03:43 2016 Theo Labory
 */
 
 #include "shell.h"
@@ -36,5 +36,5 @@ void	all_exec(t_second *ini, char **env)
 
 void	control_reach()
 {
-  write(1, "\b\b \n$>", 6);
+  my_printf("\n\033[1m\033[34mshell\033[37m@\033[31m42sh\033[0m-->");
 }
