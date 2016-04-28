@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Jan 24 18:28:58 2016 Thauvin
-** Last update Thu Apr 14 22:40:38 2016 Thauvin
+** Last update Thu Apr 28 09:17:40 2016 Lalague-Dulac Tom
 */
 
 #include "shell.h"
@@ -35,7 +35,8 @@ char	*pars_home(char **env, char *home)
   while (env[a][0] != 'H' || env[a][1] != 'O' || env[a][2] != 'M'
 	 || env[a][3] != 'E' || env[a][4] != '=')
     a++;
-  home = malloc(sizeof(char) * my_strlenPATH(env[a]) + 1);
+  if ((home = malloc(sizeof(char) * my_strlenPATH(env[a]) + 1)) == NULL)
+    return (NULL);
   home = my_strcpy_norm(home, env[a]);
   return (home);
 }
@@ -49,11 +50,12 @@ void	ini_var_cd(t_var_cd *ini)
 
 char	*cpy_tab_path(t_var_cd *ini, char **arg, char *path_final)
 {
-
-  ini->dest = malloc(100 * sizeof(char));
+  if ((ini->dest = malloc(100 * sizeof(char))) == NULL)
+    return (NULL);
   ini->dest = getcwd(ini->dest, 100);
   ini->z = my_strlen(ini->dest);
-  path_final = malloc((ini->z + my_strlen(arg[1]) + 2) * sizeof(char));
+  if ((path_final = malloc((ini->z + my_strlen(arg[1]) + 2) * sizeof(char))) == NULL)
+    return (NULL);
   while (ini->a < ini->z)
     {
       path_final[ini->a] = ini->dest[ini->a];
@@ -85,7 +87,8 @@ char	*check_cd(char **arg, char *path_final, int rows, char **env)
       else
 	{
 	  ini.z = my_strlen(arg[1]);
-	  path_final = malloc((ini.z + 1) * sizeof(char));
+	  if ((path_final = malloc((ini.z + 1) * sizeof(char))) == NULL)
+	    return (NULL);
 	  while (ini.a < ini.z)
 	    {
 	      path_final[ini.a] = arg[1][ini.a];

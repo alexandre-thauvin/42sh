@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Tue Apr 12 03:04:15 2016 Thauvin
+** Last update Thu Apr 28 09:23:10 2016 Lalague-Dulac Tom
 */
 
 #include "shell.h"
@@ -56,10 +56,12 @@ char	**mallocdest(char **dest, int rows, int cols)
 
   z = 0;
   rows++;
-  dest = malloc(rows * sizeof(char*));
+  if ((dest = malloc(rows * sizeof(char*))) == NULL)
+    return (NULL);
   while (z < rows)
     {
-      dest[z] = malloc(cols * sizeof(char) + 1);
+      if ((dest[z] = malloc(cols * sizeof(char) + 1)) == NULL)
+	return (NULL);
       z++;
     }
   return (dest);

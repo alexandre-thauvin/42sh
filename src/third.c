@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr 10 18:19:32 2016 Thauvin
-** Last update Thu Apr 14 22:50:36 2016 Thauvin
+** Last update Thu Apr 28 09:31:14 2016 Lalague-Dulac Tom
 */
 
 #include "shell.h"
@@ -44,18 +44,22 @@ void	complete_pwd(t_second *ini)
 {
   if (ini->arg[1][0] == '-')
     {
-      ini->oldpwd = malloc((my_strlen(ini->pwd) + 2) * sizeof(char));
+      if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2) * sizeof(char))) == NULL)
+	return ;
       ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
       free(ini->pwd);
-      ini->pwd = malloc(1024 * sizeof(char));
+      if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
+	return ;
       getcwd(ini->pwd, 1024);
     }
   if (ini->arg[1][0] != '-')
     {
-      ini->oldpwd = malloc((my_strlen(ini->pwd) + 2) * sizeof(char));
+      if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2) * sizeof(char))) == NULL)
+	return ;
       ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
       free(ini->pwd);
-      ini->pwd = malloc((my_strlen(ini->path_cd) + 1) * sizeof(char));
+      if ((ini->pwd = malloc((my_strlen(ini->path_cd) + 1) * sizeof(char))) == NULL)
+	return ;
       ini->pwd = my_strcpy(ini->pwd, ini->path_cd);
     }
 }

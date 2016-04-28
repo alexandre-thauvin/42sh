@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar  2 17:17:21 2016 Thauvin
-** Last update Wed Apr 13 13:38:00 2016 Thauvin
+** Last update Thu Apr 28 09:20:56 2016 Lalague-Dulac Tom
 */
 
 #include "shell.h"
@@ -55,7 +55,8 @@ char	*get_next_line(const int fd)
   int	len;
 
   len = 0;
-  str = malloc(READ_SIZE + 1);
+  if ((str = malloc(READ_SIZE + 1)) == NULL)
+    return (NULL);
   if (str == NULL)
     return (0);
   c = get_c(fd);
