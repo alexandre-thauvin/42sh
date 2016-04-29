@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 11:20:53 2016 Thauvin
-** Last update Thu Apr 28 09:21:42 2016 Lalague-Dulac Tom
+** Last update Fri Apr 29 01:22:17 2016 Thauvin
 */
 
 #include "shell.h"
@@ -67,28 +67,27 @@ char		*pars_commande(char *commande, t_second *ini)
 {
   static int	z = 0;
   static int	i = 0;
-  int		u;
 
-  u = 0;
+  ini->j = 0;
   while (commande[z] != ';' && commande[z] != '\0')
       z++;
   z++;
   if ((ini->dest = malloc(z * sizeof(char))) == NULL)
-    return (NULL);
+    exit(-42);
   while (commande[i] != ';')
     {
       if (commande[i] == '\0')
 	{
-	  ini->dest[i] = '\0';
+	  ini->dest[ini->j] = '\0';
 	  i = 0;
 	  z = 0;
 	  return (ini->dest);
 	}
-      ini->dest[u] = commande[i];
-      u++;
+      ini->dest[ini->j] = commande[i];
+      ini->j++;
       i++;
     }
-  ini->dest[i] = '\0';
+  ini->dest[ini->j] = '\0';
   i++;
   return (ini->dest);
 }

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:30:00 2016 Thauvin
-** Last update Thu Apr 14 22:54:33 2016 Thauvin
+** Last update Fri Apr 29 01:51:45 2016 Thauvin
 */
 
 #include "shell.h"
@@ -101,6 +101,7 @@ char	**strdup2d(char **dest, char **src, char **str, int u)
     {
       dest[z] = my_strcpy(dest[z], str[1]);
       dest[z][my_strlen(str[1])] = '=';
+      dest[z][my_strlen(str[1]) + 1] = '\0';
       dest[z + 1] = NULL;
     }
   if (u == 0)

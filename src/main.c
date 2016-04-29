@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu Apr 28 14:59:41 2016 Theo Labory
+** Last update Fri Apr 29 01:50:57 2016 Thauvin
 */
 
 #include "shell.h"
@@ -42,15 +42,18 @@ int	exec_cd(t_second *ini, char *commande, t_env *ini2)
 {
   if (ini->arg[0][0] == 'c' && ini->arg[0][1] == 'd')
     {
+      ini->u = 0;
+      if (ini->arg[1] != NULL)
+	if (ini->arg[1][0] == '-')
+	  ini->u = 1;
       ini->zombie = 1;
       ini->s = 1;
       ini->path_cd = check_cd(ini->arg, ini->path_cd, ini->rows_arg,
 			      ini2->env2);
-      if (ini->arg[1][0] == '-')
+      if (ini->u == 1)
 	ini->u = chdir(ini->oldpwd);
       else
 	ini->u = chdir(ini->path_cd);
-
       if (ini->u == -1)
 	write(2, "badway\n", 7);
       else
@@ -110,7 +113,7 @@ int		main(int ac, char **av, char **env)
   (void)ac;
   if (env[0] == NULL)
     return (0);
-  signal(SIGINT, control_reach);
+  /* signal(SIGINT, control_reach); */
   while (42)
     {
       my_printf("\033[1m\033[34mshell\033[37m@\033[31m42sh\033[0m-[%d]->", i);
@@ -125,6 +128,9 @@ int		main(int ac, char **av, char **env)
       else
 	normal(&ini, env, &ini2);
       i++;
+      free(ini.commande);
+      free(ini.arg);
+      free(ini.PATHfinal);
     }
   return (0);
 }

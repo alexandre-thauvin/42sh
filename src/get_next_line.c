@@ -1,75 +1,74 @@
 /*
-** get_next_line.c for  in /home/thauvi_a/librairie/get_next_line_2
+** get_next_line.c for get_next_line in /home/labory_t/Epitech/projet/CPE/CPE_2015_getnextline
 **
-** Made by Thauvin
-** Login   <thauvi_a@epitech.net>
+** Made by Theo Labory
+** Login   <labory_t@epitech.net>
 **
-** Started on  Wed Mar  2 17:17:21 2016 Thauvin
-** Last update Thu Apr 28 09:20:56 2016 Lalague-Dulac Tom
+** Started on  Wed Jan  6 21:14:49 2016 Theo Labory
+** Last update Fri Apr 29 01:27:18 2016 Thauvin
 */
 
-#include "shell.h"
 #include "get_next_line.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
-char	*my_realloc(char *ptr, size_t size)
+char my_get_just_one_char(const int fd)
 {
-  char	*tmp;
-  int	i;
+  static int	length = 0;
+  static char	*buffstr;
+  static char	buffer[READ_SIZE];
+  char		c;
 
-  tmp = ptr;
-  ptr = malloc(size);
-  i = 0;
-  while (tmp[i])
+  if (length == 0)
     {
-      ptr[i] = tmp[i];
-      i++;
-    }
-  free(tmp);
-  return (ptr);
-}
-
-char	get_c(const int fd)
-{
-  static char buff[READ_SIZE];
-  static char *ptr_buff;
-  static int len = 0;
-  char	c;
-
-  if (len == 0)
-    {
-      len = read(fd, buff, READ_SIZE);
-      ptr_buff = (char*)&buff;
-      if (len == 0)
+      length = read(fd, buffer, READ_SIZE);
+      buffstr = (char *)&buffer;
+      if(length == 0)
 	return (0);
     }
-  c = *ptr_buff;
-  ptr_buff++;
-  len--;
+  c = *buffstr;
+  buffstr++;
+  length--;
   return (c);
 }
 
-char	*get_next_line(const int fd)
+char *realloc_please(size_t size, char *str)
 {
-  char	c;
-  char	*str;
-  int	len;
+  char *tmp;
+  int i;
 
-  len = 0;
-  if ((str = malloc(READ_SIZE + 1)) == NULL)
-    return (NULL);
-  if (str == NULL)
-    return (0);
-  c = get_c(fd);
-  while (c != '\n' && c != '\0')
+  i = 0;
+  tmp = str;
+  str = malloc(size);
+  while(tmp[i])
     {
-      str[len] = c;
-      c = get_c(fd);
-      len++;
-      if (len % (READ_SIZE + 1) == 0)
-	str = my_realloc(str, len + READ_SIZE + 1);
+      str[i] = tmp[i];
+      i++;
     }
-  str[len] = 0;
-  if (c == 0 && str[0] == 0)
-    return (0);
+  str[size] = '\0';
   return (str);
+}
+
+char *get_next_line(const int fd)
+{
+  Getnext base;
+
+  base.len = 0;
+  base.str = malloc(READ_SIZE + 1);
+  if (base.str == NULL)
+    return (NULL);
+  base.c = my_get_just_one_char(fd);
+  while (base.c != '\0' && base.c != '\n')
+    {
+      base.str[base.len] = base.c;
+      base.c = my_get_just_one_char(fd);
+      base.len++;
+      if (base.len % (READ_SIZE) == 0)
+	base.str = realloc_please(base.len + READ_SIZE + 1, base.str);
+    }
+  base.str[base.len] = '\0';
+  if (base.c == 0 && base.str[0] == 0)
+    return (NULL);
+  return (base.str);
 }

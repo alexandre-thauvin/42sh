@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Thu Apr 28 14:49:05 2016 Theo Labory
+** Last update Fri Apr 29 01:06:43 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -53,6 +53,7 @@ typedef struct		s_second
   int			nb_redirection;
   char			**arg2;
   char			*file_name;
+  int			j;
 }			t_second;
 
 typedef struct		s_var_malloc
@@ -163,4 +164,6 @@ int	tab_with_redirection(t_second *);
 void	all_exec(t_second *, char **);
 void	control_reach();
 int	my_printf(const char*, ...);
+void	pars_com_increm(t_second *, char *, int *, int);
+
 #endif /* SHELL_H_ */

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr 10 18:19:32 2016 Thauvin
-** Last update Thu Apr 28 09:31:14 2016 Lalague-Dulac Tom
+** Last update Fri Apr 29 00:40:29 2016 Thauvin
 */
 
 #include "shell.h"
@@ -42,24 +42,31 @@ int	check_courant(t_second *ini)
 
 void	complete_pwd(t_second *ini)
 {
-  if (ini->arg[1][0] == '-')
+  ini->u = 0;
+  if (ini->arg[1] != NULL)
+    if (ini->arg[1][0] == '-')
+      ini->u = 1;
+  if (ini->u == 1)
     {
-      if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2) * sizeof(char))) == NULL)
-	return ;
+      if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2)
+				* sizeof(char))) == NULL)
+	exit(-42);
       ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
       free(ini->pwd);
       if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
-	return ;
+	exit(-42);
       getcwd(ini->pwd, 1024);
     }
-  if (ini->arg[1][0] != '-')
+  else
     {
-      if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2) * sizeof(char))) == NULL)
-	return ;
+      if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2)
+				* sizeof(char))) == NULL)
+	exit(-42);
       ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
       free(ini->pwd);
-      if ((ini->pwd = malloc((my_strlen(ini->path_cd) + 1) * sizeof(char))) == NULL)
-	return ;
+      if ((ini->pwd = malloc((my_strlen(ini->path_cd) + 1)
+			     * sizeof(char))) == NULL)
+	exit(42);
       ini->pwd = my_strcpy(ini->pwd, ini->path_cd);
     }
 }

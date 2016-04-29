@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 18:35:25 2016 Thauvin
-** Last update Thu Apr 14 22:24:31 2016 Thauvin
+** Last update Fri Apr 29 01:57:39 2016 Thauvin
 */
 
 #include "shell.h"
@@ -26,12 +26,15 @@ int	tab_with_redirection(t_second *ini)
       ini->arg2[z] = my_strcpy(ini->arg2[z], ini->arg[z]);
       z++;
     }
+  ini->arg2[z] = NULL;
   if (ini->arg[z + 1] == NULL)
     {
       ini->nb_redirection = 0;
       return (0);
     }
-  ini->file_name = malloc((my_strlen(ini->arg[z + 1]) + 1) * sizeof(char));
+  if ((ini->file_name = malloc((my_strlen(ini->arg[z + 1]) + 1)
+			       * sizeof(char))) == NULL)
+    exit(-42);
   ini->file_name = my_strcpy(ini->file_name, ini->arg[z + 1]);
   ini->arg[z] = NULL;
   return (0);

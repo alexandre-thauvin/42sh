@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Thu Apr 28 09:20:07 2016 Lalague-Dulac Tom
+** Last update Fri Apr 29 00:37:37 2016 Thauvin
 */
 
 #include "shell.h"
@@ -51,7 +51,7 @@ char	*cpy_path(char **env)
   if (a != 0)
     {
       if ((dest = malloc(sizeof(char) * my_strlenPATH(env[a]) + 1)) == NULL)
-	return (NULL);
+	exit(-42);
       dest = my_strcpy(dest, env[a]);
       return (dest);
     }
@@ -94,7 +94,7 @@ int		lanceur(char *commande, char **env, t_env *ini2, t_second *ini)
   if (z == 0)
     {
       if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
-	return (-1);
+	exit(-42);
       getcwd(ini->pwd, 1024);
       ini_var_tab(env, ini2, ini);
     }

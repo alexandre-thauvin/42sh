@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Thu Apr 28 09:22:28 2016 Lalague-Dulac Tom
+** Last update Fri Apr 29 01:38:49 2016 Thauvin
 */
 
 #include "shell.h"
@@ -38,23 +38,24 @@ char		**ma2d(char **dest, int rows, char *commande)
   while (commande[ini.z] != '\0')
     {
       ini.cols = 0;
-      while (commande[ini.z] != ' ' && ini.z < my_strlen(commande) &&
+      while (commande[ini.z] != ' ' && commande[ini.z] != '\0' &&
 	     commande[ini.z] != '\t')
 	{
 	  ini.cols++;
 	  ini.z++;
 	}
-      ini.z++;
+      if (commande[ini.z] != '\0')
+	ini.z++;
       if (ini.cols > ini.cols2)
 	ini.cols2 = ini.cols;
     }
   ini.z = 0;
   if ((dest = malloc((rows + 1) * sizeof(char*))) == NULL)
-    return (NULL);
+    exit(-42);
   while (ini.z < rows)
     {
       if ((dest[ini.z] = malloc(ini.cols2 * sizeof(char) + 1)) == NULL)
-	return (NULL);
+	exit(-42);
       ini.z++;
     }
   return (dest);
