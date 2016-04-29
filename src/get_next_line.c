@@ -1,74 +1,76 @@
 /*
-** get_next_line.c for get_next_line in /home/labory_t/Epitech/projet/CPE/CPE_2015_getnextline
+** get_next_line.c for  in /home/thauvi_a/librairie/get_next_line_2
 **
-** Made by Theo Labory
-** Login   <labory_t@epitech.net>
+** Made by Thauvin
+** Login   <thauvi_a@epitech.net>
 **
-** Started on  Wed Jan  6 21:14:49 2016 Theo Labory
-** Last update Fri Apr 29 01:27:18 2016 Thauvin
+** Started on  Wed Mar  2 17:17:21 2016 Thauvin
+** Last update Fri Apr 29 10:20:00 2016 Thauvin
 */
 
+#include <stdlib.h>
+#include <unistd.h>
+
 #include "get_next_line.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
-char my_get_just_one_char(const int fd)
+char	*my_realloc(char *ptr, size_t size)
 {
-  static int	length = 0;
-  static char	*buffstr;
-  static char	buffer[READ_SIZE];
-  char		c;
+  char	*tmp;
+  int	i;
 
-  if (length == 0)
-    {
-      length = read(fd, buffer, READ_SIZE);
-      buffstr = (char *)&buffer;
-      if(length == 0)
-	return (0);
-    }
-  c = *buffstr;
-  buffstr++;
-  length--;
-  return (c);
-}
-
-char *realloc_please(size_t size, char *str)
-{
-  char *tmp;
-  int i;
-
+  tmp = ptr;
+  ptr = malloc(size);
   i = 0;
-  tmp = str;
-  str = malloc(size);
-  while(tmp[i])
+  while (tmp[i])
     {
-      str[i] = tmp[i];
+      ptr[i] = tmp[i];
       i++;
     }
-  str[size] = '\0';
-  return (str);
+  free(tmp);
+  return (ptr);
+}
+
+char	get_c(const int fd)
+{
+  static char buff[READ_SIZE];
+  static char *ptr_buff;
+  static int len = 0;
+  char	c;
+
+  if (len == 0)
+    {
+      len = read(fd, buff, READ_SIZE);
+      ptr_buff = (char*)&buff;
+      if (len == 0)
+	return (0);
+    }
+  c = *ptr_buff;
+  ptr_buff++;
+  len--;
+  return (c);
 }
 
 char *get_next_line(const int fd)
 {
-  Getnext base;
+  char	c;
+  char	*str;
+  int	len;
 
-  base.len = 0;
-  base.str = malloc(READ_SIZE + 1);
-  if (base.str == NULL)
-    return (NULL);
-  base.c = my_get_just_one_char(fd);
-  while (base.c != '\0' && base.c != '\n')
+  len = 0;
+  str = malloc(READ_SIZE + 1);
+  if (str == NULL)
+    return (0);
+  c = get_c(fd);
+  while (c != '\n' && c != '\0')
     {
-      base.str[base.len] = base.c;
-      base.c = my_get_just_one_char(fd);
-      base.len++;
-      if (base.len % (READ_SIZE) == 0)
-	base.str = realloc_please(base.len + READ_SIZE + 1, base.str);
+      str[len] = c;
+      c = get_c(fd);
+      len++;
+      if (len % (READ_SIZE + 1) == 0)
+	str = my_realloc(str, len + READ_SIZE + 1);
     }
-  base.str[base.len] = '\0';
-  if (base.c == 0 && base.str[0] == 0)
-    return (NULL);
-  return (base.str);
+  str[len] = '\0';
+  if (c == 0 && str[0] == 0)
+    return (0);
+  return (str);
 }

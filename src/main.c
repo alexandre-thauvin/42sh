@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Fri Apr 29 01:50:57 2016 Thauvin
+** Last update Fri Apr 29 10:07:17 2016 Thauvin
 */
 
 #include "shell.h"
@@ -128,9 +128,6 @@ int		main(int ac, char **av, char **env)
       else
 	normal(&ini, env, &ini2);
       i++;
-      free(ini.commande);
-      free(ini.arg);
-      free(ini.PATHfinal);
     }
   return (0);
 }
