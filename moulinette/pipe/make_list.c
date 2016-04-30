@@ -5,38 +5,18 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Fri Apr 29 15:13:36 2016 thomas lavigne
+** Last update Sat Apr 30 11:20:04 2016 thomas lavigne
 */
 
 #include <stdlib.h>
 #include <stdio.h>
-
-typedef struct	s_pipe
-{
-  char	*name;
-  char	**arg;
-  struct s_pipe	*next;
-  struct s_pipe	*prev;
-}		t_pipe;
-
-void	show_list(t_pipe *list)
-{
-  t_pipe	*tmp;
-
-  tmp = list;
-  while (tmp && tmp != NULL)
-    {
-      printf("%s\n", tmp->name);
-      tmp = tmp->next;
-    }
-}
+#include <unistd.h>
+#include "pipe.h"
 
 int     my_put_in_list(struct s_pipe **list, char *str)
 {
   struct s_pipe	*elem;
-  struct s_pipe	*el;
 
-  el = *list;
   if ((elem = malloc(sizeof(*elem))) == NULL)
     {
       printf("Error Malloc\n");
@@ -45,9 +25,11 @@ int     my_put_in_list(struct s_pipe **list, char *str)
   if (elem == NULL)
     return (1);
   elem->name = str;
+  elem->arg = malloc(sizeof(char *) * 2);
+  elem->arg[0] = malloc(sizeof(char) * 3);
+  elem->arg[0] = "ls\0";
+  elem->arg[1] = NULL;
   elem->next = *list;
-  if (el != NULL)
-    el->prev = elem;
   *list = elem;
   return (0);
 }
@@ -82,11 +64,5 @@ int	main()
   tab_pipe[2] = "grep";
   tab_pipe[3] = NULL;
   make_list(&list, tab_pipe);
-  show_list(list);
+  pipe_exec(list);
 }
-
-/* ls src/ | cat src/main.c | grep main
-** tab[0] = dernier (grep main)
-** tab[1] = cat src/main.c
-** tab[2] = ls src/
-*/

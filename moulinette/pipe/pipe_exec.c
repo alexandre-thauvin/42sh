@@ -5,14 +5,15 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Fri Apr 29 15:49:20 2016 thomas lavigne
+** Last update Sat Apr 30 11:15:25 2016 thomas lavigne
 */
 
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "pipe.h"
 
-void	pipe_exec(char ***cmd)
+/*void	pipe_exec(char ***cmd)
 {
   int	p[2];
   pid_t	pid;
@@ -41,9 +42,40 @@ void	pipe_exec(char ***cmd)
 	  cmd++;
 	}
     }
+    }*/
+
+void	pipe_exec(t_pipe *list)
+{
+  int	p[2];
+  pid_t	pid;
+  int	fd = 0;
+  int	i = 0;
+
+  while (list && list != NULL)
+    {
+      pipe(p);
+      if ((pid = fork()) == -1)
+	exit(EXIT_FAILURE);
+      else if (pid == 0)
+	{
+	  dup2(fd, 0);
+	  if (list->next != NULL)
+	    dup2(p[1], 1);
+	  close(p[0]);
+	  execvp(list->arg[0], list->arg);
+	  exit(EXIT_FAILURE);
+	}
+      else
+	{
+	  wait(NULL);
+	  close(p[1]);
+	  fd = p[0];
+	  list = list->next;
+	}
+    }
 }
 
-int	main()
+/*void	main()
 {
   //  t_pipe	*list;
   char	*ls[] = {"ls", NULL};
@@ -54,4 +86,4 @@ int	main()
 
   pipe_exec(cmd);
   return (0);
-}
+}*/
