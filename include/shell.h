@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Fri Apr 29 01:06:43 2016 Thauvin
+** Last update Sun May  1 16:50:57 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -119,7 +119,7 @@ typedef struct		s_env
 char	*pars_home(char **, char *);
 char	*my_strcpy_norm(char *, char *);
 int	check_exit(char **, int);
-char	*check_cd(char **, char *, int, char **);
+char	*check_cd(char **, char *, char **);
 int	file_path_exist(char *);
 char	**ma(char **, int, int, char **);
 char	**my_strdup_path(char **, char *, char **);
@@ -129,7 +129,7 @@ int	getcols(char *);
 int	getrows(char *);
 char	**mallocdest(char **, int, int);
 char	**my_strdup2d(char *);
-int	lanceur(char *, char **, t_env *, t_second *);
+int	lanceur(char *, t_env *, t_second *);
 char	**my_strduptab(char *);
 char	**ma2d(char **, int, char *);
 int	getrows_tab(char *);
@@ -157,8 +157,8 @@ void	check_zomb(t_second *);
 int	count_separator(char *);
 char	*pars_commande(char *, t_second *);
 int	pipe_segfault(char *);
-void	normal(t_second *, char **, t_env *);
-void	with_separator(t_second *, char **, t_env *);
+void	normal(t_second *, t_env *);
+void	with_separator(t_second *, t_env *);
 void	count_redirection(t_second *, char *);
 int	tab_with_redirection(t_second *);
 void	all_exec(t_second *, char **);

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Jan 24 18:28:58 2016 Thauvin
-** Last update Fri Apr 29 01:53:48 2016 Thauvin
+** Last update Sun May  1 16:56:30 2016 Thauvin
 */
 
 #include "shell.h"
@@ -32,8 +32,8 @@ char	*pars_home(char **env, char *home)
   int	a;
 
   a = 0;
-  while (env[a][0] != 'H' || env[a][1] != 'O' || env[a][2] != 'M'
-	 || env[a][3] != 'E' || env[a][4] != '=')
+  while ((env[a][0] != 'H' || env[a][1] != 'O' || env[a][2] != 'M'
+	  || env[a][3] != 'E' || env[a][4] != '=') && env[a] != NULL)
     a++;
   if ((home = malloc(sizeof(char) * my_strlenPATH(env[a]) + 1)) == NULL)
     exit(-42);
@@ -76,12 +76,12 @@ char	*cpy_tab_path(t_var_cd *ini, char **arg, char *path_final)
   return (path_final);
 }
 
-char	*check_cd(char **arg, char *path_final, int rows, char **env)
+char	*check_cd(char **arg, char *path_final, char **env)
 {
   t_var_cd	ini;
 
   ini_var_cd(&ini);
-  if (rows > 1)
+  if (arg[1] != NULL)
     {
       if (arg[1][0] != '/')
 	path_final = cpy_tab_path(&ini, arg, path_final);

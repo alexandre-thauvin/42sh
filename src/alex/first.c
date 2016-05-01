@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Fri Apr 29 00:37:37 2016 Thauvin
+** Last update Sun May  1 16:49:40 2016 Thauvin
 */
 
 #include "shell.h"
@@ -86,7 +86,7 @@ void		ini_var_lanceur(t_second *ini, char *commande, t_env *ini2)
     ini->zombie = 1;
 }
 
-int		lanceur(char *commande, char **env, t_env *ini2, t_second *ini)
+int		lanceur(char * commande, t_env *ini2, t_second *ini)
 {
   static int	z = 0;
 
@@ -96,7 +96,6 @@ int		lanceur(char *commande, char **env, t_env *ini2, t_second *ini)
       if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
 	exit(-42);
       getcwd(ini->pwd, 1024);
-      ini_var_tab(env, ini2, ini);
     }
   z++;
   ini_var_lanceur(ini, commande, ini2);

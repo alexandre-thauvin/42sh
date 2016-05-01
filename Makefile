@@ -5,22 +5,22 @@
 ## Login   <thauvi_a@epitech.net>
 ## 
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Fri Apr 29 01:02:40 2016 Thauvin
+## Last update Sun May  1 16:15:47 2016 Thauvin
 ##
 
-SRCS	= src/main.c \
-	src/first.c \
-	src/cd_ok.c \
-	src/env.c \
-	src/redirection.c \
-	src/separator.c \
-	src/third.c \
-	src/four.c \
-	src/env2.c \
-	src/check_path.c \
-	src/get_next_line.c \
-	src/tab_arg.c \
-	src/tab_path.c
+SRCS	= src/alex/main.c \
+	src/alex/first.c \
+	src/alex/cd_ok.c \
+	src/alex/env.c \
+	src/alex/redirection.c \
+	src/alex/separator.c \
+	src/alex/third.c \
+	src/alex/four.c \
+	src/alex/env2.c \
+	src/alex/check_path.c \
+	src/alex/get_next_line.c \
+	src/alex/tab_arg.c \
+	src/alex/tab_path.c
 
 NAME	= 42sh
 

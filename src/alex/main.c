@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Fri Apr 29 10:07:17 2016 Thauvin
+** Last update Sun May  1 16:55:23 2016 Thauvin
 */
 
 #include "shell.h"
@@ -48,8 +48,7 @@ int	exec_cd(t_second *ini, char *commande, t_env *ini2)
 	  ini->u = 1;
       ini->zombie = 1;
       ini->s = 1;
-      ini->path_cd = check_cd(ini->arg, ini->path_cd, ini->rows_arg,
-			      ini2->env2);
+      ini->path_cd = check_cd(ini->arg, ini->path_cd, ini2->env2);
       if (ini->u == 1)
 	ini->u = chdir(ini->oldpwd);
       else
@@ -114,6 +113,7 @@ int		main(int ac, char **av, char **env)
   if (env[0] == NULL)
     return (0);
   /* signal(SIGINT, control_reach); */
+  ini_var_tab(env, &ini2, &ini);
   while (42)
     {
       my_printf("\033[1m\033[34mshell\033[37m@\033[31m42sh\033[0m-[%d]->", i);
@@ -124,9 +124,9 @@ int		main(int ac, char **av, char **env)
 	exit(0);
       ini.nb_separator = count_separator(ini.commande);
       if (ini.nb_separator != 0)
-	with_separator(&ini, env, &ini2);
+	with_separator(&ini, &ini2);
       else
-	normal(&ini, env, &ini2);
+	normal(&ini, &ini2);
       i++;
     }
   return (0);
