@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Mon May  2 17:54:52 2016 Thauvin
+** Last update Mon May  2 18:26:16 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -27,6 +27,8 @@ int     my_put_in_list(struct s_pipe **list, char *str, t_second *ini, t_env *in
   elem->name = str;
   elem->arg = ma2d(elem->arg, getrows_tab(str), str);
   elem->arg = my_strduptab(str);
+  ini->j = 0;
+  ini2->j = 0;
   ini_var_lanceur(ini, str, ini2);
   elem->arg[0] = ini->PATHfinal[ini->check];
   elem->next = *list;
