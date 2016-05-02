@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Mon May  2 16:47:49 2016 Thauvin
+** Last update Mon May  2 17:48:27 2016 Thauvin
 */
 
 #include "shell.h"
@@ -100,7 +100,7 @@ int		lanceur(char * commande, t_env *ini2, t_second *ini)
   z++;
   if (ini->nb_pipe != 0)
   {
-    create_tab(commande);
+    create_tab(commande, ini, ini2);
     return (0);
   }
   ini_var_lanceur(ini, commande, ini2);

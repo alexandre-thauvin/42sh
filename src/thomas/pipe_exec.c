@@ -1,11 +1,11 @@
 /*
 ** pipe_exec.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/moulinette/pipe
-** 
+**
 ** Made by thomas lavigne
 ** Login   <lavign_t@epitech.net>
-** 
+**
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Mon May  2 17:13:20 2016 thomas lavigne
+** Last update Mon May  2 17:59:11 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -13,18 +13,18 @@
 #include <stdlib.h>
 #include "shell.h"
 
-void	pipe_exec2(int *fd, int p[2], t_pipe *list)
+void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2)
 {
-  printf("%s\n", list->arg[0]);
+  int	i = 0;
   dup2(*fd, 0);
   if (list->next != NULL)
     dup2(p[1], 1);
   close(p[0]);
-  execve(list->arg[0], list->arg, NULL);
+  execve(list->arg[0], list->arg, ini2->env2);
   exit(EXIT_FAILURE);
 }
 
-void	pipe_exec(t_pipe *list)
+void	pipe_exec(t_pipe *list, t_env *ini2)
 {
   int	p[2];
   pid_t	pid;
@@ -38,7 +38,7 @@ void	pipe_exec(t_pipe *list)
       if ((pid = fork()) == -1)
 	exit(EXIT_FAILURE);
       else if (pid == 0)
-	pipe_exec2(&fd, p, list);
+	pipe_exec2(&fd, p, list, ini2);
       else
 	{
 	  wait(NULL);

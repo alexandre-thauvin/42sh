@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Mon May  2 17:10:59 2016 thomas lavigne
+** Last update Mon May  2 17:53:42 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -173,16 +173,18 @@ void	all_exec(t_second *, char **);
 void	control_reach();
 int	my_printf(const char*, ...);
 void	pars_com_increm(t_second *, char *, int *, int);
-void	create_tab(char *);
+void	ini_var_lanceur(t_second *, char *, t_env *);
+                 /*parse_buff.c */
+void	create_tab(char *, t_second *, t_env *);
 int	count_pipes(char *);
 int	my_strlen_space(char *, int);
 		/* make_list.c */
-void	pipe_toto(char **);
-void	make_list(t_pipe **, char **);
+void	pipe_toto(char **, t_second *, t_env *);
+void	make_list(t_pipe **, char **, t_second *, t_env *);
 int	my_tablen(char **);
-int	my_put_in_list(struct s_pipe **, char *);
+int	my_put_in_list(struct s_pipe **, char *, t_second *, t_env *);
 		/* pipe_exec.c */
-void	pipe_exec2(int *, int p[2], t_pipe *);
-void	pipe_exec(t_pipe *);
+void	pipe_exec2(int *, int p[2], t_pipe *, t_env *);
+void	pipe_exec(t_pipe *, t_env *);
 
 #endif /* SHELL_H_ */

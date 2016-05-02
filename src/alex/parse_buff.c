@@ -5,7 +5,7 @@
 ** Login   <quasta_b@epitech.net>
 **
 ** Started on  Fri Apr 29 09:57:46 2016 Benjamin Quastana
-** Last update Mon May  2 17:04:09 2016 thomas lavigne
+** Last update Mon May  2 17:45:43 2016 Thauvin
 */
 
 #include <unistd.h>
@@ -35,7 +35,7 @@ int	count_pipes(char *str)
   return (a);
 }
 
-void	create_tab(char *str)
+void	create_tab(char *str, t_second *ini, t_env *ini2)
 {
   int	a;
   int	x;
@@ -62,5 +62,5 @@ void	create_tab(char *str)
 	}
       tab[y] = NULL;
     }
-  pipe_toto(tab);
+  pipe_toto(tab, ini, ini2);
 }

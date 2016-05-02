@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Apr 14 05:04:54 2016 Thauvin
-** Last update Fri Apr 29 01:02:51 2016 Thauvin
+** Last update Mon May  2 17:22:11 2016 Thauvin
 */
 
 #include "shell.h"
@@ -28,7 +28,7 @@ void	all_exec(t_second *ini, char **env)
   if (ini->relative == 1)
     execve(ini->arg[0], ini->arg, env);
   if (ini->relative == 0)
-    execve(ini->PATHfinal[ini->check], ini->arg, env);
+      execve(ini->PATHfinal[ini->check], ini->arg, env);
   free(ini->arg);
   if (ini->pathtemp != NULL)
     free(ini->PATHfinal);
