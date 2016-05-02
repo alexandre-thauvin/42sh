@@ -5,7 +5,7 @@
 ## Login   <thauvi_a@epitech.net>
 ## 
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Mon May  2 16:47:33 2016 Thauvin
+## Last update Mon May  2 17:08:09 2016 thomas lavigne
 ##
 
 SRCS	= src/alex/main.c \
@@ -21,7 +21,10 @@ SRCS	= src/alex/main.c \
 	src/alex/check_path.c \
 	src/alex/get_next_line.c \
 	src/alex/tab_arg.c \
-	src/alex/tab_path.c
+	src/alex/tab_path.c \
+	src/thomas/make_list.c \
+	src/thomas/pipe_exec.c
+
 
 NAME	= 42sh
 

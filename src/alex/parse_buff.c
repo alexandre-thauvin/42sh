@@ -5,7 +5,7 @@
 ** Login   <quasta_b@epitech.net>
 **
 ** Started on  Fri Apr 29 09:57:46 2016 Benjamin Quastana
-** Last update Mon May  2 16:51:31 2016 Thauvin
+** Last update Mon May  2 17:04:09 2016 thomas lavigne
 */
 
 #include <unistd.h>
@@ -62,6 +62,5 @@ void	create_tab(char *str)
 	}
       tab[y] = NULL;
     }
-  while (tab[i] != NULL)
-      printf("%s\n", tab[i++]);
+  pipe_toto(tab);
 }

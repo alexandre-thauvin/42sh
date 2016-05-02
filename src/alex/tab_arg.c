@@ -5,11 +5,10 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Mon May  2 16:08:31 2016 thomas lavigne
+** Last update Mon May  2 17:10:16 2016 thomas lavigne
 */
 
-#include "../thomas/pipe.h"
-#include "../../include/shell.h"
+#include "shell.h"
 
 int	getrows_tab(char *src)
 {
