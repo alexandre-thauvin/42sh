@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 11:20:53 2016 Thauvin
-** Last update Sun May  1 16:50:31 2016 Thauvin
+** Last update Mon May  2 16:54:26 2016 Thauvin
 */
 
 #include "shell.h"
@@ -17,6 +17,7 @@ void	with_separator(t_second *ini, t_env *ini2)
       pars_commande(ini->commande, ini);
       if (ini->dest != NULL && ini->dest[0] != 0)
 	{
+	  count_pipe(ini->dest, ini);
 	  count_redirection(ini, ini->dest);
 	  lanceur(ini->dest, ini2, ini);
 	}
@@ -26,25 +27,26 @@ void	with_separator(t_second *ini, t_env *ini2)
 
 void	normal(t_second *ini, t_env *ini2)
 {
-  count_redirection(ini, ini->commande);
   if (ini->commande == NULL)
     exit(0);
+  count_redirection(ini, ini->commande);
+  count_pipe(ini->commande, ini);
   if (ini->commande != NULL && ini->commande[0] != 0)
     lanceur(ini->commande, ini2, ini);
 }
 
-int	pipe_segfault(char *commande)
+void	count_pipe(char *commande, t_second *ini)
 {
   int	z;
 
   z = 0;
+  ini->nb_pipe = 0;
   while (commande[z] != '\0')
     {
       if (commande[z] == '|')
-	return (-1);
+	ini->nb_pipe++;
       z++;
     }
-  return (0);
 }
 
 int	count_separator(char *commande)

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Sun May  1 16:49:40 2016 Thauvin
+** Last update Mon May  2 16:47:49 2016 Thauvin
 */
 
 #include "shell.h"
@@ -98,6 +98,11 @@ int		lanceur(char * commande, t_env *ini2, t_second *ini)
       getcwd(ini->pwd, 1024);
     }
   z++;
+  if (ini->nb_pipe != 0)
+  {
+    create_tab(commande);
+    return (0);
+  }
   ini_var_lanceur(ini, commande, ini2);
   pars_builtenv(ini2, ini->arg, ini);
   exec_cd(ini, commande, ini2);

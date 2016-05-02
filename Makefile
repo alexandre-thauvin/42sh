@@ -5,12 +5,13 @@
 ## Login   <thauvi_a@epitech.net>
 ## 
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Sun May  1 16:15:47 2016 Thauvin
+## Last update Mon May  2 16:47:33 2016 Thauvin
 ##
 
 SRCS	= src/alex/main.c \
 	src/alex/first.c \
 	src/alex/cd_ok.c \
+	src/alex/parse_buff.c \
 	src/alex/env.c \
 	src/alex/redirection.c \
 	src/alex/separator.c \

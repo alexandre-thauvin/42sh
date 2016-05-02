@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Sun May  1 16:50:57 2016 Thauvin
+** Last update Mon May  2 16:54:11 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -54,6 +54,7 @@ typedef struct		s_second
   char			**arg2;
   char			*file_name;
   int			j;
+  int			nb_pipe;
 }			t_second;
 
 typedef struct		s_var_malloc
@@ -156,7 +157,7 @@ void	error(t_second *, char *, t_env *);
 void	check_zomb(t_second *);
 int	count_separator(char *);
 char	*pars_commande(char *, t_second *);
-int	pipe_segfault(char *);
+void	count_pipe(char *, t_second *);
 void	normal(t_second *, t_env *);
 void	with_separator(t_second *, t_env *);
 void	count_redirection(t_second *, char *);
@@ -165,5 +166,8 @@ void	all_exec(t_second *, char **);
 void	control_reach();
 int	my_printf(const char*, ...);
 void	pars_com_increm(t_second *, char *, int *, int);
+void	create_tab(char *);
+int	count_pipes(char *);
+int	my_strlen_space(char *, int);
 
 #endif /* SHELL_H_ */
