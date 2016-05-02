@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Sat Apr 30 11:08:59 2016 thomas lavigne
-** Last update Sat Apr 30 11:12:46 2016 thomas lavigne
+** Last update Mon May  2 16:10:55 2016 thomas lavigne
 */
 
 #ifndef PIPE_H_
@@ -19,5 +19,9 @@ typedef struct  s_pipe
 }		t_pipe;
 
 void    pipe_exec(t_pipe *list);
+int	getrows_tab(char *src);
+char	**ma2d(char **dest, int rows, char *commande);
+char	**my_strduptab(char *src);
+int	my_strlen(char *str);
 
 #endif
