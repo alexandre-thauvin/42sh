@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Mon May  2 18:26:16 2016 Thauvin
+** Last update Mon May  2 18:56:33 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -30,6 +30,7 @@ int     my_put_in_list(struct s_pipe **list, char *str, t_second *ini, t_env *in
   ini->j = 0;
   ini2->j = 0;
   ini_var_lanceur(ini, str, ini2);
+  ini->check = file_exist(ini, ini->rows_PATH);
   elem->arg[0] = ini->PATHfinal[ini->check];
   elem->next = *list;
   *list = elem;
@@ -60,6 +61,7 @@ void	pipe_toto(char **tab_pipe, t_second *ini, t_env *ini2)
 {
   t_pipe	*list;
 
+  list = NULL;
   make_list(&list, tab_pipe, ini, ini2);
   pipe_exec(list, ini2);
 }

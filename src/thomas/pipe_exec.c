@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Mon May  2 18:25:52 2016 Thauvin
+** Last update Mon May  2 18:58:27 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -15,10 +15,6 @@
 
 void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2)
 {
-  int	i = 0;
-  while (list->arg[i] != NULL)
-    printf("%sa\n", list->arg[i++]);
-  printf("\n");
   dup2(*fd, 0);
   if (list->next != NULL)
     dup2(p[1], 1);
