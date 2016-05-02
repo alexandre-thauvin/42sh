@@ -5,7 +5,7 @@
 ** Login   <quasta_b@epitech.net>
 **
 ** Started on  Fri Apr 29 09:57:46 2016 Benjamin Quastana
-** Last update Mon May  2 17:45:43 2016 Thauvin
+** Last update Mon May  2 21:03:35 2016 thomas lavigne
 */
 
 #include <unistd.h>
@@ -35,6 +35,22 @@ int	count_pipes(char *str)
   return (a);
 }
 
+int	clean_mal(char *str, int i)
+{
+  int	nb;
+
+  nb = 0;
+  while (str[i] != '|' && str[i] != '\0' && str[i] != '\n')
+    if (str[i + 1] != '|')
+      {
+	nb++;
+	i++;
+      }
+    else
+      i++;
+  return (nb + 1);
+}
+
 void	create_tab(char *str, t_second *ini, t_env *ini2)
 {
   int	a;
@@ -44,13 +60,13 @@ void	create_tab(char *str, t_second *ini, t_env *ini2)
   int	i;
 
   a = x = y = i = 0;
-  if ((tab = malloc(sizeof(*tab) * (count_pipes(str)) + 1)) == NULL)
+  if ((tab = malloc(sizeof(*tab) * (count_pipes(str) + 2))) == NULL)
     exit(EXIT_FAILURE);
   if (str && str != NULL)
     {
       while (str[a] != '\0')
 	{
-	  if ((tab[y] = malloc(20)) == NULL) exit(0);
+	  if ((tab[y] = malloc(clean_mal(str, a))) == NULL) exit(0);
 	  while (str[a] != '|' && str[a] != '\0' && str[a] != '\n')
 	    if (str[a + 1] != '|')
 	      tab[y][x++] = str[a++];
