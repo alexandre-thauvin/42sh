@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar  2 17:17:21 2016 Thauvin
-** Last update Fri Apr 29 10:20:00 2016 Thauvin
+** Last update Tue May  3 10:03:13 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -21,7 +21,7 @@ char	*my_realloc(char *ptr, size_t size)
   tmp = ptr;
   ptr = malloc(size);
   i = 0;
-  while (tmp[i])
+  while (tmp && tmp[i] != '\0')
     {
       ptr[i] = tmp[i];
       i++;
