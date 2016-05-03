@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Tue May  3 12:34:21 2016 Thauvin
+** Last update Tue May  3 12:40:33 2016 Thauvin
 */
 
 #include "shell.h"
@@ -36,7 +36,7 @@ void	exec_redirec(t_second *ini, char **env, char **arg)
 	      else
 		{
 		  /* refairele tab redirection avec la double */
-		  fd = open(ini->file_name, O_RDWR | O_CREAT | O_APPEND, 0777);
+		  fd = open(ini->file_name, O_RDWR | O_CREAT | O_APPEND, 0666);
 		}
 	      dup2(fd, 1);
 	      execve(ini->arg[0], ini->arg2, env);
