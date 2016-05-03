@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Mon May  2 15:59:48 2016 Thauvin
+** Last update Tue May  3 12:34:21 2016 Thauvin
 */
 
 #include "shell.h"
@@ -26,10 +26,18 @@ void	exec_redirec(t_second *ini, char **env, char **arg)
       if ((my_strcmp("setenv", arg[0]) == 0) &&
 	  (my_strcmp("unsetenv", arg[0])) == 0 && (my_strcmp("env", arg[0]) == 0))
 	{
-	  if (ini->nb_redirection == 1)
+	  if (ini->nb_redirection != 0 && ini->nb_redirection != -1)
 	    {
-	      tab_with_redirection(ini);
-	      fd = open(ini->file_name, O_RDWR | O_CREAT, 0777);
+	      if (ini->nb_redirection == 1)
+		{
+		  tab_with_redirection(ini);
+		  fd = open(ini->file_name, O_RDWR | O_CREAT, 0777);
+		}
+	      else
+		{
+		  /* refairele tab redirection avec la double */
+		  fd = open(ini->file_name, O_RDWR | O_CREAT | O_APPEND, 0777);
+		}
 	      dup2(fd, 1);
 	      execve(ini->arg[0], ini->arg2, env);
 	    }
