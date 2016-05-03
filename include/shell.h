@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Mon May  2 17:53:42 2016 Thauvin
+** Last update Tue May  3 17:33:34 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -124,56 +124,84 @@ typedef struct		s_env
   char	**env2;
 }			t_env;
 
+/* cd_ok.c */
 char	*pars_home(char **, char *);
 char	*my_strcpy_norm(char *, char *);
-int	check_exit(char **, int);
 char	*check_cd(char **, char *, char **);
+char	*cpy_tab_path(t_var_cd *, char **, char *);
+void	ini_var_cd(t_var_cd *);
+
+/* check_path.c */
+int	check_exit(char **, int);
 int	file_path_exist(char *);
 char	**ma(char **, int, int, char **);
 char	**my_strdup_path(char **, char *, char **);
+void	ini_var_strdup(t_tab3 *, char *, char **);
+
+/* first.c */
 int	my_strlenPATH(char *);
 char	*cpy_path(char **);
+int	lanceur(char *, t_env *, t_second *);
+int	file_exist(t_second *, int);
+void	ini_var_lanceur(t_second *, char *, t_env *);
+
+/* tab_path.c */
 int	getcols(char *);
 int	getrows(char *);
 char	**mallocdest(char **, int, int);
 char	**my_strdup2d(char *);
-int	lanceur(char *, t_env *, t_second *);
+
+/* tab_arg.c */
 char	**my_strduptab(char *);
 char	**ma2d(char **, int, char *);
 int	getrows_tab(char *);
-int	file_exist(t_second *, int);
-void	ini_var_strdup(t_tab3 *, char *, char **);
 void	end_string(t_tab2 *);
 void	ini_var_strduptab(t_tab2 *, char *);
-char	*cpy_tab_path(t_var_cd *, char **, char *);
+
+/* main.c */
 void	exec_redirec(t_second *, char **, char **);
 int	wait_in_fath(t_second *, char *, char **, char **);
+void	ini_var_tab(char **, t_env *, t_second *);
+int	exec_cd(t_second *, char *, t_env *);
+
+/* env2.c */
 void	get_rows_env(char **, t_env *);
 void	get_cols_env(char **, t_env *);
 int	strcmp_env(char **, char *);
-void	my_setenv(t_env *, char **);
-void	pars_builtenv(t_env *, char **, t_second *);
 char	**strdup2d(char **, char **, char **, int);
 char	*my_strcpy_update(char *, char **);
+
+/* env.c */
+void	my_setenv(t_env *, char **);
+void	pars_builtenv(t_env *, char **, t_second *);
+void	my_unenv(t_env *, char **);
+void	strdup2d_env(t_env *, int);
 void	show_env(char **);
-void	ini_var_tab(char **, t_env *, t_second *);
-int	exec_cd(t_second *, char *, t_env *);
+
+/* third.c */
 int	check_courant(t_second *);
 void	complete_pwd(t_second *);
 void	error(t_second *, char *, t_env *);
 void	check_zomb(t_second *);
+
+/* separator.c */
 int	count_separator(char *);
 char	*pars_commande(char *, t_second *);
 void	count_pipe(char *, t_second *);
 void	normal(t_second *, t_env *);
 void	with_separator(t_second *, t_env *);
-void	count_redirection(t_second *, char *);
+
+/* redirection.c */
 int	tab_with_redirection(t_second *);
-void	all_exec(t_second *, char **);
+void	count_redirection(t_second *, char *);
+
+/* four.c */
 void	control_reach();
+void	all_exec(t_second *, char **);
+
+/* lib/my/my_printf.c */
 int	my_printf(const char*, ...);
-void	pars_com_increm(t_second *, char *, int *, int);
-void	ini_var_lanceur(t_second *, char *, t_env *);
+
                  /*parse_buff.c */
 void	create_tab(char *, t_second *, t_env *);
 int	count_pipes(char *);
