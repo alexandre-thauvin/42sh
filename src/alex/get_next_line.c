@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar  2 17:17:21 2016 Thauvin
-** Last update Tue May  3 10:03:13 2016 thomas lavigne
+** Last update Tue May  3 14:20:08 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -18,8 +18,11 @@ char	*my_realloc(char *ptr, size_t size)
   char	*tmp;
   int	i;
 
+  if (ptr == NULL)
+    return (NULL);
   tmp = ptr;
-  ptr = malloc(size);
+  if ((ptr = malloc(size)) == NULL)
+    return (NULL);
   i = 0;
   while (tmp && tmp[i] != '\0')
     {
@@ -50,14 +53,15 @@ char	get_c(const int fd)
   return (c);
 }
 
-char *get_next_line(const int fd)
+char	*get_next_line(const int fd)
 {
   char	c;
   char	*str;
   int	len;
 
   len = 0;
-  str = malloc(READ_SIZE + 1);
+  if ((str = malloc(READ_SIZE + 1)) == NULL)
+    exit(EXIT_FAILURE);
   if (str == NULL)
     return (0);
   c = get_c(fd);
