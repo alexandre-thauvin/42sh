@@ -1,11 +1,11 @@
 /*
 ** double_and.c for double_and.c in /home/lalagu_t/rendu/Sem2/PSU/PSU_2015_42sh/src/tom
-** 
+**
 ** Made by Lalague-Dulac Tom
 ** Login   <lalagu_t@epitech.net>
-** 
+**
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Wed May  4 13:58:52 2016 Lalague-Dulac Tom
+** Last update Wed May  4 16:18:03 2016 Thauvin
 */
 
 #include "../../include/shell.h"
@@ -87,7 +87,7 @@ void		double_and(char *str, char **tab)
 
 int		main()
 {
-  char	        *str = "ls && ls";
+  char	        *str = "ls && ls -l";
   char		*tab[6];
 
   tab[0] = "/bin\0";

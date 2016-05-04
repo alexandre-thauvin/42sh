@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr 10 18:19:32 2016 Thauvin
-** Last update Fri Apr 29 00:40:29 2016 Thauvin
+** Last update Wed May  4 18:01:33 2016 Thauvin
 */
 
 #include "shell.h"
@@ -26,6 +26,7 @@ void	error(t_second *ini, char *commande, t_env *ini2)
   if (ini->check2 == -1 || ini->check == -1 ||
       (ini->pathtemp == NULL && ini->zombie == 0 && ini->check2 == -1))
     {
+      /* ini->nb_& = 0; */
       write(2, ini->arg[0], my_strlen(ini->arg[0]));
       write(2, ": Command not found.\n", my_strlen(": Command not found.\n"));
     }
