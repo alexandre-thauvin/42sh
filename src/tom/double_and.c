@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 ** 
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Tue May  3 12:16:40 2016 Lalague-Dulac Tom
+** Last update Wed May  4 13:58:52 2016 Lalague-Dulac Tom
 */
 
 #include "../../include/shell.h"
@@ -26,6 +26,7 @@ char            *recup_command(char *buff)
       i++;
     }
   str[i] = '\0';
+  return (str);
 }
 
 int		my_strlenspe(char *str, int i, char c)
