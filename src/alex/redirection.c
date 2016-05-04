@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 18:35:25 2016 Thauvin
-** Last update Fri Apr 29 01:57:39 2016 Thauvin
+** Last update Tue May  3 12:21:05 2016 Theo Labory
 */
 
 #include "shell.h"
@@ -17,7 +17,7 @@ int	tab_with_redirection(t_second *ini)
   z = 0;
   while (ini->arg[z] != NULL)
     z++;
-  z = z -2;
+  z = z - 2;
   ini->arg2 = malloc2d(ini->arg2, z, 100);
   z = 0;
   while (ini->arg[z] != NULL && ini->arg[z][0] != '>' &&

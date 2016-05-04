@@ -5,29 +5,11 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Wed May  4 16:18:03 2016 Thauvin
+** Last update Wed May  4 22:41:05 2016 Thauvin
+** Last update Wed May  4 18:44:55 2016 Lalague-Dulac Tom
 */
 
 #include "../../include/shell.h"
-
-char            *recup_command(char *buff)
-{
-  int           i;
-  char          *str;
-
-  i = 0;
-  if ((str = malloc(sizeof(buff) + 1)) == NULL)
-    return (NULL);
-  if (buff[0] == '/')
-    return (NULL);
-  while (buff && buff[i] != ' ' && buff[i] != '\0' && buff[i] != '\n')
-    {
-      str[i] = buff[i];
-      i++;
-    }
-  str[i] = '\0';
-  return (str);
-}
 
 int		my_strlenspe(char *str, int i, char c)
 {
@@ -44,12 +26,11 @@ int		my_strlenspe(char *str, int i, char c)
 
 char		*help(char *str, int i, int j, char *stock)
 {
-  while (str[i] != '&' && str[i] != '\0')
-    i++;
-  i = i + 3;
+  if (i != 0)
+    i = i + 3;
   if ((stock = malloc(my_strlenspe(str, i, '\0') + 1)) == NULL)
     return (NULL);
-  while (str[i] != '&' && str[i] != '\0')
+  while (str[i] != '&' && str[i] != '\0' && str[i] != ' ')
     {
       stock[j] = str[i];
       i++;
@@ -59,37 +40,75 @@ char		*help(char *str, int i, int j, char *stock)
   return (stock);
 }
 
-void		double_and(char *str, char **tab)
+char		*catch(char *str, int i, char *stock)
 {
-  int		i;
-  int		j;
-  char		*stock;
-  char		*name;
-
-  i = j = 0;
-  while (str && str[i] != '\0')
+  if ((stock = malloc(sizeof(str) + 1)) == NULL)
+    return (NULL);
+  while (str && str[i] != '\0' && str[i] != ' ' && str[i] != '&')
     {
-      stock = help(str, i, j, stock);
-      printf("stock = %s\n", stock);
-      if ((name = recup_command(stock)) != NULL)
-        /* if (check_builtin de alex == 0)
-	   res = 1;
-	   if (check_exec de alex == 0)
-	   {
-	     printf("COMMAND NOT FOUND\n");
-	     - rappeler la boucle principale du 42sh
-	     (car on a trouvé aucun match au niveau de la commande donc le && se stoppe)
-	   }
-	*/
+      stock[i] = str[i];
       i++;
     }
+  return (stock);
 }
 
-int		main()
+char		*double_and(char *str, char **tab)
+{
+  static int    i = 0;
+  int		j;
+  char		*stock;
+
+  j = 0;
+  if (i == 0)
+    {
+      stock = catch(str, i, stock);
+      i++;
+      return (stock);
+    }
+  while (str && str[i] != '\0')
+    {
+      if (str[i] == '&' && str[i + 1] == '&')
+	{
+	  if ((stock = help(str, i, j, stock)) == NULL)
+	    return (NULL);
+	  // return stock (qui est la commande) puis rappeler ma fonction avec la static
+	  printf("stock = %s\n", stock);
+	  i = i + 2;
+	}
+      i++;
+    }
+  return (NULL);
+}
+
+int		check_if_and(char *str, int i)
+{
+  while (str[i] != '\0')
+    {
+      if (str[i] == '&' && str[i + 1] == '&')
+	{
+	  //ini->nb_and = 1;
+	  i = 1;
+	  return (i);
+	}
+      i++;
+    }
+  //ini->nb_and = 0;
+  i = 0;
+  return (i);
+}
+
+int		main(int ac, char **av)
 {
   char	        *str = "ls && ls -l";
-  char		*tab[6];
 
+  int		i;
+  t_second	*ini;
+  char		*tab[6];
+  char		*stock;
+
+  i = 0;
+  if (ac == 1)
+    return (0);
   tab[0] = "/bin\0";
   tab[1] = "/sbin\0";
   tab[2] = "/usr/bin\0";
@@ -97,5 +116,9 @@ int		main()
   tab[4] = "/usr/heimdal/bin\0";
   tab[5] = "/usr/heimdal/sbin\0";
   tab[6] = NULL;
-  double_and(str, tab);
+  i = check_if_and(av[1], i);
+  if ((stock = double_and(av[1], tab)) != NULL)
+    printf("stock = %s\n", stock);
+  if ((stock = double_and(av[1], tab)) != NULL)
+    printf("stock = %s\n", stock);
 }

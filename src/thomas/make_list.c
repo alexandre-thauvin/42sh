@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Mon May  2 18:56:33 2016 Thauvin
+** Last update Wed May  4 15:35:55 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -30,7 +30,11 @@ int     my_put_in_list(struct s_pipe **list, char *str, t_second *ini, t_env *in
   ini->j = 0;
   ini2->j = 0;
   ini_var_lanceur(ini, str, ini2);
-  ini->check = file_exist(ini, ini->rows_PATH);
+  if ((ini->check = file_exist(ini, ini->rows_PATH)) == -1)
+    {
+      ini->caca = 1;
+      return (1);
+    }
   elem->arg[0] = ini->PATHfinal[ini->check];
   elem->next = *list;
   *list = elem;
@@ -47,14 +51,15 @@ int	my_tablen(char **tab)
   return (i);
 }
 
-void	make_list(t_pipe **list, char **tab_pipe, t_second *ini, t_env *ini2)
+int	make_list(t_pipe **list, char **tab_pipe, t_second *ini, t_env *ini2)
 {
   int	a;
 
   a = my_tablen(tab_pipe) - 1;
   while (a >= 0)
     if (my_put_in_list(list, tab_pipe[a--], ini, ini2) == 1)
-      return ;
+      return (1);
+  return (0);
 }
 
 void	pipe_toto(char **tab_pipe, t_second *ini, t_env *ini2)
@@ -62,6 +67,6 @@ void	pipe_toto(char **tab_pipe, t_second *ini, t_env *ini2)
   t_pipe	*list;
 
   list = NULL;
-  make_list(&list, tab_pipe, ini, ini2);
-  pipe_exec(list, ini2);
+  if (make_list(&list, tab_pipe, ini, ini2) != 1)
+    pipe_exec(list, ini2);
 }

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Tue May  3 17:33:34 2016 Thauvin
+** Last update Wed May  4 15:37:01 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -27,6 +27,7 @@ typedef struct		s_second
   pid_t			pid;
   pid_t			cpid;
   int			status;
+  int			caca;
   int			s;
   int			u;
   char			**PATH;
@@ -208,7 +209,7 @@ int	count_pipes(char *);
 int	my_strlen_space(char *, int);
 		/* make_list.c */
 void	pipe_toto(char **, t_second *, t_env *);
-void	make_list(t_pipe **, char **, t_second *, t_env *);
+int	make_list(t_pipe **, char **, t_second *, t_env *);
 int	my_tablen(char **);
 int	my_put_in_list(struct s_pipe **, char *, t_second *, t_env *);
 		/* pipe_exec.c */
