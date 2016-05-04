@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 ** 
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Wed May  4 13:58:52 2016 Lalague-Dulac Tom
+** Last update Wed May  4 14:09:03 2016 thomas lavigne
 */
 
 #include "../../include/shell.h"
@@ -70,7 +70,6 @@ void		double_and(char *str, char **tab)
   while (str && str[i] != '\0')
     {
       stock = help(str, i, j, stock);
-      printf("stock = %s\n", stock);
       if ((name = recup_command(stock)) != NULL)
         /* if (check_builtin de alex == 0)
 	   res = 1;
@@ -87,7 +86,7 @@ void		double_and(char *str, char **tab)
 
 int		main()
 {
-  char	        *str = "ls && ls";
+  char	        *str = "ls -l && ls";
   char		*tab[6];
 
   tab[0] = "/bin\0";
