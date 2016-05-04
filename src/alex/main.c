@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Wed May  4 16:33:48 2016 Thauvin
+** Last update Wed May  4 16:40:28 2016 Thauvin
 */
 
 #include "shell.h"
@@ -124,7 +124,7 @@ int		main(int ac, char **av, char **env)
   ini_var_tab(env, &ini2, &ini);
   while (42)
     {
-      my_printf("$>");
+      /* my_printf("$>"); */
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
 	exit(0);

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Apr 14 05:04:54 2016 Thauvin
-** Last update Wed May  4 16:35:06 2016 Thauvin
+** Last update Wed May  4 16:40:42 2016 Thauvin
 */
 
 #include "shell.h"
@@ -36,5 +36,5 @@ void	all_exec(t_second *ini, char **env)
 
 void	control_reach()
 {
-  my_printf("$>");
+  /* my_printf("$>"); */
 }
