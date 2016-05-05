@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Thu May  5 16:19:15 2016 Thauvin
+** Last update Thu May  5 20:51:59 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -13,29 +13,91 @@
 #include <unistd.h>
 #include "shell.h"
 
- int		 my_put_in_list(t_pipe **list, char *str, t_second *ini, t_env *ini2)
+int	size_name(char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str && str[i] != ' ' && str[i] != '\0')
+    i++;
+  return (i);
+}
+
+char	*catch_name(char *str)
+{
+  char	*finale;
+  int	i;
+
+  i = 0;
+  if ((finale = malloc(size_name(str))) == NULL)
+    exit(EXIT_FAILURE);
+  while (str[i] != ' ' && str[i] != '\0')
+    {
+      finale[i] = str[i];
+      i++;
+    }
+  return (finale);
+}
+
+int	check_builtin(char *str)
+{
+  if (my_strcmp("cd", str) == 1)
+    {
+      free(str);
+      return (0);
+    }
+  else if (my_strcmp("env", str) == 1)
+    {
+      free(str);
+      return (0);
+    }
+  else if (my_strcmp("exit", str) == 1)
+    {
+      free(str);
+      return (0);
+    }
+  else if (my_strcmp("setenv", str) == 1)
+    {
+      free(str);
+      return (0);
+    }
+  else if (my_strcmp("unsetenv", str) == 1)
+    {
+      free(str);
+      return (0);
+    }
+  else
+    {
+      free(str);
+      return (-1);
+    }
+}
+
+int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
+				t_env *ini2)
 {
   t_pipe	*elem;
 
   if ((elem = malloc(sizeof(*elem))) == NULL)
-    {
-      printf("Error Malloc\n");
-      exit(EXIT_FAILURE);
-    }
+    exit(EXIT_FAILURE);
   if (elem == NULL)
     return (1);
   elem->name = str;
   elem->arg = ma2d(elem->arg, getrows_tab(str), str);
   elem->arg = my_strduptab(str);
-  ini->j = 0;
-  ini2->j = 0;
+  ini->j = ini2->j = 0;
   ini_var_lanceur(ini, str, ini2);
   if ((ini->check = file_exist(ini, ini->rows_PATH)) == -1)
-    {
-      ini->nb_and = 0;
-      return (1);
-    }
-  elem->arg[0] = ini->PATHfinal[ini->check];
+    if (check_builtin(catch_name(str)) == -1) /* remplacer par celui de thauv */
+      {
+       write(2, "Command not found.\n", my_strlen("Command not found.\n"));
+	ini->nb_and = 0;
+	return (1);
+      }
+    else
+      elem->arg[0] = str;
+  else
+    elem->arg[0] = ini->PATHfinal[ini->check];
   elem->next = *list;
   *list = elem;
   return (0);

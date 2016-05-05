@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Thu May  5 03:39:15 2016 Thauvin
+** Last update Thu May  5 20:47:48 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -20,7 +20,10 @@ void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2)
     dup2(p[1], 1);
   close(p[0]);
   ini2->env2[0] = NULL;
-  execve(list->arg[0], list->arg, NULL);
+  if (check_builtin(catch_name(list->arg[0])) == -1)
+    execve(list->arg[0], list->arg, NULL);
+  else
+    /* exec builtin */
   exit(EXIT_FAILURE);
 }
 
