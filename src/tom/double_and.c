@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Thu May  5 16:52:57 2016 Thauvin
+** Last update Thu May  5 16:55:49 2016 Thauvin
 */
 
 #include "shell.h"
@@ -48,6 +48,7 @@ char		*catch(char *str, int i, t_second *ini)
       ini->stock[i] = str[i];
       i++;
     }
+  ini->stock[i] = '\0';
   return (ini->stock);
 }
 
