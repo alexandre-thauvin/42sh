@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Thu May  5 17:36:26 2016 Lalague-Dulac Tom
+** Last update Thu May  5 17:57:10 2016 Thauvin
 */
 
 #include "shell.h"
@@ -41,7 +41,7 @@ char		*help(char *str, int i, int j, char *stock)
 
 char		*catch(char *str, int i, t_second *ini)
 {
-  if ((ini->stock = malloc(sizeof(str) + 1)) == NULL)
+  if ((ini->stock = malloc(sizeof(str) + 100)) == NULL)
     return (NULL);
   while (str && str[i] != '\0' && str[i] != '&')
     {
