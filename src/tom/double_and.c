@@ -5,11 +5,10 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Wed May  4 22:41:05 2016 Thauvin
-** Last update Wed May  4 18:44:55 2016 Lalague-Dulac Tom
+** Last update Thu May  5 03:49:05 2016 Thauvin
 */
 
-#include "../../include/shell.h"
+#include "shell.h"
 
 int		my_strlenspe(char *str, int i, char c)
 {
@@ -71,7 +70,7 @@ char		*double_and(char *str, char **tab)
 	{
 	  if ((stock = help(str, i, j, stock)) == NULL)
 	    return (NULL);
-	  // return stock (qui est la commande) puis rappeler ma fonction avec la static
+	  /* return stock (qui est la commande) puis rappeler ma fonction avec la static */
 	  printf("stock = %s\n", stock);
 	  i = i + 2;
 	}
@@ -86,13 +85,13 @@ int		check_if_and(char *str, int i)
     {
       if (str[i] == '&' && str[i + 1] == '&')
 	{
-	  //ini->nb_and = 1;
+	  /* ini->nb_and = 1; */
 	  i = 1;
 	  return (i);
 	}
       i++;
     }
-  //ini->nb_and = 0;
+  /* ini->nb_and = 0; */
   i = 0;
   return (i);
 }

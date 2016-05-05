@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Wed May  4 15:35:55 2016 thomas lavigne
+** Last update Thu May  5 04:00:30 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -13,9 +13,9 @@
 #include <unistd.h>
 #include "shell.h"
 
-int     my_put_in_list(struct s_pipe **list, char *str, t_second *ini, t_env *ini2)
+ int		 my_put_in_list(t_pipe **list, char *str, t_second *ini, t_env *ini2)
 {
-  struct s_pipe	*elem;
+  t_pipe	*elem;
 
   if ((elem = malloc(sizeof(*elem))) == NULL)
     {

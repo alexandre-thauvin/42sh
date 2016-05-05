@@ -5,10 +5,20 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 18:35:25 2016 Thauvin
-** Last update Tue May  3 12:21:05 2016 Theo Labory
+** Last update Thu May  5 03:19:58 2016 Thauvin
 */
 
 #include "shell.h"
+
+int	check_arg_redirec(t_second *ini, int z)
+{
+  if (ini->arg[z + 1] == NULL)
+    {
+      ini->nb_redirection = 0;
+      return (-1);
+    }
+  return (0);
+}
 
 int	tab_with_redirection(t_second *ini)
 {
@@ -27,11 +37,8 @@ int	tab_with_redirection(t_second *ini)
       z++;
     }
   ini->arg2[z] = NULL;
-  if (ini->arg[z + 1] == NULL)
-    {
-      ini->nb_redirection = 0;
-      return (0);
-    }
+  if ((check_arg_redirec(ini, z)) == -1)
+    return (0);
   if ((ini->file_name = malloc((my_strlen(ini->arg[z + 1]) + 1)
 			       * sizeof(char))) == NULL)
     exit(-42);

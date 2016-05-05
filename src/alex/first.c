@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Mon May  2 18:50:50 2016 Thauvin
+** Last update Thu May  5 02:56:13 2016 Thauvin
 */
 
 #include "shell.h"
@@ -86,7 +86,7 @@ void		ini_var_lanceur(t_second *ini, char *commande, t_env *ini2)
     ini->zombie = 1;
 }
 
-int		lanceur(char * commande, t_env *ini2, t_second *ini)
+int		lanceur(char *commande, t_env *ini2, t_second *ini)
 {
   static int	z = 0;
 
@@ -103,18 +103,11 @@ int		lanceur(char * commande, t_env *ini2, t_second *ini)
     create_tab(commande, ini, ini2);
     return (0);
   }
-  ini_var_lanceur(ini, commande, ini2);
-  pars_builtenv(ini2, ini->arg, ini);
-  exec_cd(ini, commande, ini2);
+  ini_and_builtin(commande, ini2, ini);
   if (ini->arg[0][0] == '.' && ini->arg[0][1] == '/')
     ini->check = check_courant(ini);
   else
-    {
-      if (ini->zombie == 0 && ini->pathtemp != NULL)
-	wait_in_fath(ini, commande, ini2->env2, ini->arg);
-      if (ini->check2 != -1 && ini->pathtemp == NULL && ini->zombie == 0)
-	wait_in_fath(ini, commande, ini2->env2, ini->arg);
-    }
+    lanceur_commande(commande, ini2, ini);
   error(ini, commande, ini2);
   return (ini->check_ex);
 }

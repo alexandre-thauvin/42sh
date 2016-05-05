@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr 10 18:19:32 2016 Thauvin
-** Last update Wed May  4 18:01:33 2016 Thauvin
+** Last update Thu May  5 03:36:30 2016 Thauvin
 */
 
 #include "shell.h"
@@ -41,6 +41,18 @@ int	check_courant(t_second *ini)
   return (-1);
 }
 
+void	exec_cd_tiret(t_second *ini)
+{
+  if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2)
+			    * sizeof(char))) == NULL)
+    exit(-42);
+  ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
+  free(ini->pwd);
+  if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
+    exit(-42);
+  getcwd(ini->pwd, 1024);
+}
+
 void	complete_pwd(t_second *ini)
 {
   ini->u = 0;
@@ -48,16 +60,7 @@ void	complete_pwd(t_second *ini)
     if (ini->arg[1][0] == '-')
       ini->u = 1;
   if (ini->u == 1)
-    {
-      if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2)
-				* sizeof(char))) == NULL)
-	exit(-42);
-      ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
-      free(ini->pwd);
-      if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
-	exit(-42);
-      getcwd(ini->pwd, 1024);
-    }
+    exec_cd_tiret(ini);
   else
     {
       if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2)

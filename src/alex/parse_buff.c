@@ -5,7 +5,7 @@
 ** Login   <quasta_b@epitech.net>
 **
 ** Started on  Fri Apr 29 09:57:46 2016 Benjamin Quastana
-** Last update Mon May  2 21:03:35 2016 thomas lavigne
+** Last update Thu May  5 03:01:56 2016 Thauvin
 */
 
 #include <unistd.h>
@@ -15,7 +15,7 @@
 
 int	my_strlen_space(char *str, int pos)
 {
-  while((str[pos] == ' ' || str[pos] == '|') && str[pos] != '\0')
+  while ((str[pos] == ' ' || str[pos] == '|') && str[pos] != '\0')
     pos++;
   return (pos);
 }
@@ -51,32 +51,28 @@ int	clean_mal(char *str, int i)
   return (nb + 1);
 }
 
-void	create_tab(char *str, t_second *ini, t_env *ini2)
+void		create_tab(char *str, t_second *ini, t_env *ini2)
 {
-  int	a;
-  int	x;
-  int	y;
-  char	**tab;
-  int	i;
+  t_benji	var;
 
-  a = x = y = i = 0;
-  if ((tab = malloc(sizeof(*tab) * (count_pipes(str) + 2))) == NULL)
+  var.a = var.x = var.y = var.i = 0;
+  if ((var.tab = malloc(sizeof(*var.tab) * (count_pipes(str) + 2))) == NULL)
     exit(EXIT_FAILURE);
   if (str && str != NULL)
     {
-      while (str[a] != '\0')
+      while (str[var.a] != '\0')
 	{
-	  if ((tab[y] = malloc(clean_mal(str, a))) == NULL) exit(0);
-	  while (str[a] != '|' && str[a] != '\0' && str[a] != '\n')
-	    if (str[a + 1] != '|')
-	      tab[y][x++] = str[a++];
+	  if ((var.tab[var.y] = malloc(clean_mal(str, var.a))) == NULL) exit(0);
+	  while (str[var.a] != '|' && str[var.a] != '\0' && str[var.a] != '\n')
+	    if (str[var.a + 1] != '|')
+	      var.tab[var.y][var.x++] = str[var.a++];
 	    else
-	      a++;
-	  tab[y++][x] = '\0';
-	  x = 0;
-	  a = my_strlen_space(str, a);
+	      var.a++;
+	  var.tab[var.y++][var.x] = '\0';
+	  var.x = 0;
+	  var.a = my_strlen_space(str, var.a);
 	}
-      tab[y] = NULL;
+      var.tab[var.y] = NULL;
     }
-  pipe_toto(tab, ini, ini2);
+  pipe_toto(var.tab, ini, ini2);
 }
