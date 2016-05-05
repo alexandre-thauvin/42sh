@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Thu May  5 17:30:23 2016 Thauvin
+** Last update Thu May  5 17:31:21 2016 Lalague-Dulac Tom
 */
 
 #include "shell.h"
@@ -29,7 +29,7 @@ char		*help(char *str, int i, int j, char *stock)
     i = i + 3;
   if ((stock = malloc(my_strlenspe(str, i, '\0') + 1)) == NULL)
     return (NULL);
-  while (str[i] != '&' && str[i] != '\0' && str[i] != ' ')
+  while (str[i] != '&' && str[i] != '\0')
     {
       stock[j] = str[i];
       i++;
