@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Thu May  5 02:56:13 2016 Thauvin
+** Last update Thu May  5 17:14:44 2016 Thauvin
 */
 
 #include "shell.h"
@@ -27,6 +27,7 @@ int	file_exist(t_second *ini, int rows)
 	return (a);
       a++;
     }
+  ini->nb_and = 0;
   return (-1);
 }
 
