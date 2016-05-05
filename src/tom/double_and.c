@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Thu May  5 16:55:49 2016 Thauvin
+** Last update Thu May  5 17:20:20 2016 Lalague-Dulac Tom
 */
 
 #include "shell.h"
@@ -69,7 +69,6 @@ char		*double_and(char *str, t_second *ini)
   int		j;
 
   j = 0;
-  ini->nb_and = 0;
   if (i == 0)
     {
       ini->stock = catch(str, i, ini);
