@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Thu May  5 17:20:20 2016 Lalague-Dulac Tom
+** Last update Thu May  5 17:30:23 2016 Thauvin
 */
 
 #include "shell.h"
@@ -65,28 +65,27 @@ void            check_if_and(char *str, int i, t_second *ini)
 
 char		*double_and(char *str, t_second *ini)
 {
-  static int    i = 0;
   int		j;
 
   j = 0;
-  if (i == 0)
+  if (ini->v == 0)
     {
-      ini->stock = catch(str, i, ini);
-      i++;
+      ini->stock = catch(str, ini->v, ini);
+      ini->v++;
       return (ini->stock);
     }
-  while (str && str[i] != '\0')
+  while (str && str[ini->v] != '\0')
     {
-      check_if_and(str, i, ini);
-      if (str[i] == '&' && str[i + 1] == '&')
+      check_if_and(str, ini->v, ini);
+      if (str[ini->v] == '&' && str[ini->v + 1] == '&')
 	{
-	  if ((ini->stock = help(str, i, j, ini->stock)) == NULL)
+	  if ((ini->stock = help(str, ini->v, j, ini->stock)) == NULL)
 	    return (NULL);
 	  else
 	    return (ini->stock);
-	  i = i + 2;
+	  ini->v = ini->v + 2;
 	}
-      i++;
+      ini->v++;
     }
   return (NULL);
 }

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 11:20:53 2016 Thauvin
-** Last update Thu May  5 17:19:56 2016 Thauvin
+** Last update Thu May  5 17:28:49 2016 Thauvin
 */
 
 #include "shell.h"
@@ -40,6 +40,7 @@ void	with_separator(t_second *ini, t_env *ini2)
 	    }
 	  else
 	    {
+	      ini->v = 0;
 	      while (ini->nb_and == 1)
 		{
 		  double_and(ini->dest, ini);
@@ -66,12 +67,10 @@ void	normal(t_second *ini, t_env *ini2)
     }
   else
     {
+      ini->v = 0;
       while (ini->nb_and == 1)
 	{
-	  printf("ici\n");
 	  double_and(ini->commande, ini);
-	  printf("%d\n", ini->nb_and);
-	  printf("%s\n", ini->stock);
 	  count_redirection(ini, ini->stock);
 	  count_pipe(ini->stock, ini);
 	  lanceur(ini->stock, ini2, ini);
