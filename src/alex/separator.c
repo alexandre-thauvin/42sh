@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 11:20:53 2016 Thauvin
-** Last update Thu May  5 16:34:18 2016 Thauvin
+** Last update Thu May  5 16:54:22 2016 Thauvin
 */
 
 #include "shell.h"
@@ -19,7 +19,7 @@ void	count_and(char *commande, t_second *ini)
   while (commande[z] != '\0')
     {
       if (commande[z] == '&' && commande[z + 1] == '&')
-	  ini->nb_and = 1;
+	ini->nb_and = 1;
       z++;
     }
 }
@@ -35,9 +35,9 @@ void	with_separator(t_second *ini, t_env *ini2)
 	  if (ini->nb_and == 1)
 	    {
 	      double_and(ini->dest, ini);
-	      count_pipe(ini->dest, ini);
-	      count_redirection(ini, ini->dest);
-	      lanceur(ini->dest, ini2, ini);
+	      count_pipe(ini->stock, ini);
+	      count_redirection(ini, ini->stock);
+	      lanceur(ini->stock, ini2, ini);
 	    }
 	  else
 	    {
@@ -45,29 +45,28 @@ void	with_separator(t_second *ini, t_env *ini2)
 	      count_redirection(ini, ini->dest);
 	      lanceur(ini->dest, ini2, ini);
 	    }
+	}
       ini->nb_separator--;
     }
 }
 
 void	normal(t_second *ini, t_env *ini2)
 {
-  if (ini->commande == NULL)
-    exit(0);
+  if (ini->commande == NULL || ini->commande[0] == 0)
+    exit(1);
   count_and(ini->commande, ini);
   if (ini->nb_and == 1)
     {
       double_and(ini->commande, ini);
-      count_redirection(ini, ini->commande);
-      count_pipe(ini->commande, ini);
-      if (ini->commande != NULL && ini->commande[0] != 0)
-	lanceur(ini->commande, ini2, ini);
+      count_redirection(ini, ini->stock);
+      count_pipe(ini->stock, ini);
+      lanceur(ini->stock, ini2, ini);
     }
   else
     {
       count_redirection(ini, ini->commande);
       count_pipe(ini->commande, ini);
-      if (ini->commande != NULL && ini->commande[0] != 0)
-	lanceur(ini->commande, ini2, ini);
+      lanceur(ini->commande, ini2, ini);
     }
 }
 

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Thu May  5 16:36:54 2016 Thauvin
+** Last update Thu May  5 16:48:25 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -241,8 +241,8 @@ void	pipe_exec(t_pipe *, t_env *);
 	/* double_and.c */
 int	imy_strlenps(char *, int, char);
 char	*help(char *, int, int , char *);
-char	*catch(char *, int, char *);
+char	*catch(char *, int, t_second *);
 char	*double_and(char *, t_second *);
-int	check_if_and(char *, int);
+void	check_if_and(char *, int, t_second *);
 
 #endif /* SHELL_H_ */
