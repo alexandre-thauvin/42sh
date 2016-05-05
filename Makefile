@@ -5,7 +5,7 @@
 ## Login   <thauvi_a@epitech.net>
 ## 
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Thu May  5 03:51:40 2016 Thauvin
+## Last update Thu May  5 04:03:41 2016 Thauvin
 ##
 
 SRCS	= src/alex/main.c \
@@ -24,8 +24,6 @@ SRCS	= src/alex/main.c \
 	src/alex/tab_path.c \
 	src/thomas/make_list.c \
 	src/thomas/pipe_exec.c \
-##	src/tom/double_and2.c \ ##
-##	src/tom/double_and.c \ ##
 	src/alex/five.c
 
 

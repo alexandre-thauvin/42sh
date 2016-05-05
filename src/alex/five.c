@@ -17,3 +17,17 @@ void	compar_ma2d(t_var_malloc *ini, char *commande)
   if (ini->cols > ini->cols2)
     ini->cols2 = ini->cols;
 }
+
+void	count_pipe(char *commande, t_second *ini)
+{
+  int	z;
+
+  z = 0;
+  ini->nb_pipe = 0;
+  while (commande[z] != '\0')
+    {
+      if (commande[z] == '|')
+	ini->nb_pipe++;
+      z++;
+    }
+}

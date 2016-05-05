@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Thu May  5 03:57:12 2016 Thauvin
+** Last update Thu May  5 16:36:54 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -56,6 +56,8 @@ typedef struct		s_second
   char			*file_name;
   int			j;
   int			nb_pipe;
+  int			nb_and;
+  char			*stock;
 }			t_second;
 
 typedef struct		s_benji
@@ -216,6 +218,7 @@ void	right_redirec(t_second *, char **);
 
 	/* five.c */
 void	compar_ma2d(t_var_malloc *, char *);
+void	count_and(char *, t_second *);
 
 	/* lib/my/my_printf.c */
 int	my_printf(const char*, ...);
@@ -239,7 +242,7 @@ void	pipe_exec(t_pipe *, t_env *);
 int	imy_strlenps(char *, int, char);
 char	*help(char *, int, int , char *);
 char	*catch(char *, int, char *);
-char	*double_and(char *, char **);
+char	*double_and(char *, t_second *);
 int	check_if_and(char *, int);
 
 #endif /* SHELL_H_ */

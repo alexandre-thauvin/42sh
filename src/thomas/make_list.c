@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Thu May  5 04:00:30 2016 Thauvin
+** Last update Thu May  5 16:19:15 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -32,7 +32,7 @@
   ini_var_lanceur(ini, str, ini2);
   if ((ini->check = file_exist(ini, ini->rows_PATH)) == -1)
     {
-      ini->caca = 1;
+      ini->nb_and = 0;
       return (1);
     }
   elem->arg[0] = ini->PATHfinal[ini->check];
