@@ -5,7 +5,7 @@
 ## Login   <thauvi_a@epitech.net>
 ## 
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Thu May  5 16:39:28 2016 Thauvin
+## Last update Fri May  6 09:40:11 2016 thomas lavigne
 ##
 
 SRCS	= src/alex/main.c \

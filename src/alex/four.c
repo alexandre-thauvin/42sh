@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Apr 14 05:04:54 2016 Thauvin
-** Last update Thu May  5 03:10:51 2016 Thauvin
+** Last update Fri May  6 15:46:04 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -65,7 +65,7 @@ void	right_redirec(t_second *ini, char **env)
     }
   else
     {
-      /* refairele tab redirection avec la double */
+      /* refaire le tab redirection avec la double */
       fd = open(ini->file_name, O_RDWR | O_CREAT | O_APPEND, 0666);
     }
   dup2(fd, 1);

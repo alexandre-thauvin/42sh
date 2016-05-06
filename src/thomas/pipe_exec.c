@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Thu May  5 20:47:48 2016 thomas lavigne
+** Last update Fri May  6 15:49:38 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -13,21 +13,21 @@
 #include <stdlib.h>
 #include "shell.h"
 
-void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2)
+void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2, t_second *ini)
 {
   dup2(*fd, 0);
   if (list->next != NULL)
     dup2(p[1], 1);
   close(p[0]);
   ini2->env2[0] = NULL;
-  if (check_builtin(catch_name(list->arg[0])) == -1)
+  if (check_builtin(list->arg[0]) == -1)
     execve(list->arg[0], list->arg, NULL);
   else
-    /* exec builtin */
+    ini_and_builtin(list->arg[0], ini2, ini); /* ICI THAUVIN */
   exit(EXIT_FAILURE);
 }
 
-void	pipe_exec(t_pipe *list, t_env *ini2)
+void	pipe_exec(t_pipe *list, t_env *ini2, t_second *ini)
 {
   int	p[2];
   pid_t	pid;
@@ -41,7 +41,7 @@ void	pipe_exec(t_pipe *list, t_env *ini2)
       if ((pid = fork()) == -1)
 	exit(EXIT_FAILURE);
       else if (pid == 0)
-	pipe_exec2(&fd, p, list, ini2);
+	pipe_exec2(&fd, p, list, ini2, ini);
       else
 	{
 	  wait(NULL);
