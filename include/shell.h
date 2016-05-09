@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Mon May  9 16:14:51 2016 Thauvin
+** Last update Mon May  9 16:59:10 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -246,6 +246,6 @@ int	imy_strlenps(char *, int, char);
 char	*help(char *, int, int , char *);
 char	*catch(char *, int, t_second *);
 char	*double_and(char *, t_second *);
-int	check_if_and(char *, int, t_second *);
+int	check_if_and(char *, t_second *);
 
 #endif /* SHELL_H_ */
