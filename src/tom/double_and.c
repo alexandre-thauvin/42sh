@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Mon May  9 16:20:01 2016 Thauvin
+** Last update Mon May  9 16:50:49 2016 Thauvin
 */
 
 #include "shell.h"
@@ -54,14 +54,15 @@ char		*catch(char *str, int i, t_second *ini)
 
 int            check_if_and(char *str, int i, t_second *ini)
 {
-  while (str[i] != '\0')
+  i = i;
+  while (str[ini->v] != '\0')
     {
-      if (str[i] == '&' && str[i + 1] == '&')
+      if (str[ini->v] == '&' && str[ini->v + 1] == '&')
 	{
 	  ini->nb_and = 1;
 	  return (0);
 	}
-      i++;
+      ini->v++;
     }
   ini->nb_and = 0;
   return (0);
@@ -81,13 +82,15 @@ char		*double_and(char *str, t_second *ini)
   while (str && str[ini->v] != '\0')
     {
       check_if_and(str, ini->v, ini);
-      if (str[ini->v] == '&' && str[ini->v + 1] == '&')
+      if (ini->nb_and == 1)
 	{
 	  if ((ini->stock = help(str, ini->v, j, ini->stock)) == NULL)
 	    exit(-42);
 	  else
-	    return (ini->stock);
-	  ini->v = ini->v + 2;
+	    {
+	      ini->v = ini->v + 2;
+	      return (ini->stock);
+	    }
 	}
       ini->v++;
     }
