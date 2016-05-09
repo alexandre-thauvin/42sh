@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Fri May  6 15:32:12 2016 thomas lavigne
+** Last update Mon May  9 16:14:51 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -202,7 +202,7 @@ void	exec_cd_tiret(t_second *);
 int	count_separator(char *);
 char	*pars_commande(char *, t_second *);
 void	count_pipe(char *, t_second *);
-void	normal(t_second *, t_env *);
+int	normal(t_second *, t_env *);
 void	with_separator(t_second *, t_env *);
 
 	/* redirection.c */
@@ -246,6 +246,6 @@ int	imy_strlenps(char *, int, char);
 char	*help(char *, int, int , char *);
 char	*catch(char *, int, t_second *);
 char	*double_and(char *, t_second *);
-void	check_if_and(char *, int, t_second *);
+int	check_if_and(char *, int, t_second *);
 
 #endif /* SHELL_H_ */

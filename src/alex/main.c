@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Fri May  6 09:39:50 2016 thomas lavigne
+** Last update Mon May  9 16:18:49 2016 Thauvin
 */
 
 #include "shell.h"
@@ -101,8 +101,8 @@ int		main(int ac, char **av, char **env)
   int		i;
 
   i = 1;
-  (void)av;
-  (void)ac;
+  av = av;
+  ac = ac;
   if (env[0] == NULL)
     return (0);
   /* signal(SIGINT, control_reach); */
@@ -112,7 +112,7 @@ int		main(int ac, char **av, char **env)
       my_printf("\033[1m\033[34mshell\033[37m@\033[31m42sh\033[0m-[%d]->", i);
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
-	exit(0);
+	exit(1);
       ini.nb_separator = count_separator(ini.commande);
       if (ini.nb_separator != 0)
 	with_separator(&ini, &ini2);

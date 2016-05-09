@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Apr 14 05:04:54 2016 Thauvin
-** Last update Fri May  6 15:46:04 2016 thomas lavigne
+** Last update Mon May  9 15:54:05 2016 Thauvin
 */
 
 #include "shell.h"
@@ -36,7 +36,7 @@ void	all_exec(t_second *ini, char **env)
 
 void	control_reach()
 {
-  my_printf("$>");
+  my_printf("\033[1m\033[34mshell\033[37m@\033[31m42sh\033[0m-->");
 }
 
 void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)

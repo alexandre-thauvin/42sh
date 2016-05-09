@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 11:20:53 2016 Thauvin
-** Last update Thu May  5 17:42:38 2016 Thauvin
+** Last update Mon May  9 16:14:06 2016 Thauvin
 */
 
 #include "shell.h"
@@ -54,10 +54,10 @@ void	with_separator(t_second *ini, t_env *ini2)
     }
 }
 
-void	normal(t_second *ini, t_env *ini2)
+int	normal(t_second *ini, t_env *ini2)
 {
-  if (ini->commande == NULL || ini->commande[0] == 0)
-    exit(1);
+  if (ini->commande[0] == 0)
+    return (0);
   count_and(ini->commande, ini);
   if (ini->nb_and == 0)
     {
@@ -76,6 +76,7 @@ void	normal(t_second *ini, t_env *ini2)
 	  lanceur(ini->stock, ini2, ini);
 	}
     }
+  return (0);
 }
 
 int	count_separator(char *commande)
