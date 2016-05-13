@@ -5,7 +5,7 @@
 ** Login   <quasta_b@epitech.net>
 **
 ** Started on  Fri Apr 29 09:57:46 2016 Benjamin Quastana
-** Last update Thu May  5 03:01:56 2016 Thauvin
+** Last update Fri May 13 18:10:26 2016 Thauvin
 */
 
 #include <unistd.h>
@@ -57,7 +57,7 @@ void		create_tab(char *str, t_second *ini, t_env *ini2)
 
   var.a = var.x = var.y = var.i = 0;
   if ((var.tab = malloc(sizeof(*var.tab) * (count_pipes(str) + 2))) == NULL)
-    exit(EXIT_FAILURE);
+    exit(0);
   if (str && str != NULL)
     {
       while (str[var.a] != '\0')

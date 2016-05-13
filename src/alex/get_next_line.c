@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar  2 17:17:21 2016 Thauvin
-** Last update Tue May  3 14:27:11 2016 Thauvin
+** Last update Fri May 13 18:30:58 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -22,7 +22,7 @@ char	*my_realloc(char *ptr, size_t size)
     return (NULL);
   tmp = ptr;
   if ((ptr = malloc(size)) == NULL)
-    return (NULL);
+    exit(0);
   i = 0;
   while (tmp[i] != '\0')
     {
@@ -33,12 +33,12 @@ char	*my_realloc(char *ptr, size_t size)
   return (ptr);
 }
 
-char	get_c(const int fd)
+char		get_c(const int fd)
 {
-  static char buff[READ_SIZE];
-  static char *ptr_buff;
-  static int len = 0;
-  char	c;
+  static char	buff[READ_SIZE];
+  static char	*ptr_buff;
+  static int	len = 0;
+  char		c;
 
   if (len == 0)
     {

@@ -5,9 +5,10 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Mon May  9 16:18:49 2016 Thauvin
+** Last update Fri May 13 18:29:48 2016 Thauvin
 */
 
+#include <stdio.h>
 #include "shell.h"
 
 void	exec_redirec(t_second *ini, char **env, char **arg)
@@ -98,9 +99,7 @@ int		main(int ac, char **av, char **env)
 {
   t_env		ini2;
   t_second	ini;
-  int		i;
 
-  i = 1;
   av = av;
   ac = ac;
   if (env[0] == NULL)
@@ -109,7 +108,7 @@ int		main(int ac, char **av, char **env)
   ini_var_tab(env, &ini2, &ini);
   while (42)
     {
-      my_printf("\033[1m\033[34mshell\033[37m@\033[31m42sh\033[0m-[%d]->", i);
+      write(1, "$>", 2);
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
 	exit(1);
@@ -118,7 +117,6 @@ int		main(int ac, char **av, char **env)
 	with_separator(&ini, &ini2);
       else
 	normal(&ini, &ini2);
-      i++;
     }
   return (0);
 }

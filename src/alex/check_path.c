@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Mon May  9 15:42:26 2016 Thauvin
+** Last update Wed May 11 20:13:33 2016 Thauvin
 */
 
 #include "shell.h"
@@ -47,11 +47,11 @@ char	**ma(char **dest, int rows, int cols, char **arg)
   a = my_strlen(arg[0]);
   rows++;
   if ((dest = malloc(rows * sizeof(char*))) == NULL)
-    exit(-42);
+    exit(0);
   while (z < rows)
     {
       if ((dest[z] = malloc((cols + a + 2) * sizeof(char))) == NULL)
-	exit(-42);
+	exit(0);
       z++;
     }
   return (dest);

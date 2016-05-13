@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Mon May  9 17:05:39 2016 Thauvin
+** Last update Wed May 11 20:10:56 2016 Thauvin
 */
 
 #include "shell.h"
@@ -28,7 +28,7 @@ char		*help(char *str, int i, int j, char *stock)
   if (i != 0)
     i = i + 3;
   if ((stock = malloc(my_strlenspe(str, i, '\0') + 1)) == NULL)
-    return (NULL);
+    exit(0);
   while (str[i] != '&' && str[i] != '\0')
     {
       stock[j] = str[i];
@@ -42,7 +42,7 @@ char		*help(char *str, int i, int j, char *stock)
 char		*catch(char *str, int i, t_second *ini)
 {
   if ((ini->stock = malloc(sizeof(str) + 100)) == NULL)
-    return (NULL);
+    exit(0);
   while (str && str[i] != '\0' && str[i] != '&')
     {
       ini->stock[i] = str[i];

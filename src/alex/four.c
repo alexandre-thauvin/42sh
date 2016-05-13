@@ -5,9 +5,10 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Apr 14 05:04:54 2016 Thauvin
-** Last update Mon May  9 15:54:05 2016 Thauvin
+** Last update Fri May 13 18:29:28 2016 Thauvin
 */
 
+#include <stdio.h>
 #include "shell.h"
 
 void	all_exec(t_second *ini, char **env)
@@ -17,7 +18,7 @@ void	all_exec(t_second *ini, char **env)
   if (ini->nb_redirection == -1)
     {
       tab_with_redirection(ini);
-      fd = open(ini->file_name, O_RDWR | O_CREAT, 0777);
+      fd = open(ini->file_name, O_RDWR | O_CREAT, 0555);
       dup2(fd, 0);
       execve(ini->arg[0], ini->arg2, env);
     }
@@ -36,7 +37,7 @@ void	all_exec(t_second *ini, char **env)
 
 void	control_reach()
 {
-  my_printf("\033[1m\033[34mshell\033[37m@\033[31m42sh\033[0m-->");
+  write(1, "$>", 2);
 }
 
 void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)

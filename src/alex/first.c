@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Thu May  5 17:20:03 2016 Thauvin
+** Last update Wed May 11 20:14:38 2016 Thauvin
 */
 
 #include "shell.h"
@@ -95,7 +95,7 @@ int		lanceur(char *commande, t_env *ini2, t_second *ini)
   if (z == 0)
     {
       if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
-	exit(-42);
+	exit(0);
       getcwd(ini->pwd, 1024);
     }
   z++;

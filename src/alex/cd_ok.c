@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Jan 24 18:28:58 2016 Thauvin
-** Last update Sun May  1 16:56:30 2016 Thauvin
+** Last update Wed May 11 20:12:48 2016 Thauvin
 */
 
 #include "shell.h"
@@ -36,7 +36,7 @@ char	*pars_home(char **env, char *home)
 	  || env[a][3] != 'E' || env[a][4] != '=') && env[a] != NULL)
     a++;
   if ((home = malloc(sizeof(char) * my_strlenPATH(env[a]) + 1)) == NULL)
-    exit(-42);
+    exit(0);
   home = my_strcpy_norm(home, env[a]);
   return (home);
 }
@@ -89,7 +89,7 @@ char	*check_cd(char **arg, char *path_final, char **env)
 	{
 	  ini.z = my_strlen(arg[1]);
 	  if ((path_final = malloc((ini.z + 1) * sizeof(char))) == NULL)
-	    exit(-42);
+	    exit(0);
 	  while (ini.a < ini.z)
 	    {
 	      path_final[ini.a] = arg[1][ini.a];

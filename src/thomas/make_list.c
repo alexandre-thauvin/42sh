@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Fri May  6 15:38:29 2016 thomas lavigne
+** Last update Wed May 11 20:11:38 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -26,7 +26,7 @@ int	check_builtin(char *str)
 	   str[i + 3] == 'e' && str[i + 4] == 'n' && str[i + 5] == 'v')
     return (0);
   else
-    return (-1); 
+    return (-1);
 }
 
 int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
@@ -35,10 +35,11 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
   t_pipe	*elem;
 
   if ((elem = malloc(sizeof(*elem))) == NULL)
-    exit(EXIT_FAILURE);
+    exit(0);
   if (elem == NULL)
     return (1);
   elem->name = str;
+  /* printf("%s\n", str); */
   elem->arg = ma2d(elem->arg, getrows_tab(str), str);
   elem->arg = my_strduptab(str);
   ini->j = ini2->j = 0;

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Mon May  9 16:59:10 2016 Thauvin
+** Last update Wed May 11 16:28:21 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -27,7 +27,6 @@ typedef struct		s_second
   pid_t			pid;
   pid_t			cpid;
   int			status;
-  int			caca;
   int			s;
   int			u;
   char			**PATH;
