@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Wed May 11 20:14:38 2016 Thauvin
+** Last update Fri May 13 18:48:22 2016 Thauvin
 */
 
 #include "shell.h"
@@ -67,10 +67,10 @@ void		ini_var_lanceur(t_second *ini, char *commande, t_env *ini2)
   ini->check = 0;
   ini->relative = 0;
   ini->s = 0;
+  ini->rows_arg = getrows_tab(commande);
   if (ini->pathtemp != NULL)
     {
       ini->rows_PATH = getrows(ini->pathtemp);
-      ini->rows_arg = getrows_tab(commande);
       ini->cols_PATH = getcols(ini->pathtemp);
       ini->PATH = mallocdest(ini->PATH, ini->rows_PATH, ini->cols_PATH);
       ini->PATH = my_strdup2d(ini->pathtemp);

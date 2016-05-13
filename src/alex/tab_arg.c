@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Wed May 11 20:18:22 2016 Thauvin
+** Last update Fri May 13 18:49:15 2016 Thauvin
 */
 
 #include "shell.h"
@@ -47,14 +47,9 @@ char		**ma2d(char **dest, int rows, char *commande)
     }
   ini.z = 0;
   if ((dest = malloc((rows + 1) * sizeof(char*))) == NULL)
-    {
-      printf("ici\n");
-      printf("%d\n", rows);
       exit(0);
-    }
   while (ini.z < rows)
     {
-      printf("la\n");
       if ((dest[ini.z] = malloc(ini.cols2 * sizeof(char) + 1)) == NULL)
 	exit(0);
       ini.z++;
