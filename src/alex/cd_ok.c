@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Jan 24 18:28:58 2016 Thauvin
-** Last update Wed May 11 20:12:48 2016 Thauvin
+** Last update Fri May 13 18:59:23 2016 Thauvin
 */
 
 #include "shell.h"
@@ -36,7 +36,7 @@ char	*pars_home(char **env, char *home)
 	  || env[a][3] != 'E' || env[a][4] != '=') && env[a] != NULL)
     a++;
   if ((home = malloc(sizeof(char) * my_strlenPATH(env[a]) + 1)) == NULL)
-    exit(0);
+    exit(1);
   home = my_strcpy_norm(home, env[a]);
   return (home);
 }
@@ -51,12 +51,12 @@ void	ini_var_cd(t_var_cd *ini)
 char	*cpy_tab_path(t_var_cd *ini, char **arg, char *path_final)
 {
   if ((ini->dest = malloc(100 * sizeof(char))) == NULL)
-    exit(-42);
+    exit(1);
   ini->dest = getcwd(ini->dest, 100);
   ini->z = my_strlen(ini->dest);
   if ((path_final = malloc((ini->z + my_strlen(arg[1]) + 2)
 			   * sizeof(char))) == NULL)
-    exit(-42);
+    exit(1);
   while (ini->a < ini->z)
     {
       path_final[ini->a] = ini->dest[ini->a];
@@ -89,7 +89,7 @@ char	*check_cd(char **arg, char *path_final, char **env)
 	{
 	  ini.z = my_strlen(arg[1]);
 	  if ((path_final = malloc((ini.z + 1) * sizeof(char))) == NULL)
-	    exit(0);
+	    exit(1);
 	  while (ini.a < ini.z)
 	    {
 	      path_final[ini.a] = arg[1][ini.a];

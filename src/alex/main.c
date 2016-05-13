@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Fri May 13 18:29:48 2016 Thauvin
+** Last update Fri May 13 19:04:44 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -111,7 +111,7 @@ int		main(int ac, char **av, char **env)
       write(1, "$>", 2);
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
-	exit(1);
+	exit(0);
       ini.nb_separator = count_separator(ini.commande);
       if (ini.nb_separator != 0)
 	with_separator(&ini, &ini2);
