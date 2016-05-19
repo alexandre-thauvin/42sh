@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Wed May 11 16:28:21 2016 Thauvin
+** Last update Thu May 19 11:26:03 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -58,6 +58,7 @@ typedef struct		s_second
   int			nb_and;
   char			*stock;
   int			v;
+  int			tty;
 }			t_second;
 
 typedef struct		s_benji
