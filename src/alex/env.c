@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar 30 15:42:06 2016 Thauvin
-** Last update Fri May 13 18:20:58 2016 Thauvin
+** Last update Thu May 19 12:11:47 2016 Thauvin
 */
 
 #include "shell.h"
@@ -92,14 +92,14 @@ void	pars_builtenv(t_env *ini2, char **arg, t_second *ini)
 {
   get_rows_env(ini2->env2, ini2);
   get_cols_env(ini2->env2, ini2);
-    if ((my_strcmp(arg[0], "unsetenv")) == 1)
-      {
-	ini->zombie = 1;
-	if (arg[1] == NULL)
+  if ((my_strcmp(arg[0], "unsetenv")) == 1)
+    {
+      ini->zombie = 1;
+      if (arg[1] == NULL)
 	  write(2, "unsetenv: Too few arguments.\n", 29);
-	else
-	  my_unenv(ini2, arg);
-      }
+      else
+	my_unenv(ini2, arg);
+    }
   if ((my_strcmp(arg[0], "env")) == 1)
     {
       ini->zombie = 1;

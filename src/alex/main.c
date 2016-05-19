@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu May 19 11:28:49 2016 Thauvin
+** Last update Thu May 19 12:17:22 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -99,7 +99,9 @@ int		main(int ac, char **av, char **env)
 {
   t_env		ini2;
   t_second	ini;
+  int		i;
 
+  i = 0;
   av = av;
   ac = ac;
   ini.tty = isatty(0);
@@ -113,12 +115,18 @@ int		main(int ac, char **av, char **env)
 	write(1, "$>", 2);
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
-	exit(0);
+	{
+	  if (i != 0 && (ini.check2 == -1 || ini.check == -1))
+	    exit(1);
+	  else
+	    exit(0);
+	}
       ini.nb_separator = count_separator(ini.commande);
       if (ini.nb_separator != 0)
 	with_separator(&ini, &ini2);
       else
 	normal(&ini, &ini2);
+      i++;
     }
   return (0);
 }
