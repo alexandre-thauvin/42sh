@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Fri May 13 19:03:21 2016 Thauvin
+** Last update Tue May 24 18:33:57 2016 Thauvin
 */
 
 #include "shell.h"
@@ -81,7 +81,7 @@ char		**my_strduptab(char *src)
   ini_var_strduptab(&ini, src);
   while (ini.z < ini.rows && ini.c < my_strlen(src))
     {
-      while (src[ini.c] == ' ' || src[ini.c] == '\t')
+      while (src[ini.c] == ' ' || src[ini.c] == '\t' || src[ini.c] == '|')
 	{
 	  ini.c++;
 	  if (ini.w == 1 && src[ini.c] != 32 && ini.c < my_strlen(src)
@@ -90,7 +90,8 @@ char		**my_strduptab(char *src)
 	      end_string(&ini);
 	    }
 	}
-      if (src[ini.c] != 32 && ini.c < my_strlen(src) && src[ini.c] != '\t')
+      if (src[ini.c] != 32 && ini.c < my_strlen(src) && src[ini.c] != '\t'
+	  && src[ini.c] != '|')
 	{
 	  ini.dest[ini.z][ini.a] = src[ini.c];
 	  ini.a++;

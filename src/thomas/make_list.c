@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Mon May 16 09:03:03 2016 Thauvin
+** Last update Wed May 25 14:56:34 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -44,12 +44,12 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
   elem->arg = my_strduptab(str);
   ini->j = ini2->j = 0;
   ini_var_lanceur(ini, str, ini2);
-  if (ini->nb_redirection != 0)
-    {
-      printf("ici\n");
-      tab_with_redirection(ini);
-      elem->arg = ini->arg2;
-    }
+  /* if (ini->nb_redirection != 0) */
+  /*   { */
+  /*     printf("ici\n"); */
+  /*     tab_with_redirection(ini); */
+  /*     elem->arg = ini->arg2; */
+  /*   } */
   if (check_builtin(str) == -1)
     if ((ini->check = file_exist(ini, ini->rows_PATH)) == -1)
       {

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Fri May 13 19:03:49 2016 Thauvin
+** Last update Wed May 25 17:40:51 2016 Thauvin
 */
 
 #include "shell.h"
@@ -17,12 +17,13 @@ int	getrows(char *src)
 
   nb = 0;
   z = 5;
-  while (z < my_strlen(src))
+  while (src && src[z] != '\0')
     {
-      while (src[z] != ':' && z < my_strlen(src))
+      while (src[z] != ':' && src[z] != '\0')
 	z++;
       nb++;
-      z++;
+      if (src[z] != '\0')
+	z++;
     }
   return (nb);
 }
@@ -35,15 +36,16 @@ int	getcols(char *src)
 
   z = 5;
   lengh2 = 0;
-  while (z < my_strlen(src))
+  while (src && src[z] != '\0')
     {
       lengh = 0;
-      while (src[z] != ':' && z < my_strlen(src))
+      while (src && src[z] != ':' && src[z] != '\0')
 	{
 	  z++;
 	  lengh++;
 	}
-      z++;
+      if (src[z] != '\0')
+	z++;
       if (lengh > lengh2)
 	lengh2 = lengh;
     }
@@ -55,15 +57,15 @@ char	**mallocdest(char **dest, int rows, int cols)
   int	z;
 
   z = 0;
-  rows++;
-  if ((dest = malloc(rows * sizeof(char*))) == NULL)
+  if ((dest = malloc((rows + 1) * sizeof(char*))) == NULL)
     exit(1);
   while (z < rows)
     {
-      if ((dest[z] = malloc(cols * sizeof(char) + 1)) == NULL)
+      if ((dest[z] = malloc((cols + 1) * sizeof(char))) == NULL)
 	exit(1);
       z++;
     }
+  dest[z] = NULL;
   return (dest);
 }
 

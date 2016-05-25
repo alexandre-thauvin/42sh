@@ -5,33 +5,14 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar  2 17:17:21 2016 Thauvin
-** Last update Fri May 13 19:01:19 2016 Thauvin
+** Last update Sat May 21 15:36:50 2016 Thauvin
 */
 
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 #include "get_next_line.h"
-
-char	*my_realloc(char *ptr, size_t size)
-{
-  char	*tmp;
-  int	i;
-
-  if (ptr == NULL)
-    return (NULL);
-  tmp = ptr;
-  if ((ptr = malloc(size)) == NULL)
-    exit(1);
-  i = 0;
-  while (tmp[i] != '\0')
-    {
-      ptr[i] = tmp[i];
-      i++;
-    }
-  free(tmp);
-  return (ptr);
-}
 
 char		get_c(const int fd)
 {
@@ -60,7 +41,7 @@ char	*get_next_line(const int fd)
   int	len;
 
   len = 0;
-  if ((str = malloc(READ_SIZE + 1)) == NULL)
+  if ((str = malloc(READ_SIZE + 2)) == NULL || !memset(str, 0, READ_SIZE + 2))
     exit(1);
   if (str == NULL)
     return (0);
@@ -71,7 +52,7 @@ char	*get_next_line(const int fd)
       c = get_c(fd);
       len++;
       if (len % (READ_SIZE + 1) == 0)
-	str = my_realloc(str, len + READ_SIZE + 1);
+	str = realloc(str, len + READ_SIZE + 2);
     }
   str[len] = '\0';
   if (c == 0 && str[0] == 0)
