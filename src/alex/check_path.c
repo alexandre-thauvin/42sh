@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Thu May 26 18:01:20 2016 Thauvin
+** Last update Thu May 26 19:22:27 2016 Thauvin
 */
 
 #include "shell.h"
@@ -80,8 +80,7 @@ char		**my_strdup_path(char **PATH_2D, char *PATH, char **arg)
 	  ini.a++;
 	}
       ini.dest[ini.z][ini.a] = '/';
-      if (PATH_2D[ini.z][ini.a] != '\0')
-	ini.a++;
+      ini.a++;
       while (arg[0][ini.m] != '\0')
 	{
 	  ini.dest[ini.z][ini.a] = arg[0][ini.m];
