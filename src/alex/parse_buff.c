@@ -5,7 +5,7 @@
 ** Login   <quasta_b@epitech.net>
 **
 ** Started on  Fri Apr 29 09:57:46 2016 Benjamin Quastana
-** Last update Fri May 13 19:02:03 2016 Thauvin
+** Last update Thu May 26 15:06:36 2016 Thauvin
 */
 
 #include <unistd.h>
@@ -65,7 +65,7 @@ void		create_tab(char *str, t_second *ini, t_env *ini2)
 	  if ((var.tab[var.y] = malloc(clean_mal(str, var.a))) == NULL)
 	    exit(1);
 	  while (str[var.a] != '|' && str[var.a] != '\0' && str[var.a] != '\n')
-	    if (str[var.a + 1] != '|')
+	    if (str[var.a] != '|')
 	      var.tab[var.y][var.x++] = str[var.a++];
 	    else
 	      var.a++;

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Tue May 24 18:33:57 2016 Thauvin
+** Last update Thu May 26 15:00:05 2016 Thauvin
 */
 
 #include "shell.h"
@@ -79,12 +79,12 @@ char		**my_strduptab(char *src)
   t_tab2	ini;
 
   ini_var_strduptab(&ini, src);
-  while (ini.z < ini.rows && ini.c < my_strlen(src))
+  while (ini.z < ini.rows && src && src[ini.c] != '\0')
     {
       while (src[ini.c] == ' ' || src[ini.c] == '\t' || src[ini.c] == '|')
 	{
 	  ini.c++;
-	  if (ini.w == 1 && src[ini.c] != 32 && ini.c < my_strlen(src)
+	  if (ini.w == 1 && src[ini.c] != 32 && src && src[ini.c] != '\0'
 	      && src[ini.c] != '\t')
 	    {
 	      end_string(&ini);
