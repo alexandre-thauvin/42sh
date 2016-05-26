@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Thu May 26 15:40:25 2016 Thauvin
+** Last update Thu May 26 19:35:11 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -55,7 +55,7 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
   /*     elem->arg = ini->arg2; */
   /*   } */
   if (check_builtin(str, ini) == -1)
-    if ((ini->check = file_exist(ini, ini->rows_PATH)) == -1)
+    if ((ini->check = file_exist(ini)) == -1)
       {
 	write(2, "Command not found.\n", my_strlen("Command not found.\n"));
 	ini->nb_and = 0;

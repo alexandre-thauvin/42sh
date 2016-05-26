@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Thu May 26 15:38:41 2016 Thauvin
+** Last update Thu May 26 19:34:33 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -155,7 +155,7 @@ void	ini_var_strdup(t_tab3 *, char *, char **);
 int	my_strlenPATH(char *);
 char	*cpy_path(char **);
 int	lanceur(char *, t_env *, t_second *);
-int	file_exist(t_second *, int);
+int	file_exist(t_second *);
 void	ini_var_lanceur(t_second *, char *, t_env *);
 
 	/* tab_path.c */

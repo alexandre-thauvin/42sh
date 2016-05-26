@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu May 26 19:20:05 2016 Thauvin
+** Last update Thu May 26 19:35:44 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -71,7 +71,7 @@ void	ini_var_tab(char **env, t_env *ini2, t_second *ini)
 int	wait_in_fath(t_second *ini, char *commande, char **env, char **arg)
 {
   if (commande[0] != '/' && (commande[0] != '.' && commande[1] != '/'))
-    if ((ini->check = file_exist(ini, ini->rows_PATH)) == -1)
+    if ((ini->check = file_exist(ini)) == -1)
       return (0);
   if (ini->pathtemp != NULL)
     free(ini->PATH);

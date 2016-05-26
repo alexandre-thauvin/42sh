@@ -5,22 +5,24 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Thu May 19 12:11:07 2016 Thauvin
+** Last update Thu May 26 19:37:37 2016 Thauvin
 */
 
 #include "shell.h"
 
-int	file_exist(t_second *ini, int rows)
+int	file_exist(t_second *ini)
 {
   int	z;
   int	a;
 
   a = 0;
   z = -1;
+  if (ini->pathtemp == NULL)
+    return (-1);
   z = access(ini->arg[0], F_OK);
   if (z == 0)
     return (-1);
-  while (z != 0 && a < rows)
+  while (z != 0 && ini->PATHfinal[a] != NULL)
     {
       z = access(ini->PATHfinal[a], F_OK);
       if (z == 0)
