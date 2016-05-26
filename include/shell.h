@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Thu May 19 11:26:03 2016 Thauvin
+** Last update Thu May 26 15:38:41 2016 Thauvin
 */
 
 #ifndef SHELL_H_
@@ -234,7 +234,7 @@ void	pipe_toto(char **, t_second *, t_env *);
 int	make_list(t_pipe **, char **, t_second *, t_env *);
 int	my_tablen(char **);
 int	my_put_in_list(struct s_pipe **, char *, t_second *, t_env *);
-int	check_builtin(char *);
+int	check_builtin(char *, t_second *);
 char	*catch_name(char *);
 
 	/* pipe_exec.c */

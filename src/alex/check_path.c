@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Fri May 13 19:00:46 2016 Thauvin
+** Last update Thu May 26 15:43:51 2016 Thauvin
 */
 
 #include "shell.h"
@@ -32,7 +32,7 @@ int	check_exit(char **arg, int rows)
       if (arg[1] != NULL)
 	z = my_getnbr(arg[1]);
       if (rows == 1)
-	z = 1;
+	z = 0;
       exit(z);
     }
   return (z);

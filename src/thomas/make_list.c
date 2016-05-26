@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Wed May 25 14:56:34 2016 Thauvin
+** Last update Thu May 26 15:40:25 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include "shell.h"
 
-int	check_builtin(char *str)
+int	check_builtin(char *str, t_second *ini)
 {
   int	i;
 
@@ -25,8 +25,12 @@ int	check_builtin(char *str)
   else if (str[i] == 's' && str[i + 1] == 'e' && str[i + 2] == 't' &&
 	   str[i + 3] == 'e' && str[i + 4] == 'n' && str[i + 5] == 'v')
     return (0);
+  else if (str[i] == 'e' && str[i + 1] == 'x' && str[i + 2] == 'i' &&
+	   str[i + 3] == 't')
+    check_exit(ini->arg, ini->rows_arg);
   else
     return (-1);
+  return (-1);
 }
 
 int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
@@ -50,7 +54,7 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
   /*     tab_with_redirection(ini); */
   /*     elem->arg = ini->arg2; */
   /*   } */
-  if (check_builtin(str) == -1)
+  if (check_builtin(str, ini) == -1)
     if ((ini->check = file_exist(ini, ini->rows_PATH)) == -1)
       {
 	write(2, "Command not found.\n", my_strlen("Command not found.\n"));

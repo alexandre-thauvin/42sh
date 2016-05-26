@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu May 19 12:17:22 2016 Thauvin
+** Last update Thu May 26 15:41:01 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -116,7 +116,7 @@ int		main(int ac, char **av, char **env)
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
 	{
-	  if (i != 0 && (ini.check2 == -1 || ini.check == -1))
+  if (i != 0 && (ini.check2 == -1 || ini.check == -1))
 	    exit(1);
 	  else
 	    exit(0);
