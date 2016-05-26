@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Thu May 26 15:43:51 2016 Thauvin
+** Last update Thu May 26 18:01:20 2016 Thauvin
 */
 
 #include "shell.h"
@@ -50,7 +50,7 @@ char	**ma(char **dest, int rows, int cols, char **arg)
     exit(1);
   while (z < rows)
     {
-      if ((dest[z] = malloc((cols + a + 2) * sizeof(char))) == NULL)
+      if ((dest[z] = malloc((cols + a + 3) * sizeof(char))) == NULL)
 	exit(1);
       z++;
     }
@@ -80,8 +80,9 @@ char		**my_strdup_path(char **PATH_2D, char *PATH, char **arg)
 	  ini.a++;
 	}
       ini.dest[ini.z][ini.a] = '/';
-      ini.a++;
-      while (ini.m < (my_strlen(arg[0])))
+      if (PATH_2D[ini.z][ini.a] != '\0')
+	ini.a++;
+      while (arg[0][ini.m] != '\0')
 	{
 	  ini.dest[ini.z][ini.a] = arg[0][ini.m];
 	  ini.a++;

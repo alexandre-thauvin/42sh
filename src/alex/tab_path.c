@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Wed May 25 17:40:51 2016 Thauvin
+** Last update Thu May 26 17:58:50 2016 Thauvin
 */
 
 #include "shell.h"
@@ -61,7 +61,7 @@ char	**mallocdest(char **dest, int rows, int cols)
     exit(1);
   while (z < rows)
     {
-      if ((dest[z] = malloc((cols + 1) * sizeof(char))) == NULL)
+      if ((dest[z] = malloc((cols + 2) * sizeof(char))) == NULL)
 	exit(1);
       z++;
     }
@@ -90,7 +90,8 @@ char		**my_strdup2d(char *src)
 	}
       ini.dest[ini.z][ini.a] = src[ini.c];
       ini.a++;
-      ini.c++;
+      if (src[ini.c] != '\0')
+	ini.c++;
     }
   ini.dest[ini.z][ini.a] = '\0';
   ini.dest[ini.z + 1] = NULL;
