@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Jan 24 18:28:58 2016 Thauvin
-** Last update Fri May 13 18:59:23 2016 Thauvin
+** Last update Sat May 28 15:57:28 2016 Thauvin
 */
 
 #include "shell.h"
@@ -99,6 +99,6 @@ char	*check_cd(char **arg, char *path_final, char **env)
 	}
     }
   if (arg[1] == NULL || arg[1][0] == '~')
-    path_final = pars_home(env, path_final);
+      path_final = pars_home(env, path_final);
   return (path_final);
 }

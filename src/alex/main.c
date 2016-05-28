@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu May 26 19:35:44 2016 Thauvin
+** Last update Sat May 28 16:07:08 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -48,8 +48,9 @@ int	exec_cd(t_second *ini, char *commande, t_env *ini2)
       else
 	ini->u = chdir(ini->path_cd);
       if (ini->u == -1)
-	write(2, "badway\n", 7);
-      else
+	if (ini->arg[1] != NULL)
+	  fprintf(stderr, "%s: No such file or directory.\n", ini->arg[1]);
+      if (ini->u != 1)
 	complete_pwd(ini);
     }
   if ((ini->check_ex = check_exit(ini->arg, ini->rows_arg)) != 0)

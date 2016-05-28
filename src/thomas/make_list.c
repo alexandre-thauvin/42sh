@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Thu May 26 19:35:11 2016 Thauvin
+** Last update Sat May 28 15:29:40 2016 Thauvin
 */
 
 #include <stdlib.h>
@@ -25,9 +25,15 @@ int	check_builtin(char *str, t_second *ini)
   else if (str[i] == 's' && str[i + 1] == 'e' && str[i + 2] == 't' &&
 	   str[i + 3] == 'e' && str[i + 4] == 'n' && str[i + 5] == 'v')
     return (0);
+  else if (str[i] == 'u' && str[i + 1] == 'n' && str[i + 2] == 's' &&
+	   str[i + 3] == 'e' && str[i + 4] == 't' && str[i + 5] == 'e'
+	   && str[i + 6] == 'n' && str[i + 7] == 'v')
+    return (0);
   else if (str[i] == 'e' && str[i + 1] == 'x' && str[i + 2] == 'i' &&
 	   str[i + 3] == 't')
     check_exit(ini->arg, ini->rows_arg);
+  else if (str[i] == 'c' && str[i + 1] == 'd')
+    return (0);
   else
     return (-1);
   return (-1);
@@ -57,7 +63,7 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
   if (check_builtin(str, ini) == -1)
     if ((ini->check = file_exist(ini)) == -1)
       {
-	write(2, "Command not found.\n", my_strlen("Command not found.\n"));
+	fprintf(stderr, "%s: Command not found.\n", elem->arg[0]);
 	ini->nb_and = 0;
 	return (1);
       }
