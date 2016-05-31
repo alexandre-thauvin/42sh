@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Thu May 26 19:37:37 2016 Thauvin
+** Last update Tue May 31 20:20:26 2016 Thauvin
 */
 
 #include "shell.h"
@@ -21,7 +21,7 @@ int	file_exist(t_second *ini)
     return (-1);
   z = access(ini->arg[0], F_OK);
   if (z == 0)
-    return (-1);
+    return (0);
   while (z != 0 && ini->PATHfinal[a] != NULL)
     {
       z = access(ini->PATHfinal[a], F_OK);

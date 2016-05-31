@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Apr 14 05:04:54 2016 Thauvin
-** Last update Sat May 28 15:28:33 2016 Thauvin
+** Last update Tue May 31 20:14:04 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -43,7 +43,7 @@ void	control_reach()
 void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)
 {
   if (ini->zombie == 0 && ini->pathtemp != NULL)
-    wait_in_fath(ini, commande, ini2->env2, ini->arg);
+      wait_in_fath(ini, commande, ini2->env2, ini->arg);
   if (ini->check2 != -1 && ini->pathtemp == NULL && ini->zombie == 0)
     wait_in_fath(ini, commande, ini2->env2, ini->arg);
 }

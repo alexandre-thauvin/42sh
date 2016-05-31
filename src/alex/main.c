@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Tue May 31 15:07:44 2016 thomas lavigne
+** Last update Tue May 31 20:17:46 2016 Thauvin
 */
 
 #include <stdio.h>
@@ -83,7 +83,9 @@ int	wait_in_fath(t_second *ini, char *commande, char **env, char **arg)
   if (ini->pid == -1)
     write(2, "erreur\n", my_strlen("erreur fork\n"));
   if (ini->pid == 0)
-    exec_redirec(ini, env, arg);
+    {
+      exec_redirec(ini, env, arg);
+    }
   if (ini->pid != 0 && ini->pid != -1)
     {
       if (ini->check_ex != 0)
