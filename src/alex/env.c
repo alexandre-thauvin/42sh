@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar 30 15:42:06 2016 Thauvin
-** Last update Tue May 31 15:35:29 2016 thomas lavigne
+** Last update Tue May 31 20:06:00 2016 Thauvin
 */
 
 #include "shell.h"
@@ -83,9 +83,7 @@ void	my_unenv(t_env *ini2, char **arg)
   int	z;
 
   z = strcmp_env(ini2->env2, arg[1]);
-  if (z == 0)
-    write(1, "This var doesn't exist, check env\n", 34);
-  else
+  if (z != 0)
     {
       ini2->temp = malloc2d(ini2->temp, ini2->rows - 1, ini2->cols + 1);
       strdup2d_env(ini2, z);
