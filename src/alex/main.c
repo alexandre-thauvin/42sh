@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Sat May 28 16:07:08 2016 Thauvin
+** Last update Tue May 31 15:07:44 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -49,7 +49,10 @@ int	exec_cd(t_second *ini, char *commande, t_env *ini2)
 	ini->u = chdir(ini->path_cd);
       if (ini->u == -1)
 	if (ini->arg[1] != NULL)
-	  fprintf(stderr, "%s: No such file or directory.\n", ini->arg[1]);
+	  {
+	    ini->check2 = -1;
+	    fprintf(stderr, "%s: No such file or directory.\n", ini->arg[1]);
+	  }
       if (ini->u != 1)
 	complete_pwd(ini);
     }
@@ -117,7 +120,7 @@ int		main(int ac, char **av, char **env)
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
 	{
-  if (i != 0 && (ini.check2 == -1 || ini.check == -1))
+	  if (i != 0 && (ini.check2 == -1 || ini.check == -1))
 	    exit(1);
 	  else
 	    exit(0);

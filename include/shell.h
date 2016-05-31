@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Thu May 26 19:34:33 2016 Thauvin
+** Last update Tue May 31 15:34:21 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -185,7 +185,7 @@ char	**strdup2d(char **, char **, char **, int);
 char	*my_strcpy_update(char *, char **);
 
 	/* env.c */
-void	my_setenv(t_env *, char **);
+void	my_setenv(t_env *, char **, t_second *);
 void	pars_builtenv(t_env *, char **, t_second *);
 void	my_unenv(t_env *, char **);
 void	strdup2d_env(t_env *, int);
@@ -247,5 +247,6 @@ char	*help(char *, int, int , char *);
 char	*catch(char *, int, t_second *);
 char	*double_and(char *, t_second *);
 int	check_if_and(char *, t_second *);
+int	alpha_num(char **, t_second *);
 
 #endif /* SHELL_H_ */

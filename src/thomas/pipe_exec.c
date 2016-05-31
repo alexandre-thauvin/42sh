@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Thu May 26 15:41:27 2016 Thauvin
+** Last update Tue May 31 14:25:37 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -50,4 +50,5 @@ void	pipe_exec(t_pipe *list, t_env *ini2, t_second *ini)
 	  list = list->next;
 	}
     }
+  /* list a free */
 }
