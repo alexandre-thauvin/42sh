@@ -1,11 +1,11 @@
 /*
 ** pipe_exec.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/moulinette/pipe
 **
-** Made by thomas lavigne
+*1;2802;0c* Made by thomas lavigne
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Wed Jun  1 13:53:11 2016 Theo Labory
+** Last update Wed Jun  1 14:14:43 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -33,8 +33,10 @@ void	pipe_exec(t_pipe *list, t_env *ini2, t_second *ini)
   pid_t	pid;
   int	fd;
   int	i;
+  t_pipe *save;
 
   fd = i = 0;
+  save = list;
   while (list && list != NULL)
     {
       pipe(p);
@@ -50,5 +52,5 @@ void	pipe_exec(t_pipe *list, t_env *ini2, t_second *ini)
 	  list = list->next;
 	}
     }
-  my_free(list);
+  my_free(save);
 }

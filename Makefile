@@ -5,7 +5,7 @@
 ## Login   <thauvi_a@epitech.net>
 ## 
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Wed Jun  1 13:32:29 2016 Theo Labory
+## Last update Wed Jun  1 14:16:24 2016 thomas lavigne
 ##
 
 SRCS	=	src/alex/main.c			\
@@ -38,7 +38,7 @@ RM	= rm -rf
 
 CC	= gcc
 
-CFLAGS	= -W -Wextra -Wall -Werror -I include/
+CFLAGS	= -W -Wextra -Wall -Werror -I include/ -g
 
 CLIB	= -lmy -Llib
 
