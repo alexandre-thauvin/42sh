@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Wed Jun  1 10:57:58 2016 thomas lavigne
+** Last update Wed Jun  1 11:21:28 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -26,8 +26,8 @@ typedef struct		s_path
 {
   char                  **PATH;
   char                  **PATHfinal;
-  int			rows_PATH;	/* à virer */
-  int			cols_PATH;	/* à virer */
+  int			rows_PATH;
+  int			cols_PATH;
   char			*PATHok;
   char			*path_cd;
   char			*pathtemp;
@@ -54,25 +54,25 @@ typedef struct		s_second
   int			status;
   int			s;
   int			u;
-  char			**PATH;		/* s_path */
+  char			**PATH;
   char			**arg;
-  char			**PATHfinal;	/* s_path */
-  int			rows_PATH;	/* s_path et à virer */
-  int			cols_PATH;	/* s_path et à virer */
+  char			**PATHfinal;
+  int			rows_PATH;
+  int			cols_PATH;
   int			rows_arg;
-  char			*PATHok;	/* s_path */
-  int			check;		/* s_error */
+  char			*PATHok;
+  int			check;
   int			check_ex;
   int			relative;
-  char			*path_cd;	/* s_path */
+  char			*path_cd;
   int			z;
-  int			zombie;		/* s_error */
-  char			*pathtemp;	/* pathtemp */
-  int			check2;		/* s_error */
+  int			zombie;
+  char			*pathtemp;
+  int			check2;
   int			courant;
-  char			*pwd;		/* s_pwd */
-  char			*oldpwd;	/* s_pwd */
-  char			*dest;		/* s_pwd */
+  char			*pwd;
+  char			*oldpwd;
+  char			*dest;
   char			*commande;
   int			nb_separator;
   int			nb_redirection;
@@ -83,7 +83,6 @@ typedef struct		s_second
   int			nb_and;
   char			*stock;
   int			v;
-  int			tty;		/* à virer THOMAS */
 }			t_second;
 
 typedef struct		s_benji
@@ -273,5 +272,6 @@ char	*catch(char *, int, t_second *);
 char	*double_and(char *, t_second *);
 int	check_if_and(char *, t_second *);
 int	alpha_num(char **, t_second *);
+char	*double_pipe(char *, char);
 
 #endif /* SHELL_H_ */

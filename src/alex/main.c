@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Wed Jun  1 10:54:30 2016 thomas lavigne
+** Last update Wed Jun  1 11:21:04 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -110,14 +110,13 @@ int		main(int ac, char **av, char **env)
   i = 0;
   av = av;
   ac = ac;
-  ini.tty = isatty(0);
   if (env[0] == NULL)
     return (0);
   /* signal(SIGINT, control_reach); */
   ini_var_tab(env, &ini2, &ini);
   while (42)
     {
-      if (ini.tty == 1)
+      if (isatty(0) == 1)
 	write(1, "$>", 2);
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)

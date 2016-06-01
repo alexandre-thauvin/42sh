@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Mon May 30 14:02:48 2016 thomas lavigne
-** Last update Tue May 31 11:25:59 2016 thomas lavigne
+** Last update Wed Jun  1 11:17:19 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -94,26 +94,3 @@ char	*double_pipe(char *str, char carac)
     }
   return (NULL);
 }
-
-/* int	main(int ac, char **av) */
-/* { */
-/*   char	*command; */
-/*   int	i; */
-
-/*   i = 0; */
-/*   if (ac != 3) */
-/*     return (1); */
-/*   while (i < 2) */
-/*     { */
-/*       command = double_pipe(av[1], '|'); */
-/*       printf("%s\n", command); */
-/*       free(command); */
-/*       i++; */
-/*    } */
-/*   while ((command = double_pipe(av[2], '|')) != NULL) */
-/*     { */
-/*       printf("%s\n", command); */
-/*       free(command); */
-/*     } */
-/*   return (0); */
-/* } */
