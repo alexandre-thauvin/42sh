@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Tue May 31 15:34:21 2016 thomas lavigne
+** Last update Wed Jun  1 10:57:58 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -22,6 +22,31 @@
 #include "../lib/my/my.h"
 #include "get_next_line.h"
 
+typedef struct		s_path
+{
+  char                  **PATH;
+  char                  **PATHfinal;
+  int			rows_PATH;	/* à virer */
+  int			cols_PATH;	/* à virer */
+  char			*PATHok;
+  char			*path_cd;
+  char			*pathtemp;
+}			t_path;
+
+typedef struct		s_pwd
+{
+  char			*pwd;
+  char			*oldpwd;
+  char			*dest;
+}			t_pwd;
+
+typedef struct		s_error
+{
+  int			check;
+  int			check2;
+  int			zombie;
+}			t_error;
+
 typedef struct		s_second
 {
   pid_t			pid;
@@ -29,25 +54,25 @@ typedef struct		s_second
   int			status;
   int			s;
   int			u;
-  char			**PATH;
+  char			**PATH;		/* s_path */
   char			**arg;
-  char			**PATHfinal;
-  int			rows_PATH;
-  int			cols_PATH;
+  char			**PATHfinal;	/* s_path */
+  int			rows_PATH;	/* s_path et à virer */
+  int			cols_PATH;	/* s_path et à virer */
   int			rows_arg;
-  char			*PATHok;
-  int			check;
+  char			*PATHok;	/* s_path */
+  int			check;		/* s_error */
   int			check_ex;
   int			relative;
-  char			*path_cd;
+  char			*path_cd;	/* s_path */
   int			z;
-  int			zombie;
-  char			*pathtemp;
-  int			check2;
+  int			zombie;		/* s_error */
+  char			*pathtemp;	/* pathtemp */
+  int			check2;		/* s_error */
   int			courant;
-  char			*pwd;
-  char			*oldpwd;
-  char			*dest;
+  char			*pwd;		/* s_pwd */
+  char			*oldpwd;	/* s_pwd */
+  char			*dest;		/* s_pwd */
   char			*commande;
   int			nb_separator;
   int			nb_redirection;
@@ -58,7 +83,7 @@ typedef struct		s_second
   int			nb_and;
   char			*stock;
   int			v;
-  int			tty;
+  int			tty;		/* à virer THOMAS */
 }			t_second;
 
 typedef struct		s_benji
