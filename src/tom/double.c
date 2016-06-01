@@ -5,23 +5,21 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Mon May 30 14:02:48 2016 thomas lavigne
-** Last update Wed Jun  1 11:17:19 2016 thomas lavigne
+** Last update Wed Jun  1 12:04:22 2016 thomas lavigne
 */
 
 #include "shell.h"
 
-int	my_strcmp(char *str1, char *str2)
+int	my_strcmp_toto(char *str1, char *str2)
 {
-  int	i;
+  int	x;
 
-  i = 0;
-  if (str2 == NULL)
-    return (-1);
-  while (str1 && str2 && str1[i] != 0)
+  x = 0;
+  while (str1 && str2 && str1[x] != 0)
     {
-      if (str1[i] != str2[i])
+      if (str1[x] != str2[x])
 	return (-1);
-      i++;
+      x++;
     }
   return (0);
 }
@@ -46,7 +44,7 @@ char	*get_command(char *str, int *i, char car)
   int	a;
 
   a = 0;
-  while (str[*i] == ' ' || str[*i] == '\t')
+  while (str && (str[*i] == ' ' || str[*i] == '\t'))
     *i = *i + 1;
   if (str[*i] == 0)
     return (NULL);
@@ -74,13 +72,13 @@ char	*double_pipe(char *str, char carac)
   static int	i = 0;
   static char	*comp = NULL;
 
-  if (my_strcmp("reset", str) == 0)
+  if (my_strcmp_toto("reset", str) == 0)
     {
       i = 0;
       comp = NULL;
       return (NULL);
     }
-  if (my_strcmp(str, comp) == -1)
+  if (my_strcmp_toto(str, comp) == -1)
     {
       i = 0;
       comp = str;

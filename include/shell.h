@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Wed Jun  1 11:21:28 2016 thomas lavigne
+** Last update Wed Jun  1 11:29:17 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -57,8 +57,6 @@ typedef struct		s_second
   char			**PATH;
   char			**arg;
   char			**PATHfinal;
-  int			rows_PATH;
-  int			cols_PATH;
   int			rows_arg;
   char			*PATHok;
   int			check;

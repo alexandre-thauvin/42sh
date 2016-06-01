@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Tue May 31 20:20:26 2016 Thauvin
+** Last update Wed Jun  1 11:28:28 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -64,25 +64,25 @@ char	*cpy_path(char **env)
 
 void		ini_var_lanceur(t_second *ini, char *commande, t_env *ini2)
 {
+  int	rows_PATH;
+  int	cols_PATH;
+
   ini->pathtemp = cpy_path(ini2->env2);
-  ini->check2 = 0;
-  ini->check = 0;
-  ini->relative = 0;
-  ini->s = 0;
+  ini->check2 = ini->check = ini->relative = ini->s = 0;
   ini->rows_arg = getrows_tab(commande);
   if (ini->pathtemp != NULL)
     {
-      ini->rows_PATH = getrows(ini->pathtemp);
-      ini->cols_PATH = getcols(ini->pathtemp);
-      ini->PATH = mallocdest(ini->PATH, ini->rows_PATH, ini->cols_PATH);
+      rows_PATH = getrows(ini->pathtemp);
+      cols_PATH = getcols(ini->pathtemp);
+      ini->PATH = mallocdest(ini->PATH, rows_PATH, cols_PATH);
       ini->PATH = my_strdup2d(ini->pathtemp);
     }
   ini->arg = ma2d(ini->arg, ini->rows_arg, commande);
   ini->arg = my_strduptab(commande);
   if (ini->pathtemp != NULL)
     {
-      ini->PATHfinal = ma(ini->PATHfinal, ini->rows_PATH,
-			  ini->cols_PATH, ini->arg);
+      ini->PATHfinal = ma(ini->PATHfinal, rows_PATH,
+			  cols_PATH, ini->arg);
       ini->PATHfinal = my_strdup_path(ini->PATH, ini->pathtemp, ini->arg);
     }
   if (ini->arg[0][0] == 0)

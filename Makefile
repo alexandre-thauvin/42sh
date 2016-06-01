@@ -5,7 +5,7 @@
 ## Login   <thauvi_a@epitech.net>
 ## 
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Wed Jun  1 11:22:52 2016 thomas lavigne
+## Last update Wed Jun  1 11:43:06 2016 thomas lavigne
 ##
 
 SRCS	=	src/alex/main.c			\
@@ -26,7 +26,8 @@ SRCS	=	src/alex/main.c			\
 		src/thomas/make_list.c		\
 		src/thomas/pipe_exec.c		\
 		src/alex/five.c			\
-		src/thomas/alpha_num.c
+		src/thomas/alpha_num.c		\
+		src/tom/double.c
 
 NAME	= 42sh
 
