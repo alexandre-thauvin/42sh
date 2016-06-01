@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Sat May 28 15:29:40 2016 Thauvin
+** Last update Wed Jun  1 15:42:09 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -68,7 +68,7 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
 	return (1);
       }
     else
-      elem->arg[0] = ini->PATHfinal[ini->check];
+      elem->arg[0] = ini->vpath.PATHfinal[ini->check];
   else
     elem->arg[0] = str;
   elem->next = *list;

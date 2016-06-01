@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr 10 18:19:32 2016 Thauvin
-** Last update Tue May 31 19:52:25 2016 Thauvin
+** Last update Wed Jun  1 15:50:28 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -24,7 +24,8 @@ void	error(t_second *ini, char *commande, t_env *ini2)
   if (ini->check != -1 && (commande[0] == '.' && commande[1] == '/'))
     wait_in_fath(ini, commande, ini2->env2, ini->arg);
   if ((ini->check2 == -1 || ini->check == -1 ||
-       (ini->pathtemp == NULL && ini->zombie == 0 && ini->check2 == -1)) && ini->zombie != 1)
+       (ini->vpath.pathtemp == NULL && ini->zombie == 0 &&
+	ini->check2 == -1)) && ini->zombie != 1)
     {
       ini->nb_and = 0;
       write(2, ini->arg[0], my_strlen(ini->arg[0]));
@@ -68,9 +69,9 @@ void	complete_pwd(t_second *ini)
 	exit(1);
       ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
       free(ini->pwd);
-      if ((ini->pwd = malloc((my_strlen(ini->path_cd) + 1)
+      if ((ini->pwd = malloc((my_strlen(ini->vpath.path_cd) + 1)
 			     * sizeof(char))) == NULL)
 	exit(1);
-      ini->pwd = my_strcpy(ini->pwd, ini->path_cd);
+      ini->pwd = my_strcpy(ini->pwd, ini->vpath.path_cd);
     }
 }

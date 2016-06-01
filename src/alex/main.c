@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Wed Jun  1 11:33:19 2016 thomas lavigne
+** Last update Wed Jun  1 15:50:12 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -42,11 +42,11 @@ int	exec_cd(t_second *ini, char *commande, t_env *ini2)
 	  ini->u = 1;
       ini->zombie = 1;
       ini->s = 1;
-      ini->path_cd = check_cd(ini->arg, ini->path_cd, ini2->env2);
+      ini->vpath.path_cd = check_cd(ini->arg, ini->vpath.path_cd, ini2->env2);
       if (ini->u == 1)
 	ini->u = chdir(ini->oldpwd);
       else
-	ini->u = chdir(ini->path_cd);
+	ini->u = chdir(ini->vpath.path_cd);
       if (ini->u == -1)
 	if (ini->arg[1] != NULL)
 	  {
@@ -77,8 +77,8 @@ int	wait_in_fath(t_second *ini, char *commande, char **env, char **arg)
   if (commande[0] != '/' && (commande[0] != '.' && commande[1] != '/'))
     if ((ini->check = file_exist(ini)) == -1)
       return (0);
-  if (ini->pathtemp != NULL)
-    free(ini->PATH);
+  if (ini->vpath.pathtemp != NULL)
+    free(ini->vpath.PATH);
   ini->pid = fork();
   if (ini->pid == -1)
     write(2, "erreur\n", my_strlen("erreur fork\n"));

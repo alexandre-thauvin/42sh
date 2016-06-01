@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Wed Jun  1 13:53:30 2016 Theo Labory
+** Last update Wed Jun  1 15:51:28 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -26,9 +26,6 @@ typedef struct		s_path
 {
   char                  **PATH;
   char                  **PATHfinal;
-  int			rows_PATH;
-  int			cols_PATH;
-  char			*PATHok;
   char			*path_cd;
   char			*pathtemp;
 }			t_path;
@@ -49,23 +46,19 @@ typedef struct		s_error
 
 typedef struct		s_second
 {
+  struct s_path		vpath;
   pid_t			pid;
   pid_t			cpid;
   int			status;
   int			s;
   int			u;
-  char			**PATH;
   char			**arg;
-  char			**PATHfinal;
   int			rows_arg;
-  char			*PATHok;
   int			check;
   int			check_ex;
   int			relative;
-  char			*path_cd;
   int			z;
   int			zombie;
-  char			*pathtemp;
   int			check2;
   int			courant;
   char			*pwd;

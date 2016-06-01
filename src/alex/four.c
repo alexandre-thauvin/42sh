@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Apr 14 05:04:54 2016 Thauvin
-** Last update Tue May 31 20:14:04 2016 Thauvin
+** Last update Wed Jun  1 15:50:01 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -29,10 +29,10 @@ void	all_exec(t_second *ini, char **env)
   if (ini->relative == 1)
     execve(ini->arg[0], ini->arg, env);
   if (ini->relative == 0)
-      execve(ini->PATHfinal[ini->check], ini->arg, env);
+      execve(ini->vpath.PATHfinal[ini->check], ini->arg, env);
   free(ini->arg);
-  if (ini->pathtemp != NULL)
-    free(ini->PATHfinal);
+  if (ini->vpath.pathtemp != NULL)
+    free(ini->vpath.PATHfinal);
 }
 
 void	control_reach()
@@ -42,9 +42,9 @@ void	control_reach()
 
 void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)
 {
-  if (ini->zombie == 0 && ini->pathtemp != NULL)
+  if (ini->zombie == 0 && ini->vpath.pathtemp != NULL)
       wait_in_fath(ini, commande, ini2->env2, ini->arg);
-  if (ini->check2 != -1 && ini->pathtemp == NULL && ini->zombie == 0)
+  if (ini->check2 != -1 && ini->vpath.pathtemp == NULL && ini->zombie == 0)
     wait_in_fath(ini, commande, ini2->env2, ini->arg);
 }
 
