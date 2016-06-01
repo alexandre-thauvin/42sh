@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 11:20:53 2016 Thauvin
-** Last update Wed Jun  1 12:11:19 2016 thomas lavigne
+** Last update Wed Jun  1 15:18:24 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -26,6 +26,8 @@ void	count_and(char *commande, t_second *ini)
 
 void	with_separator(t_second *ini, t_env *ini2)
 {
+  char	*com;
+
   while (ini->nb_separator >= 0)
     {
       pars_commande(ini->commande, ini);
@@ -40,16 +42,19 @@ void	with_separator(t_second *ini, t_env *ini2)
 	    }
 	  else
 	    {
-	      ini->v = 0;
-	      while (ini->nb_and == 1)
+	      double_pipe("reset", '&');
+	      ini->nb_and = 1;
+	      while (com != NULL && ini->nb_and == 1)
 		{
-		  double_and(ini->dest, ini);
+		  if ((com = double_pipe(ini->dest, '&')) == NULL)
+		    ini->nb_and = 0;
 		  if (ini->nb_and == 1)
 		    {
-		      count_pipe(ini->stock, ini);
-		      count_redirection(ini, ini->stock);
-		      lanceur(ini->stock, ini2, ini);
+		      count_pipe(com, ini);
+		      count_redirection(ini, com);
+		      lanceur(com, ini2, ini);
 		    }
+		  free(com);
 		}
 	    }
 	}
