@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Thu Jun  2 17:30:29 2016 Theo Labory
+** Last update Thu Jun  2 18:16:23 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
@@ -58,6 +58,7 @@ typedef struct		s_second
   struct s_pwd		vpwd;
   struct s_error	error;
   struct s_check	check;
+  char			*file_name2;
   pid_t			pid;
   pid_t			cpid;
   int			status;
@@ -251,6 +252,7 @@ void	count_redirection(t_second *, char *);
 /*
 ** four.c
 */
+int	malloc_buff(char *);
 void	control_reach();
 void	all_exec(t_second *, char **);
 void	lanceur_commande(char *, t_env *, t_second *);

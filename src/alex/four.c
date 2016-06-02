@@ -5,16 +5,47 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Thu Jun  2 17:31:44 2016 Theo Labory
+** Last update Thu Jun  2 18:15:38 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
 #include "shell.h"
 
+int     malloc_buff(char *file_name)
+{
+  int   fd;
+  char  *c;
+  int   ret;
+
+  fd = open(file_name, O_RDWR);
+  while ((c = get_next_line(fd)) != NULL)
+    {
+      ret += my_strlen(c);
+	   free(c);
+	 }
+  ret++;
+  close(fd);
+  return (ret);
+}
+
+
 void	all_exec(t_second *ini, char **env)
 {
   int	fd;
+  /* int   fd2; */
+  /* char  *buffer; */
 
+  /* if (ini->check.nb_redirection == -2) */
+  /*   { */
+  /*     fd = open(ini->file_name, O_RDWR); */
+  /*     if ((buffer = malloc(malloc_buff(ini->file_name) * sizeof(char))) == NULL) */
+  /* 	exit(1); */
+  /*    read(fd, buffer, malloc_buff(ini->file_name)); */
+  /*     fd2 = open(ini->file_name2, O_RDWR | O_CREAT, 0555); */
+  /*     write(fd2, buffer, malloc_buff(ini->file_name)); */
+  /*     close(fd); */
+  /*     close(fd2); */
+  /*   } */
   if (ini->check.nb_redirection == -1)
     {
       tab_with_redirection(ini, ini->arg2);
