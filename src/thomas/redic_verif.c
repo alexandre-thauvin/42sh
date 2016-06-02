@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 16:11:26 2016 thomas lavigne
-** Last update Thu Jun  2 18:03:46 2016 thomas lavigne
+** Last update Thu Jun  2 23:49:51 2016 Benjamin Quastana
 */
 
 #include "shell.h"
@@ -53,25 +53,21 @@ int	check_error_redir(char *str)
   while (str && str[i] != 0)
     {
       if (str[i] == '<')
-	{
-	  if (pos == 2)
-	    {
-	      fprintf(stderr, "Ambiguous input redirect.\n");
-	      return (0);
-	    }
-	  else
-	    pos++;
-	}
+	if (pos == 2)
+	  {
+	    printf("Ambiguous input redirect.\n");
+	    return (0);
+	  }
+	else
+	  pos++;
       if (str[i] == '>')
-	{
-	  if (pos == 2)
-	    {
-	      fprintf(stderr, "Ambiguous output redirect.\n");
-	      return (0);
-	    }
-	  else
-	    pos++;
-	}
+	if (pos == 2)
+	  {
+	    printf("Ambiguous output redirect.\n");
+	    return (0);
+	  }
+	else
+	  pos++;
       i++;
     }
   return (0);
@@ -101,4 +97,9 @@ int	redir_verif(char *str, t_second *ini)
   else
     return (0);
   return (0);
+}
+
+int	main(int ac, char **av)
+{
+  check_error_redir(av[1]);
 }
