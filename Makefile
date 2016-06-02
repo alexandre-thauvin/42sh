@@ -1,11 +1,11 @@
 ##
 ## Makefile for  in /home/thauvi_a/rendu/Piscine_C_J10/lib/my
-## 
+##
 ## Made by alexandre thauvin
 ## Login   <thauvi_a@epitech.net>
-## 
+##
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Wed Jun  1 14:16:24 2016 thomas lavigne
+## Last update Thu Jun  2 10:21:51 2016 
 ##
 
 SRCS	=	src/alex/main.c			\
@@ -28,7 +28,7 @@ SRCS	=	src/alex/main.c			\
 		src/alex/five.c			\
 		src/thomas/alpha_num.c		\
 		src/tom/double.c		\
-		src/theo/my_free.c
+		src/theo/my_free.c		\
 
 NAME	= 42sh
 

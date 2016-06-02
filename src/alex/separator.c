@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 11:20:53 2016 Thauvin
-** Last update Wed Jun  1 12:11:19 2016 thomas lavigne
+** Last update Thu Jun  2 10:21:29 2016 
 */
 
 #include "shell.h"
@@ -73,10 +73,9 @@ int	normal(t_second *ini, t_env *ini2)
   else
     {
       double_pipe("reset", '&');
-      while (com != NULL)
+      while ((com = double_pipe(ini->commande, '&')) != NULL)
 	{
-	  if ((com = double_pipe(ini->commande, '&')) != NULL)
-	    if (ini->nb_and == 1)
+	  if (ini->nb_and == 1)
 	    {
 	      count_redirection(ini, com);
 	      count_pipe(com, ini);
@@ -84,6 +83,7 @@ int	normal(t_second *ini, t_env *ini2)
 	    }
 	  free(com);
 	}
+
     }
   return (0);
 }

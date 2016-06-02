@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Wed Jun  1 13:53:30 2016 Theo Labory
+** Last update Wed Jun  1 15:12:30 2016 
 */
 
 #ifndef SHELL_H_
@@ -272,6 +272,10 @@ int	check_if_and(char *, t_second *);
 int	alpha_num(char **, t_second *);
 char	*double_pipe(char *, char);
 
+/*
+ * echo.c
+ */
+void	builtin_echo(t_second *);
 	/* my_free.c */
 void	my_free(t_pipe *);
 #endif /* SHELL_H_ */
