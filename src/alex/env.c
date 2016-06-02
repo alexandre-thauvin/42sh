@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar 30 15:42:06 2016 Thauvin
-** Last update Tue May 31 20:06:00 2016 Thauvin
+** Last update Thu Jun  2 10:33:01 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -32,7 +32,7 @@ void	my_setenv(t_env *ini2, char **arg, t_second *ini)
     ini2->env2[z] = my_strcpy_update(ini2->env2[z], arg);
   if (arg[3] != NULL && arg[2] != NULL)
     {
-      ini->check2 = -1;
+      ini->error.check2 = -1;
       fprintf(stderr, "setenv : Too many arguments.\n");
       return ;
     }
@@ -100,7 +100,7 @@ void	pars_builtenv(t_env *ini2, char **arg, t_second *ini)
   get_cols_env(ini2->env2, ini2);
   if ((my_strcmp(arg[0], "unsetenv")) == 1)
     {
-      ini->zombie = 1;
+      ini->error.zombie = 1;
       if (arg[1] == NULL)
 	  write(2, "unsetenv: Too few arguments.\n", 29);
       else
@@ -108,12 +108,12 @@ void	pars_builtenv(t_env *ini2, char **arg, t_second *ini)
     }
   if ((my_strcmp(arg[0], "env")) == 1)
     {
-      ini->zombie = 1;
+      ini->error.zombie = 1;
       show_env(ini2->env2);
     }
   if ((my_strcmp(arg[0], "setenv")) == 1)
     {
-      ini->zombie = 1;
+      ini->error.zombie = 1;
       if (arg[1] == NULL)
 	show_env(ini2->env2);
       if (arg[1] != NULL)

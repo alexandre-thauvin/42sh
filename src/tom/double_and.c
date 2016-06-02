@@ -5,7 +5,7 @@
 ** Login   <lalagu_t@epitech.net>
 **
 ** Started on  Tue May  3 11:31:42 2016 Lalague-Dulac Tom
-** Last update Wed May 11 20:10:56 2016 Thauvin
+** Last update Thu Jun  2 10:43:50 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -58,12 +58,12 @@ int            check_if_and(char *str, t_second *ini)
     {
       if (str[ini->v] == '&' && str[ini->v + 1] == '&')
 	{
-	  ini->nb_and = 1;
+	  ini->check.nb_and = 1;
 	  return (0);
 	}
       ini->v++;
     }
-  ini->nb_and = 0;
+  ini->check.nb_and = 0;
   return (0);
 }
 
@@ -81,7 +81,7 @@ char		*double_and(char *str, t_second *ini)
   while (str && str[ini->v] != '\0')
     {
       check_if_and(str, ini);
-      if (ini->nb_and == 1)
+      if (ini->check.nb_and == 1)
 	{
 	  if ((ini->stock = help(str, ini->v, j, ini->stock)) == NULL)
 	    exit(-42);

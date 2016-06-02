@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Wed Jun  1 15:50:12 2016 thomas lavigne
+** Last update Thu Jun  2 10:40:05 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -13,7 +13,7 @@
 
 void	exec_redirec(t_second *ini, char **env, char **arg)
 {
-  if (ini->check == -1 && ini->relative == 0 && ini->s == 0 &&
+  if (ini->error.check == -1 && ini->relative == 0 && ini->s == 0 &&
       (my_strcmp("setenv", arg[0]) == 0) &&
       (my_strcmp("unsetenv", arg[0])) == 0 && (my_strcmp("env", arg[0]) == 0))
     {
@@ -25,7 +25,8 @@ void	exec_redirec(t_second *ini, char **env, char **arg)
       if ((my_strcmp("setenv", arg[0]) == 0) &&
 	  (my_strcmp("unsetenv", arg[0])) == 0 && (my_strcmp("env", arg[0]) == 0))
 	{
-	  if (ini->nb_redirection != 0 && ini->nb_redirection != -1)
+	  if (ini->check.nb_redirection != 0 &&
+	      ini->check.nb_redirection != -1)
 	    right_redirec(ini, env);
 	  all_exec(ini, env);
 	}
@@ -40,17 +41,17 @@ int	exec_cd(t_second *ini, char *commande, t_env *ini2)
       if (ini->arg[1] != NULL)
 	if (ini->arg[1][0] == '-')
 	  ini->u = 1;
-      ini->zombie = 1;
+      ini->error.zombie = 1;
       ini->s = 1;
       ini->vpath.path_cd = check_cd(ini->arg, ini->vpath.path_cd, ini2->env2);
       if (ini->u == 1)
-	ini->u = chdir(ini->oldpwd);
+	ini->u = chdir(ini->vpwd.oldpwd);
       else
 	ini->u = chdir(ini->vpath.path_cd);
       if (ini->u == -1)
 	if (ini->arg[1] != NULL)
 	  {
-	    ini->check2 = -1;
+	    ini->error.check2 = -1;
 	    fprintf(stderr, "%s: No such file or directory.\n", ini->arg[1]);
 	  }
       if (ini->u != 1)
@@ -75,7 +76,7 @@ void	ini_var_tab(char **env, t_env *ini2, t_second *ini)
 int	wait_in_fath(t_second *ini, char *commande, char **env, char **arg)
 {
   if (commande[0] != '/' && (commande[0] != '.' && commande[1] != '/'))
-    if ((ini->check = file_exist(ini)) == -1)
+    if ((ini->error.check = file_exist(ini)) == -1)
       return (0);
   if (ini->vpath.pathtemp != NULL)
     free(ini->vpath.PATH);
@@ -121,13 +122,13 @@ int		main(int ac, char **av, char **env)
       ini.commande = get_next_line(0);
       if (ini.commande == NULL)
 	{
-	  if (i != 0 && (ini.check2 == -1 || ini.check == -1))
+	  if (i != 0 && (ini.error.check2 == -1 || ini.error.check == -1))
 	    exit(1);
 	  else
 	    exit(0);
 	}
-      ini.nb_separator = count_separator(ini.commande);
-      if (ini.nb_separator != 0)
+      ini.check.nb_separator = count_separator(ini.commande);
+      if (ini.check.nb_separator != 0)
 	with_separator(&ini, &ini2);
       else
 	normal(&ini, &ini2);

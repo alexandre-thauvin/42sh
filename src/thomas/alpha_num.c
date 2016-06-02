@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Tue May 31 15:21:41 2016 thomas lavigne
-** Last update Wed Jun  1 10:39:01 2016 thomas lavigne
+** Last update Thu Jun  2 10:29:12 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -23,7 +23,7 @@ int	alpha_num2(char **arg, t_second *ini, int i)
 	{
 	  fprintf(stderr, "setenv: Variable name must contain ");
 	  fprintf(stderr, "alphanumeric characters.\n");
-	  ini->check = -1;
+	  ini->error.check = -1;
 	  return (-1);
 	}
       x++;
@@ -43,7 +43,7 @@ int	alpha_num(char **arg, t_second *ini)
 	  {
 	    fprintf(stderr, "setenv: Variable ");
 	    fprintf(stderr, "name must begin with a letter.\n");
-	    ini->check = -1;
+	    ini->error.check = -1;
 	    return (-1);
 	  }
       if (alpha_num2(arg, ini, i) == -1)

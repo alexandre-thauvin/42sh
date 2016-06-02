@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Wed Jun  1 15:42:09 2016 thomas lavigne
+** Last update Thu Jun  2 10:43:15 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -54,21 +54,21 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
   elem->arg = my_strduptab(str);
   ini->j = ini2->j = 0;
   ini_var_lanceur(ini, str, ini2);
-  /* if (ini->nb_redirection != 0) */
+  /* if (ini->check.nb_redirection != 0) */
   /*   { */
   /*     printf("ici\n"); */
   /*     tab_with_redirection(ini); */
   /*     elem->arg = ini->arg2; */
   /*   } */
   if (check_builtin(str, ini) == -1)
-    if ((ini->check = file_exist(ini)) == -1)
+    if ((ini->error.check = file_exist(ini)) == -1)
       {
 	fprintf(stderr, "%s: Command not found.\n", elem->arg[0]);
-	ini->nb_and = 0;
+	ini->check.nb_and = 0;
 	return (1);
       }
     else
-      elem->arg[0] = ini->vpath.PATHfinal[ini->check];
+      elem->arg[0] = ini->vpath.PATHfinal[ini->error.check];
   else
     elem->arg[0] = str;
   elem->next = *list;

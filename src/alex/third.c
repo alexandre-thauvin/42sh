@@ -5,29 +5,29 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr 10 18:19:32 2016 Thauvin
-** Last update Wed Jun  1 15:50:28 2016 thomas lavigne
+** Last update Thu Jun  2 10:44:47 2016 thomas lavigne
 */
 
 #include "shell.h"
 
 void	check_zomb(t_second *ini)
 {
-  ini->check2 = file_path_exist(ini->arg[0]);
-  if (ini->check2 != -1)
+  ini->error.check2 = file_path_exist(ini->arg[0]);
+  if (ini->error.check2 != -1)
     ini->relative = 1;
   else
-    ini->zombie = 1;
+    ini->error.zombie = 1;
 }
 
 void	error(t_second *ini, char *commande, t_env *ini2)
 {
-  if (ini->check != -1 && (commande[0] == '.' && commande[1] == '/'))
+  if (ini->error.check != -1 && (commande[0] == '.' && commande[1] == '/'))
     wait_in_fath(ini, commande, ini2->env2, ini->arg);
-  if ((ini->check2 == -1 || ini->check == -1 ||
-       (ini->vpath.pathtemp == NULL && ini->zombie == 0 &&
-	ini->check2 == -1)) && ini->zombie != 1)
+  if ((ini->error.check2 == -1 || ini->error.check == -1 ||
+       (ini->vpath.pathtemp == NULL && ini->error.zombie == 0 &&
+	ini->error.check2 == -1)) && ini->error.zombie != 1)
     {
-      ini->nb_and = 0;
+      ini->check.nb_and = 0;
       write(2, ini->arg[0], my_strlen(ini->arg[0]));
       write(2, ": Command not found.\n", my_strlen(": Command not found.\n"));
     }
@@ -44,14 +44,14 @@ int	check_courant(t_second *ini)
 
 void	exec_cd_tiret(t_second *ini)
 {
-  if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2)
+  if ((ini->vpwd.oldpwd = malloc((my_strlen(ini->vpwd.pwd) + 2)
 			    * sizeof(char))) == NULL)
     exit(1);
-  ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
-  free(ini->pwd);
-  if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
+  ini->vpwd.oldpwd = my_strcpy(ini->vpwd.oldpwd, ini->vpwd.pwd);
+  free(ini->vpwd.pwd);
+  if ((ini->vpwd.pwd = malloc(1024 * sizeof(char))) == NULL)
     exit(1);
-  getcwd(ini->pwd, 1024);
+  getcwd(ini->vpwd.pwd, 1024);
 }
 
 void	complete_pwd(t_second *ini)
@@ -64,14 +64,14 @@ void	complete_pwd(t_second *ini)
     exec_cd_tiret(ini);
   else
     {
-      if ((ini->oldpwd = malloc((my_strlen(ini->pwd) + 2)
+      if ((ini->vpwd.oldpwd = malloc((my_strlen(ini->vpwd.pwd) + 2)
 				* sizeof(char))) == NULL)
 	exit(1);
-      ini->oldpwd = my_strcpy(ini->oldpwd, ini->pwd);
-      free(ini->pwd);
-      if ((ini->pwd = malloc((my_strlen(ini->vpath.path_cd) + 1)
+      ini->vpwd.oldpwd = my_strcpy(ini->vpwd.oldpwd, ini->vpwd.pwd);
+      free(ini->vpwd.pwd);
+      if ((ini->vpwd.pwd = malloc((my_strlen(ini->vpath.path_cd) + 1)
 			     * sizeof(char))) == NULL)
 	exit(1);
-      ini->pwd = my_strcpy(ini->pwd, ini->vpath.path_cd);
+      ini->vpwd.pwd = my_strcpy(ini->vpwd.pwd, ini->vpath.path_cd);
     }
 }

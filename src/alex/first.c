@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Wed Jun  1 15:51:01 2016 thomas lavigne
+** Last update Thu Jun  2 10:41:27 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -29,7 +29,7 @@ int	file_exist(t_second *ini)
 	return (a);
       a++;
     }
-  ini->nb_and = 0;
+  ini->check.nb_and = 0;
   return (-1);
 }
 
@@ -68,7 +68,7 @@ void		ini_var_lanceur(t_second *ini, char *commande, t_env *ini2)
   int	cols_PATH;
 
   ini->vpath.pathtemp = cpy_path(ini2->env2);
-  ini->check2 = ini->check = ini->relative = ini->s = 0;
+  ini->error.check2 = ini->error.check = ini->relative = ini->s = 0;
   ini->rows_arg = getrows_tab(commande);
   if (ini->vpath.pathtemp != NULL)
     {
@@ -87,29 +87,29 @@ void		ini_var_lanceur(t_second *ini, char *commande, t_env *ini2)
 				      ini->vpath.pathtemp, ini->arg);
     }
   if (ini->arg[0][0] == 0)
-    ini->zombie = 1;
+    ini->error.zombie = 1;
 }
 
 int		lanceur(char *commande, t_env *ini2, t_second *ini)
 {
   static int	z = 0;
 
-  ini->zombie = 0;
+  ini->error.zombie = 0;
   if (z == 0)
     {
-      if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
+      if ((ini->vpwd.pwd = malloc(1024 * sizeof(char))) == NULL)
 	exit(1);
-      getcwd(ini->pwd, 1024);
+      getcwd(ini->vpwd.pwd, 1024);
     }
   z++;
-  if (ini->nb_pipe != 0)
+  if (ini->check.nb_pipe != 0)
   {
     create_tab(commande, ini, ini2);
     return (0);
   }
   ini_and_builtin(commande, ini2, ini);
   if (ini->arg[0][0] == '.' && ini->arg[0][1] == '/')
-    ini->check = check_courant(ini);
+    ini->error.check = check_courant(ini);
   else
     lanceur_commande(commande, ini2, ini);
   error(ini, commande, ini2);

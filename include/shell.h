@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Wed Jun  1 15:51:28 2016 thomas lavigne
+** Last update Thu Jun  2 10:44:30 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -44,9 +44,20 @@ typedef struct		s_error
   int			zombie;
 }			t_error;
 
+typedef struct		s_check
+{
+  int			nb_separator;
+  int			nb_redirection;
+  int			nb_pipe;
+  int			nb_and;
+}			t_check;
+
 typedef struct		s_second
 {
   struct s_path		vpath;
+  struct s_pwd		vpwd;
+  struct s_error	error;
+  struct s_check	check;
   pid_t			pid;
   pid_t			cpid;
   int			status;
@@ -54,24 +65,14 @@ typedef struct		s_second
   int			u;
   char			**arg;
   int			rows_arg;
-  int			check;
   int			check_ex;
   int			relative;
   int			z;
-  int			zombie;
-  int			check2;
   int			courant;
-  char			*pwd;
-  char			*oldpwd;
-  char			*dest;
   char			*commande;
-  int			nb_separator;
-  int			nb_redirection;
   char			**arg2;
   char			*file_name;
   int			j;
-  int			nb_pipe;
-  int			nb_and;
   char			*stock;
   int			v;
 }			t_second;
