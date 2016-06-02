@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Thu Jun  2 11:08:59 2016 
+** Last update Thu Jun  2 17:31:44 2016 Theo Labory
 */
 
 #include <stdio.h>
@@ -17,7 +17,7 @@ void	all_exec(t_second *ini, char **env)
 
   if (ini->check.nb_redirection == -1)
     {
-      tab_with_redirection(ini);
+      tab_with_redirection(ini, ini->arg2);
       fd = open(ini->file_name, O_RDWR | O_CREAT, 0555);
       dup2(fd, 0);
       execve(ini->arg[0], ini->arg2, env);
@@ -62,7 +62,7 @@ void	right_redirec(t_second *ini, char **env)
 
   if (ini->check.nb_redirection == 1)
     {
-      tab_with_redirection(ini);
+      tab_with_redirection(ini, ini->arg2);
       fd = open(ini->file_name, O_RDWR | O_CREAT, 0777);
     }
   else

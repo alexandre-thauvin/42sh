@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 18:35:25 2016 Thauvin
-** Last update Thu Jun  2 10:40:26 2016 thomas lavigne
+** Last update Thu Jun  2 17:42:06 2016 Theo Labory
 */
 
 #include "shell.h"
@@ -20,7 +20,7 @@ int	check_arg_redirec(t_second *ini, int z)
   return (0);
 }
 
-int	tab_with_redirection(t_second *ini)
+char	**tab_with_redirection(t_second *ini, char **arg2)
 {
   int	z;
 
@@ -28,23 +28,23 @@ int	tab_with_redirection(t_second *ini)
   while (ini->arg[z] != NULL)
     z++;
   z = z - 2;
-  ini->arg2 = malloc2d(ini->arg2, z, 100);
+  arg2 = malloc2d(arg2, z, 100);
   z = 0;
   while (ini->arg[z] != NULL && ini->arg[z][0] != '>' &&
-	 ini->arg2[z] != NULL && ini->arg[z][0] != '<')
+	 arg2[z] != NULL && ini->arg[z][0] != '<')
     {
-      ini->arg2[z] = my_strcpy(ini->arg2[z], ini->arg[z]);
+      arg2[z] = my_strcpy(arg2[z], ini->arg[z]);
       z++;
     }
-  ini->arg2[z] = NULL;
+  arg2[z] = NULL;
   if ((check_arg_redirec(ini, z)) == -1)
-    return (0);
+      return (NULL);
   if ((ini->file_name = malloc((my_strlen(ini->arg[z + 1]) + 1)
 			       * sizeof(char))) == NULL)
     exit(1);
   ini->file_name = my_strcpy(ini->file_name, ini->arg[z + 1]);
   ini->arg[z] = NULL;
-  return (0);
+  return (arg2);
 }
 
 void	count_redirection(t_second *ini, char *commande)

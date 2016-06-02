@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Wed Jun  1 14:14:43 2016 thomas lavigne
+** Last update Thu Jun  2 17:32:58 2016 Theo Labory
 */
 
 #include <stdio.h>
@@ -15,13 +15,24 @@
 
 void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2, t_second *ini)
 {
+  int	fd2;
+  
   dup2(*fd, 0);
   *fd = *fd;
   if (list->next != NULL)
     dup2(p[1], 1);
   close(p[0]);
   if (check_builtin(list->arg[0], ini) == -1)
-    execve(list->arg[0], list->arg, NULL);
+    {
+      if (ini->check.nb_redirection != 0)
+	{
+	  fd2 = open(ini->file_name, O_RDWR);
+	  dup2(fd2, 0);
+	  execve(list->arg[0], list->arg, NULL);
+	}
+      else
+	execve(list->arg[0], list->arg, NULL);
+    }
   else
       ini_and_builtin(list->arg[0], ini2, ini); /* ICI THAUVIN */
   exit(EXIT_FAILURE);

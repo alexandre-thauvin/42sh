@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Thu Jun  2 11:08:27 2016 
+** Last update Thu Jun  2 17:30:29 2016 Theo Labory
 */
 
 #ifndef SHELL_H_
@@ -244,7 +244,7 @@ void	with_separator(t_second *, t_env *);
 /*
 ** redirection.c
 */
-int	tab_with_redirection(t_second *);
+char	**tab_with_redirection(t_second *, char **);
 int	check_arg_redirec(t_second *, int);
 void	count_redirection(t_second *, char *);
 
