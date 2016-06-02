@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Thu Jun  2 10:41:27 2016 thomas lavigne
+** Last update Thu Jun  2 20:29:12 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -19,7 +19,7 @@ int	file_exist(t_second *ini)
   z = -1;
   if (ini->vpath.pathtemp == NULL)
     return (-1);
-  z = access(ini->arg[0], F_OK);
+  z = access(ini->comm.arg[0], F_OK);
   if (z == 0)
     return (0);
   while (z != 0 && ini->vpath.PATHfinal[a] != NULL)
@@ -77,16 +77,16 @@ void		ini_var_lanceur(t_second *ini, char *commande, t_env *ini2)
       ini->vpath.PATH = mallocdest(ini->vpath.PATH, rows_PATH, cols_PATH);
       ini->vpath.PATH = my_strdup2d(ini->vpath.pathtemp);
     }
-  ini->arg = ma2d(ini->arg, ini->rows_arg, commande);
-  ini->arg = my_strduptab(commande);
+  ini->comm.arg = ma2d(ini->comm.arg, ini->rows_arg, commande);
+  ini->comm.arg = my_strduptab(commande);
   if (ini->vpath.pathtemp != NULL)
     {
       ini->vpath.PATHfinal = ma(ini->vpath.PATHfinal, rows_PATH,
-			  cols_PATH, ini->arg);
+			  cols_PATH, ini->comm.arg);
       ini->vpath.PATHfinal = my_strdup_path(ini->vpath.PATH,
-				      ini->vpath.pathtemp, ini->arg);
+				      ini->vpath.pathtemp, ini->comm.arg);
     }
-  if (ini->arg[0][0] == 0)
+  if (ini->comm.arg[0][0] == 0)
     ini->error.zombie = 1;
 }
 
@@ -108,10 +108,10 @@ int		lanceur(char *commande, t_env *ini2, t_second *ini)
     return (0);
   }
   ini_and_builtin(commande, ini2, ini);
-  if (ini->arg[0][0] == '.' && ini->arg[0][1] == '/')
+  if (ini->comm.arg[0][0] == '.' && ini->comm.arg[0][1] == '/')
     ini->error.check = check_courant(ini);
   else
     lanceur_commande(commande, ini2, ini);
   error(ini, commande, ini2);
-  return (ini->check_ex);
+  return (ini->error.check_ex);
 }

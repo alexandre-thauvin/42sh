@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Thu Jun  2 18:15:38 2016 Alexandre Thauvin
+** Last update Thu Jun  2 20:16:00 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -37,31 +37,31 @@ void	all_exec(t_second *ini, char **env)
 
   /* if (ini->check.nb_redirection == -2) */
   /*   { */
-  /*     fd = open(ini->file_name, O_RDWR); */
-  /*     if ((buffer = malloc(malloc_buff(ini->file_name) * sizeof(char))) == NULL) */
+  /*     fd = open(ini->comm.file_name, O_RDWR); */
+  /*     if ((buffer = malloc(malloc_buff(ini->comm.file_name))) == NULL) */
   /* 	exit(1); */
-  /*    read(fd, buffer, malloc_buff(ini->file_name)); */
-  /*     fd2 = open(ini->file_name2, O_RDWR | O_CREAT, 0555); */
-  /*     write(fd2, buffer, malloc_buff(ini->file_name)); */
+  /*    read(fd, buffer, malloc_buff(ini->comm.file_name)); */
+  /*     fd2 = open(ini->comm.file_name2, O_RDWR | O_CREAT, 0555); */
+  /*     write(fd2, buffer, malloc_buff(ini->comm.file_name)); */
   /*     close(fd); */
   /*     close(fd2); */
   /*   } */
   if (ini->check.nb_redirection == -1)
     {
-      tab_with_redirection(ini, ini->arg2);
-      fd = open(ini->file_name, O_RDWR | O_CREAT, 0555);
+      tab_with_redirection(ini, ini->comm.arg2);
+      fd = open(ini->comm.file_name, O_RDWR | O_CREAT, 0555);
       dup2(fd, 0);
-      execve(ini->arg[0], ini->arg2, env);
+      execve(ini->comm.arg[0], ini->comm.arg2, env);
     }
   if (ini->error.check == -2)
-    execve(ini->arg[0], ini->arg, env);
-  if (ini->arg[0][0] == '.' && ini->arg[0][1] == '/')
-    execve(ini->arg[0], ini->arg, env);
+    execve(ini->comm.arg[0], ini->comm.arg, env);
+  if (ini->comm.arg[0][0] == '.' && ini->comm.arg[0][1] == '/')
+    execve(ini->comm.arg[0], ini->comm.arg, env);
   if (ini->relative == 1)
-    execve(ini->arg[0], ini->arg, env);
+    execve(ini->comm.arg[0], ini->comm.arg, env);
   if (ini->relative == 0)
-      execve(ini->vpath.PATHfinal[ini->error.check], ini->arg, env);
-  free(ini->arg);
+      execve(ini->vpath.PATHfinal[ini->error.check], ini->comm.arg, env);
+  free(ini->comm.arg);
   if (ini->vpath.pathtemp != NULL)
     free(ini->vpath.PATHfinal);
 }
@@ -74,16 +74,16 @@ void	control_reach()
 void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)
 {
   if (ini->error.zombie == 0 && ini->vpath.pathtemp != NULL)
-      wait_in_fath(ini, commande, ini2->env2, ini->arg);
+      wait_in_fath(ini, commande, ini2->env2, ini->comm.arg);
   if (ini->error.check2 != -1 && ini->vpath.pathtemp == NULL &&
       ini->error.zombie == 0)
-    wait_in_fath(ini, commande, ini2->env2, ini->arg);
+    wait_in_fath(ini, commande, ini2->env2, ini->comm.arg);
 }
 
 void	ini_and_builtin(char *commande, t_env *ini2, t_second *ini)
 {
   ini_var_lanceur(ini, commande, ini2);
-  pars_builtenv(ini2, ini->arg, ini);
+  pars_builtenv(ini2, ini->comm.arg, ini);
   exec_cd(ini, commande, ini2);
 }
 
@@ -93,14 +93,14 @@ void	right_redirec(t_second *ini, char **env)
 
   if (ini->check.nb_redirection == 1)
     {
-      tab_with_redirection(ini, ini->arg2);
-      fd = open(ini->file_name, O_RDWR | O_CREAT, 0777);
+      tab_with_redirection(ini, ini->comm.arg2);
+      fd = open(ini->comm.file_name, O_RDWR | O_CREAT, 0777);
     }
   else
     {
       /* refaire le tab redirection avec la double */
-      fd = open(ini->file_name, O_RDWR | O_CREAT | O_APPEND, 0666);
+      fd = open(ini->comm.file_name, O_RDWR | O_CREAT | O_APPEND, 0666);
     }
   dup2(fd, 1);
-  execve(ini->arg[0], ini->arg2, env);
+  execve(ini->comm.arg[0], ini->comm.arg2, env);
 }

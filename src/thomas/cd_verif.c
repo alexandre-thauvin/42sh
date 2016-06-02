@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 19:28:39 2016 thomas lavigne
-** Last update Thu Jun  2 19:41:30 2016 thomas lavigne
+** Last update Thu Jun  2 20:44:29 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -23,11 +23,16 @@ int	perm(mode_t const mode)
   return (0);
 }
 
-int	cd_perm(char *str)
+int	cd_perm(char *str, t_second *ini)
 {
   struct stat buf;
 
-  stat(str, &buf);
+  ini->error.check2 = -1;
+  if (stat(str, &buf) == -1)
+    {
+      fprintf(stderr, "%s: No such file or directory.\n", ini->comm.arg[1]);
+      return (1);
+    }
   if (perm(buf.st_mode) == 1)
     {
       fprintf(stderr, "%s: Permission denied.\n", str);

@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Thu Jun  2 17:32:58 2016 Theo Labory
+** Last update Thu Jun  2 19:59:35 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -26,7 +26,7 @@ void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2, t_second *ini)
     {
       if (ini->check.nb_redirection != 0)
 	{
-	  fd2 = open(ini->file_name, O_RDWR);
+	  fd2 = open(ini->comm.file_name, O_RDWR);
 	  dup2(fd2, 0);
 	  execve(list->arg[0], list->arg, NULL);
 	}

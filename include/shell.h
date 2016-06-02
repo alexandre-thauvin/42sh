@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Thu Jun  2 19:40:03 2016 thomas lavigne
+** Last update Thu Jun  2 20:51:55 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -41,6 +41,8 @@ typedef struct		s_error
 {
   int			check;
   int			check2;
+  int			check_ex;
+  int			status;
   int			zombie;
 }			t_error;
 
@@ -52,30 +54,28 @@ typedef struct		s_check
   int			nb_and;
 }			t_check;
 
+typedef struct		s_comm
+{
+  char			*file_name2;
+  char			*file_name;
+  char			*commande;
+  char			**arg;
+  char			**arg2;
+}			t_comm;
+
 typedef struct		s_second
 {
   struct s_path		vpath;
   struct s_pwd		vpwd;
   struct s_error	error;
   struct s_check	check;
-  char			*file_name2;
+  struct s_comm		comm;
   pid_t			pid;
   pid_t			cpid;
-  int			status;
   int			s;
   int			u;
-  char			**arg;
   int			rows_arg;
-  int			check_ex;
   int			relative;
-  int			z;
-  int			courant;
-  char			*commande;
-  char			**arg2;
-  char			*file_name;
-  int			j;
-  char			*stock;
-  int			v;
 }			t_second;
 
 typedef struct		s_benji
@@ -325,6 +325,6 @@ int	my_put_in_next(char *, t_second *, t_pipe *);
 /*
 ** verif_cd.c
 */
-int	cd_perm(char *);
+int	cd_perm(char *, t_second *);
 
 #endif /* SHELL_H_ */

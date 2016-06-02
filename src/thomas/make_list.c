@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Thu Jun  2 17:39:52 2016 Theo Labory
+** Last update Thu Jun  2 20:49:21 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -31,7 +31,7 @@ int	check_builtin(char *str, t_second *ini)
     return (0);
   else if (str[i] == 'e' && str[i + 1] == 'x' && str[i + 2] == 'i' &&
 	   str[i + 3] == 't')
-    check_exit(ini->arg, ini->rows_arg);
+    check_exit(ini->comm.arg, ini->rows_arg);
   else if (str[i] == 'c' && str[i + 1] == 'd')
     return (0);
   else
@@ -55,11 +55,10 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
       elem->arg = ma2d(elem->arg, getrows_tab(str), str);
       elem->arg = my_strduptab(str);
     }
-  ini->j = ini2->j = 0;
   ini_var_lanceur(ini, str, ini2);
   if (ini->check.nb_redirection != 0)
     {
-      ini->arg= my_strduptab(str);
+      ini->comm.arg= my_strduptab(str);
       elem->arg = tab_with_redirection(ini, elem->arg);
       elem->arg[0] = ini->vpath.PATHfinal[ini->error.check];
     }

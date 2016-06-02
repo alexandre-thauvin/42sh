@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Thu Jun  2 11:09:39 2016 
+** Last update Thu Jun  2 20:48:45 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -30,7 +30,7 @@ void	with_separator(t_second *ini, t_env *ini2)
 
   while (ini->check.nb_separator >= 0)
     {
-      pars_commande(ini->commande, ini);
+      pars_commande(ini->comm.commande, ini);
       if (ini->vpwd.dest != NULL && ini->vpwd.dest[0] != 0)
 	{
 	  count_and(ini->vpwd.dest, ini);
@@ -66,19 +66,19 @@ int	normal(t_second *ini, t_env *ini2)
 {
   char	*com;
 
-  if (ini->commande[0] == 0)
+  if (ini->comm.commande[0] == 0)
     return (0);
-  count_and(ini->commande, ini);
+  count_and(ini->comm.commande, ini);
   if (ini->check.nb_and == 0)
     {
-      count_redirection(ini, ini->commande);
-      count_pipe(ini->commande, ini);
-      lanceur(ini->commande, ini2, ini);
+      count_redirection(ini, ini->comm.commande);
+      count_pipe(ini->comm.commande, ini);
+      lanceur(ini->comm.commande, ini2, ini);
     }
   else
     {
       double_pipe("reset", '&');
-      while ((com = double_pipe(ini->commande, '&')) != NULL)
+      while ((com = double_pipe(ini->comm.commande, '&')) != NULL)
 	{
 	  if (ini->check.nb_and == 1)
 	    {
@@ -113,8 +113,9 @@ char		*pars_commande(char *commande, t_second *ini)
 {
   static int	z = 0;
   static int	i = 0;
+  int		j;
 
-  ini->j = 0;
+  j = 0;
   while (commande[z] != ';' && commande[z] != '\0')
       z++;
   z++;
@@ -124,16 +125,16 @@ char		*pars_commande(char *commande, t_second *ini)
     {
       if (commande[i] == '\0')
 	{
-	  ini->vpwd.dest[ini->j] = '\0';
+	  ini->vpwd.dest[j] = '\0';
 	  i = 0;
 	  z = 0;
 	  return (ini->vpwd.dest);
 	}
-      ini->vpwd.dest[ini->j] = commande[i];
-      ini->j++;
+      ini->vpwd.dest[j] = commande[i];
+      j++;
       i++;
     }
-  ini->vpwd.dest[ini->j] = '\0';
+  ini->vpwd.dest[j] = '\0';
   i++;
   return (ini->vpwd.dest);
 }

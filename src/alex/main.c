@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu Jun  2 19:40:20 2016 thomas lavigne
+** Last update Thu Jun  2 20:52:30 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -17,7 +17,7 @@ void	exec_redirec(t_second *ini, char **env, char **arg)
       (my_strcmp("setenv", arg[0]) == 0) &&
       (my_strcmp("unsetenv", arg[0])) == 0 && (my_strcmp("env", arg[0]) == 0))
     {
-      write(2, ini->arg[0], my_strlen(ini->arg[0]));
+      write(2, ini->comm.arg[0], my_strlen(ini->comm.arg[0]));
       write(2, ": Command not found.\n", my_strlen(": Command not found.\n"));
     }
   else
@@ -35,33 +35,28 @@ void	exec_redirec(t_second *ini, char **env, char **arg)
 
 int	exec_cd(t_second *ini, char *commande, t_env *ini2)
 {
-  if (ini->arg[0][0] == 'c' && ini->arg[0][1] == 'd')
+  if (ini->comm.arg[0][0] == 'c' && ini->comm.arg[0][1] == 'd')
     {
       ini->u = 0;
-      if (ini->arg[1] != NULL)
-	if (ini->arg[1][0] == '-')
+      if (ini->comm.arg[1] != NULL)
+	if (ini->comm.arg[1][0] == '-')
 	  ini->u = 1;
       ini->error.zombie = 1;
       ini->s = 1;
-      ini->vpath.path_cd = check_cd(ini->arg, ini->vpath.path_cd, ini2->env2);
+      ini->vpath.path_cd = check_cd(ini->comm.arg,
+				    ini->vpath.path_cd, ini2->env2);
       if (ini->u == 1)
-	{
-	  if (cd_perm(ini->vpwd.oldpwd) != 1) ini->u = chdir(ini->vpwd.oldpwd);
-	}
+	ini->u = chdir(ini->vpwd.oldpwd);
       else
-	if (cd_perm(ini->vpath.path_cd) != 1)
-	  ini->u = chdir(ini->vpath.path_cd);
+	ini->u = chdir(ini->vpath.path_cd);
       if (ini->u == -1)
-	if (ini->arg[1] != NULL)
-	  {
-	    ini->error.check2 = -1;
-	    fprintf(stderr, "%s: No such file or directory.\n", ini->arg[1]);
-	  }
+	if (ini->comm.arg[1] != NULL)
+	  cd_perm(ini->vpath.path_cd, ini);
       if (ini->u != 1)
 	complete_pwd(ini);
     }
-  if ((ini->check_ex = check_exit(ini->arg, ini->rows_arg)) != 0)
-    exit(ini->check_ex);
+  if ((ini->error.check_ex = check_exit(ini->comm.arg, ini->rows_arg)) != 0)
+    exit(ini->error.check_ex);
   if (commande[0] == '/')
     check_zomb(ini);
   return (0);
@@ -72,7 +67,7 @@ void	ini_var_tab(char **env, t_env *ini2, t_second *ini)
   get_rows_env(env, ini2);
   get_cols_env(env, ini2);
   ini2->env2 = malloc2d(ini2->env2, ini2->rows, ini2->cols);
-  ini2->env2 = strdup2d(ini2->env2, env, ini->arg, 0);
+  ini2->env2 = strdup2d(ini2->env2, env, ini->comm.arg, 0);
   ini2->z++;
 }
 
@@ -87,15 +82,14 @@ int	wait_in_fath(t_second *ini, char *commande, char **env, char **arg)
   if (ini->pid == -1)
     write(2, "erreur\n", my_strlen("erreur fork\n"));
   if (ini->pid == 0)
-    {
-      exec_redirec(ini, env, arg);
-    }
+    exec_redirec(ini, env, arg);
   if (ini->pid != 0 && ini->pid != -1)
     {
-      if (ini->check_ex != 0)
-	exit(ini->check_ex);
-      ini->cpid = waitpid(ini->pid, &ini->status, 0);
-      if (ini->status == 11 || ini->status == 139 || ini->status == SIGSEGV)
+      if (ini->error.check_ex != 0)
+	exit(ini->error.check_ex);
+      ini->cpid = waitpid(ini->pid, &ini->error.status, 0);
+      if (ini->error.status == 11 || ini->error.status == 139 ||
+	  ini->error.status == SIGSEGV)
 	write(2, "Segmentation fault\n", 19);
       if (ini->cpid != ini->pid)
 	kill(ini->cpid, SIGKILL);
@@ -122,15 +116,15 @@ int		main(int ac, char **av, char **env)
     {
       if (isatty(0) == 1)
 	write(1, "$>", 2);
-      ini.commande = get_next_line(0);
-      if (ini.commande == NULL)
+      ini.comm.commande = get_next_line(0);
+      if (ini.comm.commande == NULL)
 	{
 	  if (i != 0 && (ini.error.check2 == -1 || ini.error.check == -1))
 	    exit(1);
 	  else
 	    exit(0);
 	}
-      ini.check.nb_separator = count_separator(ini.commande);
+      ini.check.nb_separator = count_separator(ini.comm.commande);
       if (ini.check.nb_separator != 0)
 	with_separator(&ini, &ini2);
       else
