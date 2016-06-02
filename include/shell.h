@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Thu Jun  2 18:16:23 2016 Alexandre Thauvin
+** Last update Thu Jun  2 19:40:03 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -321,5 +321,10 @@ void	my_free(t_pipe *);
 ** exec_next.c
 */
 int	my_put_in_next(char *, t_second *, t_pipe *);
+
+/*
+** verif_cd.c
+*/
+int	cd_perm(char *);
 
 #endif /* SHELL_H_ */

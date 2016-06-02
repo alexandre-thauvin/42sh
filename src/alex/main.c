@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu Jun  2 10:40:05 2016 thomas lavigne
+** Last update Thu Jun  2 19:40:20 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -45,9 +45,12 @@ int	exec_cd(t_second *ini, char *commande, t_env *ini2)
       ini->s = 1;
       ini->vpath.path_cd = check_cd(ini->arg, ini->vpath.path_cd, ini2->env2);
       if (ini->u == 1)
-	ini->u = chdir(ini->vpwd.oldpwd);
+	{
+	  if (cd_perm(ini->vpwd.oldpwd) != 1) ini->u = chdir(ini->vpwd.oldpwd);
+	}
       else
-	ini->u = chdir(ini->vpath.path_cd);
+	if (cd_perm(ini->vpath.path_cd) != 1)
+	  ini->u = chdir(ini->vpath.path_cd);
       if (ini->u == -1)
 	if (ini->arg[1] != NULL)
 	  {
