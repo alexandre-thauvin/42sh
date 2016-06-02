@@ -1,11 +1,11 @@
 /*
-** shell.h for  in /home/thauvi_a/rendu/shell/PSU_2015_minishell1/include
+** shell.h for  in /home/thauvi_a/rendu/PSU_2015_42sh
 **
-** Made by Thauvin
+** Made by
 ** Login   <thauvi_a@epitech.net>
 **
-** Started on  Thu Jan 21 16:37:27 2016 Thauvin
-** Last update Wed Jun  1 15:12:30 2016 
+** Started on  Thu Jun  2 11:07:47 2016
+** Last update Thu Jun  2 11:08:27 2016 
 */
 
 #ifndef SHELL_H_
@@ -26,9 +26,6 @@ typedef struct		s_path
 {
   char                  **PATH;
   char                  **PATHfinal;
-  int			rows_PATH;
-  int			cols_PATH;
-  char			*PATHok;
   char			*path_cd;
   char			*pathtemp;
 }			t_path;
@@ -47,38 +44,35 @@ typedef struct		s_error
   int			zombie;
 }			t_error;
 
+typedef struct		s_check
+{
+  int			nb_separator;
+  int			nb_redirection;
+  int			nb_pipe;
+  int			nb_and;
+}			t_check;
+
 typedef struct		s_second
 {
+  struct s_path		vpath;
+  struct s_pwd		vpwd;
+  struct s_error	error;
+  struct s_check	check;
   pid_t			pid;
   pid_t			cpid;
   int			status;
   int			s;
   int			u;
-  char			**PATH;
   char			**arg;
-  char			**PATHfinal;
   int			rows_arg;
-  char			*PATHok;
-  int			check;
   int			check_ex;
   int			relative;
-  char			*path_cd;
   int			z;
-  int			zombie;
-  char			*pathtemp;
-  int			check2;
   int			courant;
-  char			*pwd;
-  char			*oldpwd;
-  char			*dest;
   char			*commande;
-  int			nb_separator;
-  int			nb_redirection;
   char			**arg2;
   char			*file_name;
   int			j;
-  int			nb_pipe;
-  int			nb_and;
   char			*stock;
   int			v;
 }			t_second;
@@ -159,99 +153,131 @@ typedef struct		s_env
   char	**env2;
 }			t_env;
 
-	/* cd_ok.c */
+/*
+** cd_ok.c
+*/
 char	*pars_home(char **, char *);
 char	*my_strcpy_norm(char *, char *);
 char	*check_cd(char **, char *, char **);
 char	*cpy_tab_path(t_var_cd *, char **, char *);
 void	ini_var_cd(t_var_cd *);
 
-	/* check_path.c */
+/*
+** check_path.c
+*/
 int	check_exit(char **, int);
 int	file_path_exist(char *);
 char	**ma(char **, int, int, char **);
 char	**my_strdup_path(char **, char *, char **);
 void	ini_var_strdup(t_tab3 *, char *, char **);
 
-	/* first.c */
+/*
+** first.c
+*/
 int	my_strlenPATH(char *);
-char	*cpy_path(char **);
 int	lanceur(char *, t_env *, t_second *);
 int	file_exist(t_second *);
+char	*cpy_path(char **);
 void	ini_var_lanceur(t_second *, char *, t_env *);
 
-	/* tab_path.c */
+/*
+** tab_path.c
+*/
 int	getcols(char *);
 int	getrows(char *);
 char	**mallocdest(char **, int, int);
 char	**my_strdup2d(char *);
 
-	/* tab_arg.c */
+/*
+** tab_arg.c
+*/
 char	**my_strduptab(char *);
 char	**ma2d(char **, int, char *);
 int	getrows_tab(char *);
 void	end_string(t_tab2 *);
 void	ini_var_strduptab(t_tab2 *, char *);
 
-	/* main.c */
+/*
+** main.c
+*/
 void	exec_redirec(t_second *, char **, char **);
 int	wait_in_fath(t_second *, char *, char **, char **);
-void	ini_var_tab(char **, t_env *, t_second *);
 int	exec_cd(t_second *, char *, t_env *);
+void	ini_var_tab(char **, t_env *, t_second *);
 
-	/* env2.c */
+/*
+** env2.c
+*/
 void	get_rows_env(char **, t_env *);
 void	get_cols_env(char **, t_env *);
 int	strcmp_env(char **, char *);
 char	**strdup2d(char **, char **, char **, int);
 char	*my_strcpy_update(char *, char **);
 
-	/* env.c */
+/*
+** env.c
+*/
 void	my_setenv(t_env *, char **, t_second *);
 void	pars_builtenv(t_env *, char **, t_second *);
 void	my_unenv(t_env *, char **);
 void	strdup2d_env(t_env *, int);
 void	show_env(char **);
 
-	/* third.c */
+/*
+** third.c
+*/
 int	check_courant(t_second *);
 void	complete_pwd(t_second *);
 void	error(t_second *, char *, t_env *);
 void	check_zomb(t_second *);
 void	exec_cd_tiret(t_second *);
 
-	/* separator.c */
+/*
+** separator.c
+*/
 int	count_separator(char *);
+int	normal(t_second *, t_env *);
 char	*pars_commande(char *, t_second *);
 void	count_pipe(char *, t_second *);
-int	normal(t_second *, t_env *);
 void	with_separator(t_second *, t_env *);
 
-	/* redirection.c */
+/*
+** redirection.c
+*/
 int	tab_with_redirection(t_second *);
-void	count_redirection(t_second *, char *);
 int	check_arg_redirec(t_second *, int);
+void	count_redirection(t_second *, char *);
 
-	/* four.c */
+/*
+** four.c
+*/
 void	control_reach();
 void	all_exec(t_second *, char **);
 void	lanceur_commande(char *, t_env *, t_second *);
 void	ini_and_builtin(char *, t_env *, t_second *);
 void	right_redirec(t_second *, char **);
 
-	/* five.c */
+/*
+**five.c
+*/
 void	compar_ma2d(t_var_malloc *, char *);
 void	count_and(char *, t_second *);
 
-	/* lib/my/my_printf.c */
+/*
+** lib/my/my_printf.c
+*/
 int	my_printf(const char*, ...);
 
-        /*parse_buff.c */
+/*
+**parse_buff.c
+*/
 void	create_tab(char *, t_second *, t_env *);
 int	count_pipes(char *);
 int	my_strlen_space(char *, int);
 
-	/* make_list.c */
+/*
+** make_list.c
+*/
 void	pipe_toto(char **, t_second *, t_env *);
 int	make_list(t_pipe **, char **, t_second *, t_env *);
 int	my_tablen(char **);
@@ -259,23 +285,39 @@ int	my_put_in_list(struct s_pipe **, char *, t_second *, t_env *);
 int	check_builtin(char *, t_second *);
 char	*catch_name(char *);
 
-	/* pipe_exec.c */
+/*
+** pipe_exec.c
+*/
 void	pipe_exec2(int *, int p[2], t_pipe *, t_env *, t_second *);
 void	pipe_exec(t_pipe *, t_env *, t_second *);
 
-	/* double_and.c */
+/*
+** double_and.c
+*/
 int	imy_strlenps(char *, int, char);
+int	check_if_and(char *, t_second *);
 char	*help(char *, int, int , char *);
 char	*catch(char *, int, t_second *);
 char	*double_and(char *, t_second *);
-int	check_if_and(char *, t_second *);
+
+/*
+** alpha_num.c
+*/
 int	alpha_num(char **, t_second *);
+
+/*
+** double.c
+*/
 char	*double_pipe(char *, char);
 
 /*
- * echo.c
- */
-void	builtin_echo(t_second *);
-	/* my_free.c */
+**my_free.c
+*/
 void	my_free(t_pipe *);
+
+/*
+** exec_next.c
+*/
+int	my_put_in_next(char *, t_second *, t_pipe *);
+
 #endif /* SHELL_H_ */

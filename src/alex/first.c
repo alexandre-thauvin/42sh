@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Wed Jun  1 11:28:28 2016 thomas lavigne
+** Last update Thu Jun  2 10:41:27 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -17,19 +17,19 @@ int	file_exist(t_second *ini)
 
   a = 0;
   z = -1;
-  if (ini->pathtemp == NULL)
+  if (ini->vpath.pathtemp == NULL)
     return (-1);
   z = access(ini->arg[0], F_OK);
   if (z == 0)
     return (0);
-  while (z != 0 && ini->PATHfinal[a] != NULL)
+  while (z != 0 && ini->vpath.PATHfinal[a] != NULL)
     {
-      z = access(ini->PATHfinal[a], F_OK);
+      z = access(ini->vpath.PATHfinal[a], F_OK);
       if (z == 0)
 	return (a);
       a++;
     }
-  ini->nb_and = 0;
+  ini->check.nb_and = 0;
   return (-1);
 }
 
@@ -67,48 +67,49 @@ void		ini_var_lanceur(t_second *ini, char *commande, t_env *ini2)
   int	rows_PATH;
   int	cols_PATH;
 
-  ini->pathtemp = cpy_path(ini2->env2);
-  ini->check2 = ini->check = ini->relative = ini->s = 0;
+  ini->vpath.pathtemp = cpy_path(ini2->env2);
+  ini->error.check2 = ini->error.check = ini->relative = ini->s = 0;
   ini->rows_arg = getrows_tab(commande);
-  if (ini->pathtemp != NULL)
+  if (ini->vpath.pathtemp != NULL)
     {
-      rows_PATH = getrows(ini->pathtemp);
-      cols_PATH = getcols(ini->pathtemp);
-      ini->PATH = mallocdest(ini->PATH, rows_PATH, cols_PATH);
-      ini->PATH = my_strdup2d(ini->pathtemp);
+      rows_PATH = getrows(ini->vpath.pathtemp);
+      cols_PATH = getcols(ini->vpath.pathtemp);
+      ini->vpath.PATH = mallocdest(ini->vpath.PATH, rows_PATH, cols_PATH);
+      ini->vpath.PATH = my_strdup2d(ini->vpath.pathtemp);
     }
   ini->arg = ma2d(ini->arg, ini->rows_arg, commande);
   ini->arg = my_strduptab(commande);
-  if (ini->pathtemp != NULL)
+  if (ini->vpath.pathtemp != NULL)
     {
-      ini->PATHfinal = ma(ini->PATHfinal, rows_PATH,
+      ini->vpath.PATHfinal = ma(ini->vpath.PATHfinal, rows_PATH,
 			  cols_PATH, ini->arg);
-      ini->PATHfinal = my_strdup_path(ini->PATH, ini->pathtemp, ini->arg);
+      ini->vpath.PATHfinal = my_strdup_path(ini->vpath.PATH,
+				      ini->vpath.pathtemp, ini->arg);
     }
   if (ini->arg[0][0] == 0)
-    ini->zombie = 1;
+    ini->error.zombie = 1;
 }
 
 int		lanceur(char *commande, t_env *ini2, t_second *ini)
 {
   static int	z = 0;
 
-  ini->zombie = 0;
+  ini->error.zombie = 0;
   if (z == 0)
     {
-      if ((ini->pwd = malloc(1024 * sizeof(char))) == NULL)
+      if ((ini->vpwd.pwd = malloc(1024 * sizeof(char))) == NULL)
 	exit(1);
-      getcwd(ini->pwd, 1024);
+      getcwd(ini->vpwd.pwd, 1024);
     }
   z++;
-  if (ini->nb_pipe != 0)
+  if (ini->check.nb_pipe != 0)
   {
     create_tab(commande, ini, ini2);
     return (0);
   }
   ini_and_builtin(commande, ini2, ini);
   if (ini->arg[0][0] == '.' && ini->arg[0][1] == '/')
-    ini->check = check_courant(ini);
+    ini->error.check = check_courant(ini);
   else
     lanceur_commande(commande, ini2, ini);
   error(ini, commande, ini2);

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 18:35:25 2016 Thauvin
-** Last update Fri May 13 19:02:37 2016 Thauvin
+** Last update Thu Jun  2 10:40:26 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -14,7 +14,7 @@ int	check_arg_redirec(t_second *ini, int z)
 {
   if (ini->arg[z + 1] == NULL)
     {
-      ini->nb_redirection = 0;
+      ini->check.nb_redirection = 0;
       return (-1);
     }
   return (0);
@@ -52,13 +52,13 @@ void	count_redirection(t_second *ini, char *commande)
   int	z;
 
   z = 0;
-  ini->nb_redirection = 0;
+  ini->check.nb_redirection = 0;
   while (commande[z] != '\0')
     {
       if (commande[z] == '>')
-	ini->nb_redirection = 1;
+	ini->check.nb_redirection = 1;
       if (commande[z] == '<')
-	ini->nb_redirection = -1;
+	ini->check.nb_redirection = -1;
       z++;
     }
 }

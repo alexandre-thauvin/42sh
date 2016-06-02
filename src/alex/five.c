@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu May  5 03:24:58 2016 Thauvin
-** Last update Thu May  5 03:32:25 2016 Thauvin
+** Last update Thu Jun  2 10:41:06 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -23,11 +23,11 @@ void	count_pipe(char *commande, t_second *ini)
   int	z;
 
   z = 0;
-  ini->nb_pipe = 0;
+  ini->check.nb_pipe = 0;
   while (commande[z] != '\0')
     {
       if (commande[z] == '|')
-	ini->nb_pipe++;
+	ini->check.nb_pipe++;
       z++;
     }
 }
