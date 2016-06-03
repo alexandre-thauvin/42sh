@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Thu Jun  2 20:29:12 2016 thomas lavigne
+** Last update Fri Jun  3 04:04:19 2016 Alexandre Thauvin
 */
 
 #include "shell.h"
@@ -17,6 +17,7 @@ int	file_exist(t_second *ini)
 
   a = 0;
   z = -1;
+  ini->check.nb_or = 0;
   if (ini->vpath.pathtemp == NULL)
     return (-1);
   z = access(ini->comm.arg[0], F_OK);
@@ -29,6 +30,7 @@ int	file_exist(t_second *ini)
 	return (a);
       a++;
     }
+  ini->check.nb_or = 1;
   ini->check.nb_and = 0;
   return (-1);
 }
