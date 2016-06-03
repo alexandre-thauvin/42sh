@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Thu Jun  2 16:11:26 2016 thomas lavigne
-** Last update Sat Jun  4 00:06:29 2016 Alexandre Thauvin
+** Last update Sat Jun  4 00:23:49 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -61,9 +61,8 @@ void	check_error_redir(char *str)
 	      fprintf(stderr, "Ambiguous input redirect.\n");
 	      return ;
 	    }
+	  else pos++;
 	}
-      else
-	pos++;
       if (str[i] == '>' && str[i + 1] != '>')
 	{
 	  if (pos == 2)
@@ -71,9 +70,8 @@ void	check_error_redir(char *str)
 	      fprintf(stderr, "Ambiguous output redirect.\n");
 	      return ;
 	    }
+	  else pos++;
 	}
-	else
-	  pos++;
       i++;
     }
 }
@@ -83,8 +81,7 @@ int	redir_verif(char *str, t_second *ini)
   int	i;
   int	save[4];
 
-  printf("%s\n", str);
-  save[0] = save[1] = save[2] = save[3] = 0;
+  i = save[0] = save[1] = save[2] = save[3] = 0;
   while (str && str[i] != 0)
     {
       if (str[i] == '>' && str[i + 1] != '>')
