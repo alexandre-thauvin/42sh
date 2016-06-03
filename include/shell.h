@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 12:14:22 2016 Alexandre Thauvin
+** Last update Fri Jun  3 16:03:58 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
@@ -45,6 +45,7 @@ typedef struct		s_check
   int			nb_pipe;
   int			nb_and;
   int			nb_or;
+  int			type;
 }			t_check;
 
 typedef struct		s_comm

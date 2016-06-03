@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Fri Jun  3 12:04:46 2016 Alexandre Thauvin
+** Last update Fri Jun  3 16:07:41 2016 Alexandre Thauvin
 */
 
 #include <unistd.h>
@@ -20,7 +20,8 @@ int	file_exist(t_second *ini)
 
   a = 0;
   z = -1;
-  ini->check.nb_or = 0;
+  if (ini->check.type == 2)
+    ini->check.nb_or = 0;
   if (ini->vpath.pathtemp == NULL)
     return (-1);
   z = access(ini->comm.arg[0], F_OK);
@@ -33,8 +34,10 @@ int	file_exist(t_second *ini)
 	return (a);
       a++;
     }
-  ini->check.nb_or = 1;
-  ini->check.nb_and = 0;
+  if (ini->check.type == 2)
+    ini->check.nb_or = 1;
+  else
+    ini->check.nb_and = 0;
   return (-1);
 }
 

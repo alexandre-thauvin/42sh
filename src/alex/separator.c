@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Fri Jun  3 14:21:12 2016 Alexandre Thauvin
+** Last update Fri Jun  3 16:05:35 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -43,7 +43,7 @@ void	count_or(char *commande, t_second *ini)
 void	with_separator(t_second *ini, t_env *ini2)
 {
   char	*com;
-  int	type;
+  /* int	type; */
 
   while (ini->check.nb_separator >= 0)
     {
@@ -59,11 +59,11 @@ void	with_separator(t_second *ini, t_env *ini2)
 	    }
 	  else
 	    {
-	      double_pipe("reset", &type);
+	      double_pipe("reset", &ini->check.type);
 	      ini->check.nb_and = 1;
 	      while (com != NULL && ini->check.nb_and == 1)
 		{
-		  if ((com = double_pipe(ini->vpwd.dest, &type)) == NULL)
+		  if ((com = double_pipe(ini->vpwd.dest, &ini->check.type)) == NULL)
 		    ini->check.nb_and = 0;
 		  if (ini->check.nb_and == 1)
 		    {
@@ -82,11 +82,10 @@ void	with_separator(t_second *ini, t_env *ini2)
 int	normal(t_second *ini, t_env *ini2)
 {
   char	*com;
-  int	type;
 
   if (ini->comm.commande[0] == 0)
     return (0);
-  type = 0;
+  ini->check.type = 0;
   count_or(ini->comm.commande, ini);
   count_and(ini->comm.commande, ini);
   if (ini->check.nb_and == 0 && ini->check.nb_or == 0)
@@ -95,18 +94,17 @@ int	normal(t_second *ini, t_env *ini2)
       count_pipe(ini->comm.commande, ini);
       lanceur(ini->comm.commande, ini2, ini);
     }
-  double_pipe("reset", &type);
-  while ((com = double_pipe(ini->comm.commande, &type)) != NULL
-	 && (ini->check.nb_and
-	     != 0 || ini->check.nb_or != 0))
+  double_pipe("reset", &ini->check.type);
+  while ((com = double_pipe(ini->comm.commande, &ini->check.type)) != NULL
+	 && (ini->check.nb_and != 0 || ini->check.nb_or != 0))
     {
-      if (type == 1 && ini->check.nb_and == 1)
+      if (ini->check.type == 1 && ini->check.nb_and == 1)
 	{
 	  count_redirection(ini, com);
 	  count_pipe(com, ini);
 	  lanceur(com, ini2, ini);
 	}
-      if (ini->check.nb_or == 1  && type == 2)
+      if (ini->check.nb_or == 1  && ini->check.type == 2)
 	{
 	  count_redirection(ini, com);
 	  count_pipe(com, ini);
