@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Fri Jun  3 16:27:42 2016 Alexandre Thauvin
+** Last update Fri Jun  3 17:10:31 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -42,59 +42,43 @@ void	count_or(char *commande, t_second *ini)
 
 void	with_separator(t_second *ini, t_env *ini2)
 {
-  char	*com;
-
   while (ini->check.nb_separator >= 0)
     {
       pars_commande(ini->comm.commande, ini);
       if (ini->vpwd.dest != NULL && ini->vpwd.dest[0] != 0)
 	{
+	  count_or(ini->vpwd.dest, ini);
 	  count_and(ini->vpwd.dest, ini);
-	  if (ini->check.nb_and == 0)
+	  if (ini->check.nb_and == 0 && ini->check.nb_or == 0)
 	    {
 	      count_pipe(ini->vpwd.dest, ini);
 	      count_redirection(ini, ini->vpwd.dest);
 	      lanceur(ini->vpwd.dest, ini2, ini);
 	    }
 	  else
-	    {
-	      double_pipe("reset", &ini->check.type);
-	      ini->check.nb_and = 1;
-	      while (com != NULL && ini->check.nb_and == 1)
-		{
-		  if ((com = double_pipe(ini->vpwd.dest, &ini->check.type)) == NULL)
-		    ini->check.nb_and = 0;
-		  if (ini->check.nb_and == 1)
-		    {
-		      count_pipe(com, ini);
-		      count_redirection(ini, com);
-		      lanceur(com, ini2, ini);
-		    }
-		  free(com);
-		}
-	    }
+	    normal(ini, ini2, ini->vpwd.dest);
 	}
       ini->check.nb_separator--;
     }
 }
 
-int	normal(t_second *ini, t_env *ini2)
+int	normal(t_second *ini, t_env *ini2, char *commande)
 {
   char	*com;
 
-  if (ini->comm.commande[0] == 0)
+  if (commande[0] == 0)
     return (0);
   ini->check.type = 0;
-  count_or(ini->comm.commande, ini);
-  count_and(ini->comm.commande, ini);
+  count_or(commande, ini);
+  count_and(commande, ini);
   if (ini->check.nb_and == 0 && ini->check.nb_or == 0)
     {
-      count_redirection(ini, ini->comm.commande);
-      count_pipe(ini->comm.commande, ini);
-      lanceur(ini->comm.commande, ini2, ini);
+      count_redirection(ini, commande);
+      count_pipe(commande, ini);
+      lanceur(commande, ini2, ini);
     }
   double_pipe("reset", &ini->check.type);
-  while ((com = double_pipe(ini->comm.commande, &ini->check.type)) != NULL
+  while ((com = double_pipe(commande, &ini->check.type)) != NULL
 	 && (ini->check.nb_and != 0 || ini->check.nb_or != 0))
     {
       if (ini->check.type == 1 && ini->check.nb_and == 1)
@@ -105,7 +89,7 @@ int	normal(t_second *ini, t_env *ini2)
 	  if (ini->check.nb_and == 0)
 	    {
 	      while (ini->check.type != 2 &&
-		     (double_pipe(ini->comm.commande, &ini->check.type)) != NULL);
+		     (double_pipe(commande, &ini->check.type)) != NULL);
 	    }
 	}
       else if (ini->check.nb_or == 1  && ini->check.type == 2)
@@ -113,6 +97,11 @@ int	normal(t_second *ini, t_env *ini2)
 	  count_redirection(ini, com);
 	  count_pipe(com, ini);
 	  lanceur(com, ini2, ini);
+	  if (ini->check.nb_or == 0)
+	    {
+	      while (ini->check.type != 1 &&
+		     (double_pipe(commande, &ini->check.type)) != NULL);
+	    }
 	}
       free(com);
     }

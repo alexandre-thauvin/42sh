@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 16:03:58 2016 Alexandre Thauvin
+** Last update Fri Jun  3 16:41:27 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
@@ -241,7 +241,7 @@ void	exec_cd_tiret(t_second *);
 ** separator.c
 */
 int	count_separator(char *);
-int	normal(t_second *, t_env *);
+int	normal(t_second *, t_env *, char *);
 char	*pars_commande(char *, t_second *);
 void	count_pipe(char *, t_second *);
 void	with_separator(t_second *, t_env *);

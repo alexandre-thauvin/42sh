@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Fri Jun  3 12:01:18 2016 Alexandre Thauvin
+** Last update Fri Jun  3 16:39:59 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -117,7 +117,7 @@ int		main(int ac, char **av, char **env)
 	}
       ini.check.nb_separator = count_separator(ini.comm.commande);
       if (ini.check.nb_separator != 0) with_separator(&ini, &ini2);
-      else normal(&ini, &ini2);
+      else normal(&ini, &ini2, ini.comm.commande);
       i++;
     }
   return (0);
