@@ -1,16 +1,17 @@
 /*
 ** cd_verif.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/src/thomas
-** 
+**
 ** Made by thomas lavigne
 ** Login   <lavign_t@epitech.net>
-** 
+**
 ** Started on  Thu Jun  2 19:28:39 2016 thomas lavigne
-** Last update Fri Jun  3 11:56:53 2016 thomas lavigne
+** Last update Fri Jun  3 12:15:15 2016 Alexandre Thauvin
 */
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "shell.h"
 
 int	perm(mode_t const mode)

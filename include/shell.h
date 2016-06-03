@@ -5,12 +5,13 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 11:46:58 2016 Alexandre Thauvin
+** Last update Fri Jun  3 12:14:22 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
 # define SHELL_H_
 
+# include "../lib/my/my.h"
 # include <sys/wait.h>
 
 typedef struct		s_path
@@ -320,5 +321,19 @@ int	my_put_in_next(char *, t_second *, t_pipe *);
 ** verif_cd.c
 */
 int	cd_perm(char *, t_second *);
+
+/*
+** double2.c
+*/
+void	get_type(char *, int *, int);
+void	double2(char *, int *, char *, int *);
+
+/*
+**double.c
+*/
+int	my_strcmp_toto(char *, char *);
+int	size_com(char *, int *);
+char	*get_command(char *, int *);
+char	*double_pipe(char *, int *);
 
 #endif /* !SHELL_H_ */

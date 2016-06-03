@@ -5,9 +5,12 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr 10 18:19:32 2016 Thauvin
-** Last update Thu Jun  2 20:25:32 2016 thomas lavigne
+** Last update Fri Jun  3 12:07:44 2016 Alexandre Thauvin
 */
 
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 void	check_zomb(t_second *ini)

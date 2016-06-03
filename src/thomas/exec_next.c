@@ -1,13 +1,14 @@
 /*
 ** exec_next.c for  in /home/quasta_b/rendu/Projets/PSU/PSU_2015_42sh/src/thomas
-** 
+**
 ** Made by Benjamin Quastana
 ** Login   <quasta_b@epitech.net>
-** 
+**
 ** Started on  Thu Jun  2 21:16:56 2016 Benjamin Quastana
-** Last update Thu Jun  2 21:19:48 2016 Benjamin Quastana
+** Last update Fri Jun  3 12:10:45 2016 Alexandre Thauvin
 */
 
+#include <stdio.h>
 #include "shell.h"
 
 int	my_put_in_next(char *str, t_second *ini, t_pipe *elem)

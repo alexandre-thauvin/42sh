@@ -5,9 +5,10 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Jan 24 18:28:58 2016 Thauvin
-** Last update Fri Jun  3 11:48:05 2016 Alexandre Thauvin
+** Last update Fri Jun  3 12:05:09 2016 Alexandre Thauvin
 */
 
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "shell.h"

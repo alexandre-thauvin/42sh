@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Fri Jun  3 12:00:00 2016 thomas lavigne
+** Last update Fri Jun  3 12:10:02 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -13,6 +13,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "shell.h"
 
 void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2, t_second *ini)

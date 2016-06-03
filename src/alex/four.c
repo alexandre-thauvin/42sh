@@ -5,11 +5,16 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Fri Jun  3 11:52:28 2016 Alexandre Thauvin
+** Last update Fri Jun  3 12:08:45 2016 Alexandre Thauvin
 */
 
+ #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include "get_next_line.h"
 #include "shell.h"
 
 int     malloc_buff(char *file_name)

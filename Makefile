@@ -5,7 +5,7 @@
 ## Login   <thauvi_a@epitech.net>
 ##
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Fri Jun  3 10:42:26 2016 thomas lavigne
+## Last update Fri Jun  3 12:15:57 2016 Alexandre Thauvin
 ##
 
 SRCS	=	src/alex/main.c			\
@@ -32,6 +32,7 @@ SRCS	=	src/alex/main.c			\
 		src/theo/my_free.c		\
 		src/thomas/cd_verif.c		\
 		src/alex/wait_in_path2.c	\
+		src/tom/double2.c		\
 
 NAME	= 42sh
 
