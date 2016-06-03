@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Thu Jun  2 20:52:30 2016 thomas lavigne
+** Last update Fri Jun  3 00:51:28 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -77,7 +77,7 @@ int	wait_in_fath(t_second *ini, char *commande, char **env, char **arg)
     if ((ini->error.check = file_exist(ini)) == -1)
       return (0);
   if (ini->vpath.pathtemp != NULL)
-    free(ini->vpath.PATH);
+    free_tab(ini->vpath.PATH);
   ini->pid = fork();
   if (ini->pid == -1)
     write(2, "erreur\n", my_strlen("erreur fork\n"));

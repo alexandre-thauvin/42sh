@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Thu Jun  2 20:16:00 2016 thomas lavigne
+** Last update Fri Jun  3 00:50:39 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -22,7 +22,7 @@ int     malloc_buff(char *file_name)
     {
       ret += my_strlen(c);
 	   free(c);
-	 }
+    }
   ret++;
   close(fd);
   return (ret);
@@ -63,7 +63,7 @@ void	all_exec(t_second *ini, char **env)
       execve(ini->vpath.PATHfinal[ini->error.check], ini->comm.arg, env);
   free(ini->comm.arg);
   if (ini->vpath.pathtemp != NULL)
-    free(ini->vpath.PATHfinal);
+    free_tab(ini->vpath.PATHfinal);
 }
 
 void	control_reach()
