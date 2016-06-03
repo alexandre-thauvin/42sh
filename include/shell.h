@@ -5,14 +5,14 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 16:41:27 2016 Alexandre Thauvin
+** Last update Fri Jun  3 22:42:09 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
 # define SHELL_H_
 
-# include "../lib/my/my.h"
 # include <sys/wait.h>
+# include "../lib/my/my.h"
 
 typedef struct		s_path
 {
@@ -57,6 +57,14 @@ typedef struct		s_comm
   char			**arg2;
 }			t_comm;
 
+typedef struct		s_pipe
+{
+  char			*name;
+  char			**arg;
+  int			fd;
+  struct s_pipe		*next;
+}			t_pipe;
+
 typedef struct		s_second
 {
   struct s_path		vpath;
@@ -64,6 +72,7 @@ typedef struct		s_second
   struct s_error	error;
   struct s_check	check;
   struct s_comm		comm;
+  struct s_pipe		pip;
   pid_t			pid;
   pid_t			cpid;
   int			s;
@@ -80,13 +89,6 @@ typedef struct		s_benji
   char			**tab;
   int			i;
 }			t_benji;
-
-typedef struct		s_pipe
-{
-  char			*name;
-  char			**arg;
-  struct s_pipe		*next;
-}			t_pipe;
 
 typedef struct		s_var_malloc
 {
@@ -295,7 +297,7 @@ char	*catch_name(char *);
 /*
 ** pipe_exec.c
 */
-void	pipe_exec2(int *, int p[2], t_pipe *, t_env *, t_second *);
+void	pipe_exec2(int p[2], t_pipe *, t_env *, t_second *);
 void	pipe_exec(t_pipe *, t_env *, t_second *);
 
 /*

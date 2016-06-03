@@ -5,26 +5,12 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Fri Jun  3 17:10:31 2016 Alexandre Thauvin
+** Last update Fri Jun  3 22:37:44 2016 thomas lavigne
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "shell.h"
-
-void	count_and(char *commande, t_second *ini)
-{
-  int	z;
-
-  z = 0;
-  ini->check.nb_and = 0;
-  while (commande[z] != '\0')
-    {
-      if (commande[z] == '&' && commande[z + 1] == '&')
-	ini->check.nb_and = 1;
-      z++;
-    }
-}
 
 void	count_or(char *commande, t_second *ini)
 {

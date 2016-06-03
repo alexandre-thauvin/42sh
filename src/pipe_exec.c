@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Fri Jun  3 22:50:39 2016 thomas lavigne
+** Last update Fri Jun  3 22:21:13 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -37,7 +37,7 @@ void	pipe_exec2(int p[2], t_pipe *list, t_env *ini2, t_second *ini)
 	execve(list->arg[0], list->arg, NULL);
     }
   else
-    ini_and_builtin(list->arg[0], ini2, ini);
+      ini_and_builtin(list->arg[0], ini2, ini);
   exit(EXIT_FAILURE);
 }
 

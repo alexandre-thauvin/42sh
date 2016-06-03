@@ -5,23 +5,23 @@
 ** Login   <quasta_b@epitech.net>
 **
 ** Started on  Fri Jun  3 10:40:11 2016 Benjamin Quastana
-** Last update Fri Jun  3 11:53:46 2016 Alexandre Thauvin
+** Last update Fri Jun  3 22:40:17 2016 thomas lavigne
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "shell.h"
 
-/* void    count_and(char *commande, t_second *ini) */
-/* { */
-/*   int   z; */
+void    count_and(char *commande, t_second *ini)
+{
+  int   z;
 
-/*   z = 0; */
-/*   ini->check.nb_and = 0; */
-/*   while (commande[z] != '\0') */
-/*     { */
-/*       if (commande[z] == '|' && commande[z + 1] == '|') */
-/*         ini->check.nb_and = 1; */
-/*       z++; */
-/*     } */
-/* } */
+  z = 0;
+  ini->check.nb_and = 0;
+  while (commande[z] != '\0')
+    {
+      if (commande[z] == '&' && commande[z + 1] == '&')
+        ini->check.nb_and = 1;
+      z++;
+    }
+}
