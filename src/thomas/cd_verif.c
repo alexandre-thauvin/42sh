@@ -5,9 +5,12 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 19:28:39 2016 thomas lavigne
-** Last update Thu Jun  2 20:44:29 2016 thomas lavigne
+** Last update Fri Jun  3 11:56:53 2016 thomas lavigne
 */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include "shell.h"
 
 int	perm(mode_t const mode)

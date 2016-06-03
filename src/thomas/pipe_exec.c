@@ -5,11 +5,13 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Fri Jun  3 10:39:05 2016 Benjamin Quastana
+** Last update Fri Jun  3 12:00:00 2016 thomas lavigne
 */
 
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include "shell.h"
 

@@ -5,9 +5,10 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Tue May 31 15:21:41 2016 thomas lavigne
-** Last update Thu Jun  2 10:29:12 2016 thomas lavigne
+** Last update Fri Jun  3 11:56:18 2016 thomas lavigne
 */
 
+#include <stdio.h>
 #include "shell.h"
 
 int	alpha_num2(char **arg, t_second *ini, int i)

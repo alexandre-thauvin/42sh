@@ -5,9 +5,10 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 16:11:26 2016 thomas lavigne
-** Last update Fri Jun  3 10:28:55 2016 Benjamin Quastana
+** Last update Fri Jun  3 11:58:59 2016 thomas lavigne
 */
 
+#include <stdio.h>
 #include "shell.h"
 
 int	last_check(int *save, t_second *ini)

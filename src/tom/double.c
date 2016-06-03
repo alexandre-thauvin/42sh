@@ -5,9 +5,10 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Mon May 30 14:02:48 2016 thomas lavigne
-** Last update Wed Jun  1 12:04:22 2016 thomas lavigne
+** Last update Fri Jun  3 11:55:48 2016 thomas lavigne
 */
 
+#include <stdlib.h>
 #include "shell.h"
 
 int	my_strcmp_toto(char *str1, char *str2)
@@ -24,21 +25,23 @@ int	my_strcmp_toto(char *str1, char *str2)
   return (0);
 }
 
-int	size_comm(char *str, int *i, char carac)
+int	size_comm(char *str, int *i)
 {
   int	a;
 
   a = *i;
-  while (str && str[a] != carac && str[a] != 0)
+  while (str && str[a] != '&' && str[a] != '|' && str[a] != 0)
     {
-      if (str[a] == carac && (str[a + 1] != carac || str[a + 1] != 0))
+      if (str[a] == '|' && (str[a + 1] != '|' || str[a + 1] != 0))
+	a++;
+      if (str[a] == '&' && (str[a + 1] != '&' || str[a + 1] != 0))
 	a++;
       a++;
     }
   return (a);
 }
 
-char	*get_command(char *str, int *i, char car)
+char	*get_command(char *str, int *i)
 {
   char	*command;
   int	a;
@@ -48,30 +51,27 @@ char	*get_command(char *str, int *i, char car)
     *i = *i + 1;
   if (str[*i] == 0)
     return (NULL);
-  if ((command = malloc(sizeof(char) * (size_comm(str, i, car) + 1))) == NULL)
+  if ((command = malloc(sizeof(char) * (size_comm(str, i) + 1))) == NULL)
     exit(EXIT_FAILURE);
-  while (str && str[*i] != car && str[*i] != 0)
+  while (str && str[*i] != '&' && str[*i] != '|' && str[*i] != 0)
     {
       command[a++] = str[*i];
       *i = *i + 1;
-      if (str[*i] == car && str[*i + 1] != car && str[*i] != 0)
-	{
-	  command[a++] = str[*i];
-	  *i = *i + 1;
-	}
+      double2(str, i, command, &a);
     }
   command[a] = 0;
-  if (str[*i] == car)
+  if (str[*i] == '&' || str[*i] == '|')
     *i = *i + 2;
   return (command);
 }
 
-char	*double_pipe(char *str, char carac)
+char	*double_pipe(char *str, int *type)
 {
   char		*command;
   static int	i = 0;
   static char	*comp = NULL;
 
+  get_type(str, type, i);
   if (my_strcmp_toto("reset", str) == 0)
     {
       i = 0;
@@ -83,7 +83,7 @@ char	*double_pipe(char *str, char carac)
       i = 0;
       comp = str;
     }
-  if ((command = get_command(str, &i, carac)) != NULL)
+  if ((command = get_command(str, &i)) != NULL)
     return (command);
   if (command == NULL)
     {
