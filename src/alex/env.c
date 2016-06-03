@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar 30 15:42:06 2016 Thauvin
-** Last update Fri Jun  3 00:49:21 2016 Alexandre Thauvin
+** Last update Fri Jun  3 10:34:35 2016 thomas lavigne
 */
 
 #include "shell.h"
@@ -38,24 +38,7 @@ void	my_setenv(t_env *ini2, char **arg, t_second *ini)
     }
   if (alpha_num(arg, ini) == -1)
     return ;
-  if (z == 0 && arg[2] == NULL)
-    {
-      ini2->temp = malloc2d(ini2->temp, ini2->rows + 1, ini2->cols + 2);
-      ini2->temp = strdup2d(ini2->temp, ini2->env2, arg, 1);
-      free_tab(ini2->env2);
-      ini2->env2 = malloc2d(ini2->env2, ini2->rows + 1, ini2->cols + 2);
-      ini2->env2 = strdup2d(ini2->env2, ini2->temp, arg, 0);
-      free_tab(ini2->temp);
-    }
-  if (z == 0 && arg[2] != NULL)
-    {
-      ini2->temp = malloc2d(ini2->temp, ini2->rows + 1, ini2->cols + 2);
-      ini2->temp = strdup2d(ini2->temp, ini2->env2, arg, 2);
-      free_tab(ini2->env2);
-      ini2->env2 = malloc2d(ini2->env2, ini2->rows + 1, ini2->cols + 2);
-      ini2->env2 = strdup2d(ini2->env2, ini2->temp, arg, 0);
-      free_tab(ini2->temp);
-    }
+  my_setenv_norm(arg, z, ini2);
 }
 
 void	strdup2d_env(t_env *ini, int z)

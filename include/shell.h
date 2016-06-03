@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 09:19:08 2016 thomas lavigne
+** Last update Fri Jun  3 10:42:16 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -208,6 +208,16 @@ int	exec_cd(t_second *, char *, t_env *);
 void	ini_var_tab(char **, t_env *, t_second *);
 
 /*
+** wait_in_path.c
+*/
+void	wait_in_fath_norm(t_second *);
+
+/*
+** env3.c
+*/
+void	my_setenv_norm(char **, int, t_env *);
+
+/*
 ** env2.c
 */
 void	get_rows_env(char **, t_env *);
@@ -261,7 +271,7 @@ void	ini_and_builtin(char *, t_env *, t_second *);
 void	right_redirec(t_second *, char **);
 
 /*
-**five.c
+** five.c
 */
 void	compar_ma2d(t_var_malloc *, char *);
 void	count_and(char *, t_second *);

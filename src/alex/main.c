@@ -5,10 +5,9 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Fri Jun  3 02:01:47 2016 Alexandre Thauvin
+** Last update Fri Jun  3 10:53:46 2016 thomas lavigne
 */
 
-#include <stdio.h>
 #include "shell.h"
 
 void	exec_redirec(t_second *ini, char **env, char **arg)
@@ -84,19 +83,7 @@ int	wait_in_fath(t_second *ini, char *commande, char **env, char **arg)
 	write(2, "erreur\n", my_strlen("erreur fork\n"));
       if (ini->pid == 0)
 	exec_redirec(ini, env, arg);
-      if (ini->pid != 0 && ini->pid != -1)
-	{
-	  if (ini->error.check_ex != 0)
-	    exit(ini->error.check_ex);
-	  ini->cpid = waitpid(ini->pid, &ini->error.status, 0);
-	  if (ini->error.status == 11 || ini->error.status == 139 ||
-	      ini->error.status == SIGSEGV)
-	    write(2, "Segmentation fault\n", 19);
-	  if (ini->cpid != ini->pid)
-	    kill(ini->cpid, SIGKILL);
-	  if (ini->cpid == -1)
-	    write(2, "wait error\n", my_strlen("wait error\n"));
-	}
+      wait_in_fath_norm(ini);
     }
   else
     exec_redirec(ini, env, arg);
@@ -109,30 +96,24 @@ int		main(int ac, char **av, char **env)
   t_second	ini;
   int		i;
 
-  i = 0;
+  i = ac - ac;
   av = av;
-  ac = ac;
-  if (env[0] == NULL)
-    return (0);
+  if (env[0] == NULL) return (0);
   /* signal(SIGINT, control_reach); */
   ini_var_tab(env, &ini2, &ini);
   while (42)
     {
-      if (isatty(0) == 1)
-	write(1, "$>", 2);
+      if (isatty(0) == 1) write(1, "$>", 2);
       ini.comm.commande = get_next_line(0);
       if (ini.comm.commande == NULL)
 	{
 	  if (i != 0 && (ini.error.check2 == -1 || ini.error.check == -1))
 	    exit(1);
-	  else
-	    exit(0);
+	  else exit(0);
 	}
       ini.check.nb_separator = count_separator(ini.comm.commande);
-      if (ini.check.nb_separator != 0)
-	with_separator(&ini, &ini2);
-      else
-	normal(&ini, &ini2);
+      if (ini.check.nb_separator != 0) with_separator(&ini, &ini2);
+      else normal(&ini, &ini2);
       i++;
     }
   return (0);

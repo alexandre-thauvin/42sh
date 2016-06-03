@@ -5,7 +5,7 @@
 ## Login   <thauvi_a@epitech.net>
 ##
 ## Started on  Fri Oct  9 19:04:31 2015 alexandre thauvin
-## Last update Thu Jun  2 21:21:50 2016 Benjamin Quastana
+## Last update Fri Jun  3 10:42:26 2016 thomas lavigne
 ##
 
 SRCS	=	src/alex/main.c			\
@@ -18,6 +18,7 @@ SRCS	=	src/alex/main.c			\
 		src/alex/third.c		\
 		src/alex/four.c			\
 		src/alex/env2.c			\
+		src/alex/env3.c			\
 		src/alex/check_path.c		\
 		src/alex/get_next_line.c	\
 		src/alex/tab_arg.c		\
@@ -30,6 +31,7 @@ SRCS	=	src/alex/main.c			\
 		src/tom/double.c		\
 		src/theo/my_free.c		\
 		src/thomas/cd_verif.c		\
+		src/alex/wait_in_path2.c	\
 
 NAME	= 42sh
 
