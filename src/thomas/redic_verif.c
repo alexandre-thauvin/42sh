@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 16:11:26 2016 thomas lavigne
-** Last update Thu Jun  2 23:49:51 2016 Benjamin Quastana
+** Last update Fri Jun  3 10:28:55 2016 Benjamin Quastana
 */
 
 #include "shell.h"
@@ -97,9 +97,4 @@ int	redir_verif(char *str, t_second *ini)
   else
     return (0);
   return (0);
-}
-
-int	main(int ac, char **av)
-{
-  check_error_redir(av[1]);
 }
