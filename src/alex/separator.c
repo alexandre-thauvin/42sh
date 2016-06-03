@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Fri Jun  3 16:05:35 2016 Alexandre Thauvin
+** Last update Fri Jun  3 16:27:42 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -43,7 +43,6 @@ void	count_or(char *commande, t_second *ini)
 void	with_separator(t_second *ini, t_env *ini2)
 {
   char	*com;
-  /* int	type; */
 
   while (ini->check.nb_separator >= 0)
     {
@@ -103,8 +102,13 @@ int	normal(t_second *ini, t_env *ini2)
 	  count_redirection(ini, com);
 	  count_pipe(com, ini);
 	  lanceur(com, ini2, ini);
+	  if (ini->check.nb_and == 0)
+	    {
+	      while (ini->check.type != 2 &&
+		     (double_pipe(ini->comm.commande, &ini->check.type)) != NULL);
+	    }
 	}
-      if (ini->check.nb_or == 1  && ini->check.type == 2)
+      else if (ini->check.nb_or == 1  && ini->check.type == 2)
 	{
 	  count_redirection(ini, com);
 	  count_pipe(com, ini);
