@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Thu Jun  2 16:11:26 2016 thomas lavigne
-** Last update Fri Jun  3 11:58:59 2016 thomas lavigne
+** Last update Fri Jun  3 23:04:40 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -45,33 +45,33 @@ void	redir_verif2(char *str, int *save, int *i)
     }
 }
 
-int	check_error_redir(char *str)
+void	check_error_redir(char *str)
 {
   int	i;
   int	pos;
 
-  pos = i = 0;
+  i = 0;
+  pos = 1;
   while (str && str[i] != 0)
     {
       if (str[i] == '<')
 	if (pos == 2)
 	  {
-	    printf("Ambiguous input redirect.\n");
-	    return (0);
+	    fprintf(stderr, "Ambiguous input redirect.\n");
+	    return ;
 	  }
 	else
 	  pos++;
-      if (str[i] == '>')
+      if (str[i] == '>' && str[i + 1] != '>')
 	if (pos == 2)
 	  {
-	    printf("Ambiguous output redirect.\n");
-	    return (0);
+	    fprintf(stderr, "Ambiguous output redirect.\n");
+	    return ;
 	  }
 	else
 	  pos++;
       i++;
     }
-  return (0);
 }
 
 int	redir_verif(char *str, t_second *ini)
@@ -79,7 +79,6 @@ int	redir_verif(char *str, t_second *ini)
   int	i;
   int	save[4];
 
-  printf("%s\n", str);
   save[0] = save[1] = save[2] = save[3] = 0;
   while (str && str[i] != 0)
     {
@@ -91,10 +90,7 @@ int	redir_verif(char *str, t_second *ini)
       i++;
     }
   if (last_check(save, ini) == 1)
-    {
-      if (check_error_redir(str) == 0)
-	return (1);
-    }
+    check_error_redir(str);
   else
     return (0);
   return (0);

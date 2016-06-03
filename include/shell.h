@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 22:42:09 2016 thomas lavigne
+** Last update Fri Jun  3 23:05:54 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -338,5 +338,13 @@ int	my_strcmp_toto(char *, char *);
 int	size_com(char *, int *);
 char	*get_command(char *, int *);
 char	*double_pipe(char *, int *);
+
+/*
+** redic_verif.c
+*/
+int	redir_verif(char *, t_second *);
+void	check_error_redir(char *);
+void	redir_verif2(char *, int *, int *);
+int	last_check(int *, t_second *);
 
 #endif /* !SHELL_H_ */
