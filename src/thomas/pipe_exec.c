@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Fri Jun  3 12:10:02 2016 Alexandre Thauvin
+** Last update Fri Jun  3 22:34:28 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -28,6 +28,7 @@ void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2, t_second *ini)
   close(p[0]);
   if (check_builtin(list->arg[0], ini) == -1)
     {
+      printf("%s\n", list->arg[0]);
       if (ini->check.nb_redirection != 0)
 	{
 	  fd2 = open(ini->comm.file_name, O_RDWR);
@@ -38,7 +39,7 @@ void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2, t_second *ini)
 	execve(list->arg[0], list->arg, NULL);
     }
   else
-      ini_and_builtin(list->arg[0], ini2, ini); /* ICI THAUVIN */
+    ini_and_builtin(list->arg[0], ini2, ini);
   exit(EXIT_FAILURE);
 }
 

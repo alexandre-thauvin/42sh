@@ -5,10 +5,11 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Fri Jun  3 11:57:28 2016 thomas lavigne
+** Last update Fri Jun  3 22:32:57 2016 Alexandre Thauvin
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 int	check_builtin(char *str, t_second *ini)
