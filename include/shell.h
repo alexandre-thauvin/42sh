@@ -5,22 +5,22 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 04:01:20 2016 Alexandre Thauvin
+** Last update Fri Jun  3 09:19:08 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
 # define SHELL_H_
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <signal.h>
-#include "../lib/my/my.h"
-#include "get_next_line.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <signal.h>
+# include "../lib/my/my.h"
+# include "get_next_line.h"
 
 typedef struct		s_path
 {
@@ -329,4 +329,4 @@ int	my_put_in_next(char *, t_second *, t_pipe *);
 */
 int	cd_perm(char *, t_second *);
 
-#endif /* SHELL_H_ */
+#endif /* !SHELL_H_ */

@@ -1,0 +1,16 @@
+42sh
+auteur
+include
+lib
+Makefile
+moulinette
+src
+toto
+9:01 42sh
+-rw-r--r--  1 lavign_t users    45 Jun  2 19:26 auteur
+drwxr-xr-x  2 lavign_t users  4096 Jun  3 09:00 include
+drwxr-xr-x  3 lavign_t users  4096 Jun  2 19:26 lib
+-rw-r--r--  1 lavign_t users  1110 Jun  3 09:00 Makefile
+drwxr-xr-x 10 lavign_t users  4096 Jun  2 19:26 moulinette
+drwxr-xr-x  6 lavign_t users  4096 Jun  2 19:26 src
+-rw-r--r--  1 lavign_t users    53 Jun  3 09:04 toto
