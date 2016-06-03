@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Fri Jun  3 00:51:28 2016 Alexandre Thauvin
+** Last update Fri Jun  3 02:01:47 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -25,8 +25,7 @@ void	exec_redirec(t_second *ini, char **env, char **arg)
       if ((my_strcmp("setenv", arg[0]) == 0) &&
 	  (my_strcmp("unsetenv", arg[0])) == 0 && (my_strcmp("env", arg[0]) == 0))
 	{
-	  if (ini->check.nb_redirection != 0 &&
-	      ini->check.nb_redirection != -1)
+	  if (ini->check.nb_redirection == 2 || ini->check.nb_redirection == 1)
 	    right_redirec(ini, env);
 	  all_exec(ini, env);
 	}
@@ -78,24 +77,29 @@ int	wait_in_fath(t_second *ini, char *commande, char **env, char **arg)
       return (0);
   if (ini->vpath.pathtemp != NULL)
     free_tab(ini->vpath.PATH);
-  ini->pid = fork();
-  if (ini->pid == -1)
-    write(2, "erreur\n", my_strlen("erreur fork\n"));
-  if (ini->pid == 0)
-    exec_redirec(ini, env, arg);
-  if (ini->pid != 0 && ini->pid != -1)
+  if (ini->check.nb_redirection != -2)
     {
-      if (ini->error.check_ex != 0)
-	exit(ini->error.check_ex);
-      ini->cpid = waitpid(ini->pid, &ini->error.status, 0);
-      if (ini->error.status == 11 || ini->error.status == 139 ||
-	  ini->error.status == SIGSEGV)
-	write(2, "Segmentation fault\n", 19);
-      if (ini->cpid != ini->pid)
-	kill(ini->cpid, SIGKILL);
-      if (ini->cpid == -1)
-	write(2, "wait error\n", my_strlen("wait error\n"));
+      ini->pid = fork();
+      if (ini->pid == -1)
+	write(2, "erreur\n", my_strlen("erreur fork\n"));
+      if (ini->pid == 0)
+	exec_redirec(ini, env, arg);
+      if (ini->pid != 0 && ini->pid != -1)
+	{
+	  if (ini->error.check_ex != 0)
+	    exit(ini->error.check_ex);
+	  ini->cpid = waitpid(ini->pid, &ini->error.status, 0);
+	  if (ini->error.status == 11 || ini->error.status == 139 ||
+	      ini->error.status == SIGSEGV)
+	    write(2, "Segmentation fault\n", 19);
+	  if (ini->cpid != ini->pid)
+	    kill(ini->cpid, SIGKILL);
+	  if (ini->cpid == -1)
+	    write(2, "wait error\n", my_strlen("wait error\n"));
+	}
     }
+  else
+    exec_redirec(ini, env, arg);
   return (0);
 }
 

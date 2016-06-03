@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Fri Jun  3 00:50:39 2016 Alexandre Thauvin
+** Last update Fri Jun  3 02:08:11 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -16,13 +16,17 @@ int     malloc_buff(char *file_name)
   int   fd;
   char  *c;
   int   ret;
+  int	nb;
 
   fd = open(file_name, O_RDWR);
+  ret = nb = 0;
   while ((c = get_next_line(fd)) != NULL)
     {
+      nb++;
       ret += my_strlen(c);
-	   free(c);
+      free(c);
     }
+  ret += nb;
   ret++;
   close(fd);
   return (ret);
@@ -32,20 +36,27 @@ int     malloc_buff(char *file_name)
 void	all_exec(t_second *ini, char **env)
 {
   int	fd;
-  /* int   fd2; */
-  /* char  *buffer; */
+  int   fd2;
+  char  *buffer;
 
-  /* if (ini->check.nb_redirection == -2) */
-  /*   { */
-  /*     fd = open(ini->comm.file_name, O_RDWR); */
-  /*     if ((buffer = malloc(malloc_buff(ini->comm.file_name))) == NULL) */
-  /* 	exit(1); */
-  /*    read(fd, buffer, malloc_buff(ini->comm.file_name)); */
-  /*     fd2 = open(ini->comm.file_name2, O_RDWR | O_CREAT, 0555); */
-  /*     write(fd2, buffer, malloc_buff(ini->comm.file_name)); */
-  /*     close(fd); */
-  /*     close(fd2); */
-  /*   } */
+  if (ini->check.nb_redirection == -2)
+    {
+      tab_with_redirection(ini, ini->comm.arg2);
+      if ((ini->comm.file_name2 = malloc((my_strlen(ini->comm.arg[4]) + 1)
+					 * sizeof(char))) == NULL)
+	exit(1);
+      ini->comm.file_name2 = my_strcpy(ini->comm.file_name2, ini->comm.arg[4]);
+      if ((buffer = malloc((malloc_buff(ini->comm.file_name))
+			   * sizeof(char))) == NULL)
+  	exit(1);
+      fd = open(ini->comm.file_name, O_RDWR);
+      read(fd, buffer, malloc_buff(ini->comm.file_name));
+      close(fd);
+      fd2 = open(ini->comm.file_name2, O_RDWR | O_CREAT, 0666);
+      write(fd2, buffer, malloc_buff(ini->comm.file_name));
+      close(fd2);
+      return ;
+    }
   if (ini->check.nb_redirection == -1)
     {
       tab_with_redirection(ini, ini->comm.arg2);
@@ -94,11 +105,11 @@ void	right_redirec(t_second *ini, char **env)
   if (ini->check.nb_redirection == 1)
     {
       tab_with_redirection(ini, ini->comm.arg2);
-      fd = open(ini->comm.file_name, O_RDWR | O_CREAT, 0777);
+      fd = open(ini->comm.file_name, O_RDWR | O_CREAT, 0666);
     }
-  else
+  if (ini->check.nb_redirection == 2)
     {
-      /* refaire le tab redirection avec la double */
+      tab_with_redirection(ini, ini->comm.arg2);
       fd = open(ini->comm.file_name, O_RDWR | O_CREAT | O_APPEND, 0666);
     }
   dup2(fd, 1);
