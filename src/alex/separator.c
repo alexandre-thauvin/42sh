@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Fri Jun  3 04:01:36 2016 Alexandre Thauvin
+** Last update Fri Jun  3 04:20:19 2016 Alexandre Thauvin
 */
 
 #include "shell.h"
@@ -33,7 +33,7 @@ void	count_or(char *commande, t_second *ini)
   while (commande[z] != '\0')
     {
       if (commande[z] == '&' && commande[z + 1] == '&')
-	ini->check.nb_or = 1;
+	ini->check.nb_or= 1;
       z++;
     }
 }
@@ -82,27 +82,44 @@ int	normal(t_second *ini, t_env *ini2)
 
   if (ini->comm.commande[0] == 0)
     return (0);
+  count_or(ini->comm.commande, ini);
   count_and(ini->comm.commande, ini);
-  if (ini->check.nb_and == 0)
+  if (ini->check.nb_and == 0 && ini->check.nb_or == 0)
     {
       count_redirection(ini, ini->comm.commande);
       count_pipe(ini->comm.commande, ini);
       lanceur(ini->comm.commande, ini2, ini);
     }
-  else
+  if (ini->check.nb_and == 1 || ini->check.nb_or == 1)
     {
       double_pipe("reset", '&');
-      while ((com = double_pipe(ini->comm.commande, '&')) != NULL)
+      if (ini->check.nb_and == 1)
 	{
-	  if (ini->check.nb_and == 1)
+	  while ((com = double_pipe(ini->comm.commande, '&')) != NULL)
 	    {
-	      count_redirection(ini, com);
-	      count_pipe(com, ini);
-	      lanceur(com, ini2, ini);
+	      if (ini->check.nb_and == 1)
+		{
+		  count_redirection(ini, com);
+		  count_pipe(com, ini);
+		  lanceur(com, ini2, ini);
+		}
+	      free(com);
 	    }
-	  free(com);
 	}
-
+      if (ini->check.nb_or == 1)
+	{
+	  /* double_pipe("reset", '|'); */
+	  while ((com = double_pipe(ini->comm.commande, '&')) != NULL)
+	    {
+	      if (ini->check.nb_or == 1)
+		{
+		  count_redirection(ini, com);
+		  count_pipe(com, ini);
+		  lanceur(com, ini2, ini);
+		}
+	      free(com);
+	    }
+	}
     }
   return (0);
 }
