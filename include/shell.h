@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 10:42:16 2016 thomas lavigne
+** Last update Fri Jun  3 11:18:51 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
