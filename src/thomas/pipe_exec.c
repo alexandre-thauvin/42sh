@@ -1,11 +1,11 @@
 /*
 ** pipe_exec.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/moulinette/pipe
 **
-*1;2802;0c* Made by thomas lavigne
+** Made by thomas lavigne
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Thu Jun  2 21:18:24 2016 Benjamin Quastana
+** Last update Fri Jun  3 10:39:05 2016 Benjamin Quastana
 */
 
 #include <stdio.h>
