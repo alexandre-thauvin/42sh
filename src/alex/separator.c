@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Fri Jun  3 12:07:14 2016 Alexandre Thauvin
+** Last update Fri Jun  3 14:21:12 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -35,10 +35,7 @@ void	count_or(char *commande, t_second *ini)
   while (commande[z] != '\0')
     {
       if (commande[z] == '|' && commande[z + 1] == '|')
-	{
-	  printf("ici\n");
 	  ini->check.nb_or = 1;
-	}
       z++;
     }
 }
@@ -89,6 +86,8 @@ int	normal(t_second *ini, t_env *ini2)
 
   if (ini->comm.commande[0] == 0)
     return (0);
+  type = 0;
+  count_or(ini->comm.commande, ini);
   count_and(ini->comm.commande, ini);
   if (ini->check.nb_and == 0 && ini->check.nb_or == 0)
     {
@@ -96,8 +95,10 @@ int	normal(t_second *ini, t_env *ini2)
       count_pipe(ini->comm.commande, ini);
       lanceur(ini->comm.commande, ini2, ini);
     }
-  while ((com = double_pipe(ini->comm.commande, &type)) != NULL && ini->check.nb_and
-	 != 0 && ini->check.nb_or != 0)
+  double_pipe("reset", &type);
+  while ((com = double_pipe(ini->comm.commande, &type)) != NULL
+	 && (ini->check.nb_and
+	     != 0 || ini->check.nb_or != 0))
     {
       if (type == 1 && ini->check.nb_and == 1)
 	{
