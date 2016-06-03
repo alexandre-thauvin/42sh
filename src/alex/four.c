@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Fri Jun  3 02:08:11 2016 Alexandre Thauvin
+** Last update Fri Jun  3 02:27:41 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -110,8 +110,8 @@ void	right_redirec(t_second *ini, char **env)
   if (ini->check.nb_redirection == 2)
     {
       tab_with_redirection(ini, ini->comm.arg2);
-      fd = open(ini->comm.file_name, O_RDWR | O_CREAT | O_APPEND, 0666);
-    }
+      fd = open(ini->comm.file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
+      }
   dup2(fd, 1);
   execve(ini->comm.arg[0], ini->comm.arg2, env);
 }

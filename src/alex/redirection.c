@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 18:35:25 2016 Thauvin
-** Last update Fri Jun  3 01:14:31 2016 Alexandre Thauvin
+** Last update Fri Jun  3 02:26:58 2016 Alexandre Thauvin
 */
 
 #include "shell.h"
@@ -65,7 +65,10 @@ void	count_redirection(t_second *ini, char *commande)
 	    ini->check.nb_redirection = 1;
 	}
       if (commande[z] == '>' && commande[z + 1] == '>')
-	ini->check.nb_redirection = 2;
+	{
+	  ini->check.nb_redirection = 2;
+	  z++;
+	}
       z++;
     }
 }
