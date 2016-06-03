@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Thu Jun  2 20:49:21 2016 thomas lavigne
+** Last update Thu Jun  2 21:19:51 2016 Benjamin Quastana
 */
 
 #include <stdlib.h>
@@ -62,20 +62,22 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
       elem->arg = tab_with_redirection(ini, elem->arg);
       elem->arg[0] = ini->vpath.PATHfinal[ini->error.check];
     }
-  if (check_builtin(str, ini) == -1)
-    if ((ini->error.check = file_exist(ini)) == -1)
-      {
-	fprintf(stderr, "%s: Command not found.\n", elem->arg[0]);
-	ini->check.nb_and = 0;
-	return (1);
-      }
-    else
-      {
-	if (ini->check.nb_redirection == 0)
-	  elem->arg[0] = ini->vpath.PATHfinal[ini->error.check];
-      }
-  else
-    elem->arg[0] = str;
+  if (my_put_in_next(str, ini, elem) == 1)
+    return (1);
+  /* if (check_builtin(str, ini) == -1) */
+  /*   if ((ini->error.check = file_exist(ini)) == -1) */
+  /*     { */
+  /* 	fprintf(stderr, "%s: Command not found.\n", elem->arg[0]); */
+  /* 	ini->check.nb_and = 0; */
+  /* 	return (1); */
+  /*     } */
+  /*   else */
+  /*     { */
+  /* 	if (ini->check.nb_redirection == 0) */
+  /* 	  elem->arg[0] = ini->vpath.PATHfinal[ini->error.check]; */
+  /*     } */
+  /* else */
+  /*   elem->arg[0] = str; */
   elem->next = *list;
   *list = elem;
   return (0);

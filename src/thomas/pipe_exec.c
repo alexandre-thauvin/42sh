@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 15:18:13 2016 thomas lavigne
-** Last update Thu Jun  2 19:59:35 2016 thomas lavigne
+** Last update Thu Jun  2 21:18:24 2016 Benjamin Quastana
 */
 
 #include <stdio.h>
@@ -16,7 +16,7 @@
 void	pipe_exec2(int *fd, int p[2], t_pipe *list, t_env *ini2, t_second *ini)
 {
   int	fd2;
-  
+
   dup2(*fd, 0);
   *fd = *fd;
   if (list->next != NULL)
