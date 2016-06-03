@@ -5,9 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Thu May 26 19:22:27 2016 Thauvin
+** Last update Fri Jun  3 11:49:16 2016 Alexandre Thauvin
 */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "shell.h"
 
 int	file_path_exist(char *commande)

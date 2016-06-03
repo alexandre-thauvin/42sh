@@ -5,10 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Fri Jun  3 02:27:41 2016 Alexandre Thauvin
+** Last update Fri Jun  3 11:52:28 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "shell.h"
 
 int     malloc_buff(char *file_name)

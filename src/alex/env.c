@@ -5,9 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar 30 15:42:06 2016 Thauvin
-** Last update Fri Jun  3 10:34:35 2016 thomas lavigne
+** Last update Fri Jun  3 11:50:56 2016 Alexandre Thauvin
 */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 void	show_env(char **env)

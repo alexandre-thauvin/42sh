@@ -5,9 +5,12 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Fri Jun  3 10:53:46 2016 thomas lavigne
+** Last update Fri Jun  3 11:53:11 2016 Alexandre Thauvin
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "get_next_line.h"
 #include "shell.h"
 
 void	exec_redirec(t_second *ini, char **env, char **arg)

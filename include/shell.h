@@ -5,22 +5,13 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 11:18:51 2016 Alexandre Thauvin
+** Last update Fri Jun  3 11:46:58 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
 # define SHELL_H_
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
 # include <sys/wait.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <signal.h>
-# include "../lib/my/my.h"
-# include "get_next_line.h"
 
 typedef struct		s_path
 {
@@ -306,15 +297,6 @@ void	pipe_exec2(int *, int p[2], t_pipe *, t_env *, t_second *);
 void	pipe_exec(t_pipe *, t_env *, t_second *);
 
 /*
-** double_and.c
-*/
-int	imy_strlenps(char *, int, char);
-int	check_if_and(char *, t_second *);
-char	*help(char *, int, int , char *);
-char	*catch(char *, int, t_second *);
-char	*double_and(char *, t_second *);
-
-/*
 ** alpha_num.c
 */
 int	alpha_num(char **, t_second *);
@@ -322,7 +304,7 @@ int	alpha_num(char **, t_second *);
 /*
 ** double.c
 */
-char	*double_pipe(char *, char);
+char	*double_pipe(char *, int *);
 
 /*
 **my_free.c

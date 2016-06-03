@@ -5,9 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu May  5 03:24:58 2016 Thauvin
-** Last update Fri Jun  3 00:54:07 2016 Alexandre Thauvin
+** Last update Fri Jun  3 11:52:12 2016 Alexandre Thauvin
 */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 void	compar_ma2d(t_var_malloc *ini, char *commande)

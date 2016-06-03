@@ -1,13 +1,14 @@
 /*
 ** env3.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/src/alex
-** 
+**
 ** Made by thomas lavigne
 ** Login   <lavign_t@epitech.net>
-** 
+**
 ** Started on  Fri Jun  3 10:28:27 2016 thomas lavigne
-** Last update Fri Jun  3 10:32:02 2016 thomas lavigne
+** Last update Fri Jun  3 11:50:27 2016 Alexandre Thauvin
 */
 
+#include <stdlib.h>
 #include "shell.h"
 
 void	my_setenv_norm(char **arg, int z, t_env *ini2)

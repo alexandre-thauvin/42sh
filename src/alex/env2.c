@@ -5,9 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr  3 16:30:00 2016 Thauvin
-** Last update Thu May  5 02:43:38 2016 Thauvin
+** Last update Fri Jun  3 11:49:46 2016 Alexandre Thauvin
 */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 void	get_rows_env(char **env, t_env *ini2)

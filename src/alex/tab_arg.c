@@ -5,9 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Sat May 28 15:46:39 2016 Thauvin
+** Last update Fri Jun  3 11:53:54 2016 Alexandre Thauvin
 */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 int	getrows_tab(char *src)

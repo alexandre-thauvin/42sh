@@ -5,9 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Fri Jun  3 11:38:36 2016 Alexandre Thauvin
+** Last update Fri Jun  3 11:47:26 2016 Alexandre Thauvin
 */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "shell.h"
 
 void	count_and(char *commande, t_second *ini)
@@ -94,7 +96,7 @@ int	normal(t_second *ini, t_env *ini2)
       lanceur(ini->comm.commande, ini2, ini);
     }
   while ((double_pipe(ini->comm.commande, &type)) != NULL && ini->check.nb_and
-	 != 0 && ini->chec.nb_or != 0)
+	 != 0 && ini->check.nb_or != 0)
     {
       if (type == 1 && ini->check.nb_and == 1)
 	{

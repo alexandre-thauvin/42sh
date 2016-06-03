@@ -5,9 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Apr 13 18:35:25 2016 Thauvin
-** Last update Fri Jun  3 02:26:58 2016 Alexandre Thauvin
+** Last update Fri Jun  3 11:53:29 2016 Alexandre Thauvin
 */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 int	check_arg_redirec(t_second *ini, int z)

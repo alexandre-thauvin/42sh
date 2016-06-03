@@ -5,9 +5,11 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Jan 19 15:41:41 2q016 Thauvin
-** Last update Fri Jun  3 11:07:22 2016 Alexandre Thauvin
+** Last update Fri Jun  3 11:52:02 2016 Alexandre Thauvin
 */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 int	file_exist(t_second *ini)

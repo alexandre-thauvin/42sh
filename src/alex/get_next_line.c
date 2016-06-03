@@ -5,13 +5,12 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Wed Mar  2 17:17:21 2016 Thauvin
-** Last update Wed May 25 20:01:30 2016 Thauvin
+** Last update Fri Jun  3 11:52:42 2016 Alexandre Thauvin
 */
 
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 #include "get_next_line.h"
 
 char		get_c(const int fd)

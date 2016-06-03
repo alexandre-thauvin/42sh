@@ -5,9 +5,11 @@
 ** Login   <quasta_b@epitech.net>
 **
 ** Started on  Fri Jun  3 10:40:11 2016 Benjamin Quastana
-** Last update Fri Jun  3 11:41:52 2016 Alexandre Thauvin
+** Last update Fri Jun  3 11:53:46 2016 Alexandre Thauvin
 */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 /* void    count_and(char *commande, t_second *ini) */

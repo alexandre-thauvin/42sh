@@ -1,13 +1,16 @@
 /*
 ** wait_int_path2.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/src/alex
-** 
+**
 ** Made by thomas lavigne
 ** Login   <lavign_t@epitech.net>
-** 
+**
 ** Started on  Fri Jun  3 10:35:52 2016 thomas lavigne
-** Last update Fri Jun  3 10:36:46 2016 thomas lavigne
+** Last update Fri Jun  3 11:54:28 2016 Alexandre Thauvin
 */
 
+#include <sys/wait.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "shell.h"
 
 void	wait_in_fath_norm(t_second *ini)
