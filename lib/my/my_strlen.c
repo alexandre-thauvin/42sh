@@ -1,12 +1,11 @@
 /*
-** my_strlen.c for my_strlen in /home/thauvi_a/rendu/Piscine_C_J04
-**
-** Made by alexandre thauvin
-** Login   <thauvi_a@epitech.net>
-**
-** Started on  Thu Oct  1 22:01:38 2015 alexandre thauvin
-** Last update Wed Apr  6 15:48:59 2016 Thauvin
-** Last update Thu Nov 12 17:29:07 2015 Thauvin Alexandre
+** my_strlen.c for lib in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/lib/my
+** 
+** Made by thomas lavigne
+** Login   <lavign_t@epitech.net>
+** 
+** Started on  Sat Jun  4 14:37:29 2016 thomas lavigne
+** Last update Sat Jun  4 14:37:30 2016 thomas lavigne
 */
 
 #include <stdlib.h>

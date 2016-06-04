@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Apr 10 18:19:32 2016 Thauvin
-** Last update Fri Jun  3 12:07:44 2016 Alexandre Thauvin
+** Last update Sat Jun  4 14:29:07 2016 thomas lavigne
 */
 
 #include <unistd.h>
@@ -19,7 +19,10 @@ void	check_zomb(t_second *ini)
   if (ini->error.check2 != -1)
     ini->relative = 1;
   else
-    ini->error.zombie = 1;
+    {
+      fprintf(stderr, "%s: Command not found.\n", ini->comm.arg[0]);
+      ini->error.zombie = 1;
+    }
 }
 
 void	error(t_second *ini, char *commande, t_env *ini2)

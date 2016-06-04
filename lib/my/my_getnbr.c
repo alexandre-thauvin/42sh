@@ -1,11 +1,11 @@
 /*
-** my_getnbr.c for  in /home/thauvi_a/A mettre dans la lib
+** my_getnbr.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/lib/my
 ** 
-** Made by alexandre thauvin
-** Login   <thauvi_a@epitech.net>
+** Made by thomas lavigne
+** Login   <lavign_t@epitech.net>
 ** 
-** Started on  Wed Oct 21 15:52:41 2015 alexandre thauvin
-** Last update Sun Jan 24 04:59:39 2016 Thauvin
+** Started on  Sat Jun  4 14:38:08 2016 thomas lavigne
+** Last update Sat Jun  4 14:38:08 2016 thomas lavigne
 */
 
 #include "my.h"

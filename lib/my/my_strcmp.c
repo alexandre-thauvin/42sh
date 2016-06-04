@@ -1,11 +1,11 @@
 /*
-** my_strcmp.c for  in /home/thauvi_a/lib
-**
-** Made by alexandre thauvin
-** Login   <thauvi_a@epitech.net>
-**
-** Started on  Tue Oct  6 11:19:55 2015 alexandre thauvin
-** Last update Tue May 31 19:47:44 2016 Thauvin
+** my_strcmp.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/lib/my
+** 
+** Made by thomas lavigne
+** Login   <lavign_t@epitech.net>
+** 
+** Started on  Sat Jun  4 14:38:37 2016 thomas lavigne
+** Last update Sat Jun  4 14:38:39 2016 thomas lavigne
 */
 
 int	my_strcmp(char *s1, char *s2)

@@ -1,11 +1,11 @@
 /*
-** my.h for  in /home/thauvi_a/rendu/Piscine_C_J09/ex_02
-**
-** Made by alexandre thauvin
-** Login   <thauvi_a@epitech.net>
-**
-** Started on  Fri Oct  9 15:27:36 2015 alexandre thauvin
-** Last update Thu Mar 31 16:48:13 2016 Thauvin
+** my.h for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/lib/my
+** 
+** Made by thomas lavigne
+** Login   <lavign_t@epitech.net>
+** 
+** Started on  Sat Jun  4 14:38:20 2016 thomas lavigne
+** Last update Sat Jun  4 14:38:21 2016 thomas lavigne
 */
 
 #ifndef MY_H_

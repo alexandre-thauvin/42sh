@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Sat Jun  4 10:41:37 2016 thomas lavigne
+** Last update Sat Jun  4 14:14:33 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -103,7 +103,7 @@ int		main(int ac, char **av, char **env)
   i = ac - ac;
   av = av;
   if (env[0] == NULL) return (0);
-  /* signal(SIGINT, control_reach); */
+  signal(SIGINT, control_reach);
   ini_var_tab(env, &ini2, &ini);
   while (42)
     {

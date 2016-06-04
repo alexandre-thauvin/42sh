@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Sat Jun  4 11:02:36 2016 thomas lavigne
+** Last update Sat Jun  4 14:07:13 2016 thomas lavigne
 */
 
 #include <sys/types.h>
@@ -72,8 +72,8 @@ void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)
   if (no_zomb(commande) == 1) ini->error.doublons = -1;
   if (ini->error.zombie == 0 && ini->vpath.pathtemp != NULL &&
       ini->error.doublons != -1)
-      wait_in_fath(ini, commande, ini2->env2, ini->comm.arg);
- if (ini->error.check2 != -1 && ini->vpath.pathtemp == NULL &&
+    wait_in_fath(ini, commande, ini2->env2, ini->comm.arg);
+  if (ini->error.check2 != -1 && ini->vpath.pathtemp == NULL &&
       ini->error.zombie == 0 && ini->error.doublons != -1)
     wait_in_fath(ini, commande, ini2->env2, ini->comm.arg);
 }

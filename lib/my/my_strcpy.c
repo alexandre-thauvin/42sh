@@ -1,11 +1,11 @@
 /*
-** my_strcpy.c for my_strcpy in /home/thauvi_a/test
-**
-** Made by alexandre thauvin
-** Login   <thauvi_a@epitech.net>
-**
-** Started on  Mon Oct  5 10:13:38 2015 alexandre thauvin
-** Last update Wed Apr  6 15:43:11 2016 Thauvin
+** my_strcpy.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/lib/my
+** 
+** Made by thomas lavigne
+** Login   <lavign_t@epitech.net>
+** 
+** Started on  Sat Jun  4 14:38:52 2016 thomas lavigne
+** Last update Sat Jun  4 14:38:53 2016 thomas lavigne
 */
 
 #include "my.h"
