@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Sat Jun  4 10:08:29 2016 thomas lavigne
+** Last update Sat Jun  4 10:24:36 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -272,10 +272,15 @@ void	all_exec2(t_second *, int , char **);
 void	control_reach();
 
 /*
+** separator_next.c
+*/
+void	count_and(char *, t_second *);
+void	normal2(t_second *, char *, t_env *, char *);
+
+/*
 ** five.c
 */
 void	compar_ma2d(t_var_malloc *, char *);
-void	count_and(char *, t_second *);
 void	free_tab(char **);
 
 /*

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Sat Jun  4 10:10:28 2016 thomas lavigne
+** Last update Sat Jun  4 11:02:36 2016 thomas lavigne
 */
 
 #include <sys/types.h>
@@ -17,7 +17,7 @@
 #include "get_next_line.h"
 #include "shell.h"
 
-int     malloc_buff(char *file_name)
+int	malloc_buff(char *file_name)
 {
   int   fd;
   char  *c;

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Fri Dec 18 18:28:11 2015 Thauvin
-** Last update Fri Jun  3 11:53:54 2016 Alexandre Thauvin
+** Last update Sat Jun  4 10:27:25 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -89,9 +89,7 @@ char		**my_strduptab(char *src)
 	  ini.c++;
 	  if (ini.w == 1 && src[ini.c] != 32 && src && src[ini.c] != '\0'
 	      && src[ini.c] != '\t')
-	    {
-	      end_string(&ini);
-	    }
+	    end_string(&ini);
 	}
       if (src[ini.c] != 32 && ini.c < my_strlen(src) && src[ini.c] != '\t'
 	  && src[ini.c] != '|')

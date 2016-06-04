@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Sat Jun  4 09:40:58 2016 thomas lavigne
+** Last update Sat Jun  4 10:26:51 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -67,28 +67,7 @@ int	normal(t_second *ini, t_env *ini2, char *commande)
   while ((com = double_pipe(commande, &ini->check.type)) != NULL
 	 && (ini->check.nb_and != 0 || ini->check.nb_or != 0))
     {
-      if (ini->check.type == 1 && ini->check.nb_and == 1)
-	{
-	  count_redirection(ini, com);
-	  count_pipe(com, ini);
-	  lanceur(com, ini2, ini);
-	  if (ini->check.nb_and == 0)
-	    {
-	      while (ini->check.type != 2 &&
-		     (double_pipe(commande, &ini->check.type)) != NULL);
-	    }
-	}
-      else if (ini->check.nb_or == 1  && ini->check.type == 2)
-	{
-	  count_redirection(ini, com);
-	  count_pipe(com, ini);
-	  lanceur(com, ini2, ini);
-	  if (ini->check.nb_or == 0)
-	    {
-	      while (ini->check.type != 1 &&
-		     (double_pipe(commande, &ini->check.type)) != NULL);
-	    }
-	}
+      normal2(ini, com, ini2, commande);
       free(com);
     }
   return (0);
@@ -119,8 +98,7 @@ char		*pars_commande(char *commande, t_second *ini)
   while (commande[z] != ';' && commande[z] != '\0')
       z++;
   z++;
-  if ((ini->vpwd.dest = malloc(z * sizeof(char))) == NULL)
-    exit(1);
+  if ((ini->vpwd.dest = malloc(z * sizeof(char))) == NULL) exit(1);
   while (commande[i] != ';')
     {
       if (commande[i] == '\0')

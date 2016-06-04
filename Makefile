@@ -5,7 +5,7 @@
 ## Login   <lavign_t@epitech.net>
 ## 
 ## Started on  Sat Jun  4 09:20:59 2016 thomas lavigne
-## Last update Sat Jun  4 10:08:11 2016 thomas lavigne
+## Last update Sat Jun  4 11:03:33 2016 thomas lavigne
 ##
 
 SRCS	=	src/alex/main.c			\
@@ -46,7 +46,7 @@ RM	= rm -rf
 
 CC	= gcc
 
-CFLAGS	= -W -Wextra -Wall -Werror -I include/ -g
+CFLAGS	= -W -Wextra -Wall -Werror -I include/
 
 CLIB	= -lmy -Llib
 
