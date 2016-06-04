@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Fri Jun  3 22:47:13 2016 thomas lavigne
+** Last update Sat Jun  4 01:33:21 2016 Alexandre Thauvin
 */
 
 #include <stdlib.h>
@@ -58,7 +58,8 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
   if (ini->check.nb_redirection != 0)
     {
       ini->comm.arg= my_strduptab(str);
-      elem->arg = tab_with_redirection(ini, elem->arg);
+      if ((elem->arg = tab_with_redirection(ini, elem->arg)) == NULL)
+	exit(1);
       elem->arg[0] = ini->vpath.PATHfinal[ini->error.check];
     }
   if (my_put_in_next(str, ini, elem) == 1)

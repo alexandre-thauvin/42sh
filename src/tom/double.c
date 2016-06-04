@@ -1,11 +1,11 @@
 /*
 ** double_pipe.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/src/benji
-** 
+**
 ** Made by thomas lavigne
 ** Login   <lavign_t@epitech.net>
-** 
+**
 ** Started on  Mon May 30 14:02:48 2016 thomas lavigne
-** Last update Fri Jun  3 11:55:48 2016 thomas lavigne
+** Last update Sat Jun  4 01:31:51 2016 Alexandre Thauvin
 */
 
 #include <stdlib.h>
@@ -51,7 +51,7 @@ char	*get_command(char *str, int *i)
     *i = *i + 1;
   if (str[*i] == 0)
     return (NULL);
-  if ((command = malloc(sizeof(char) * (size_comm(str, i) + 1))) == NULL)
+  if ((command = malloc(sizeof(char) * (size_comm(str, i) + 1000))) == NULL)
     exit(EXIT_FAILURE);
   while (str && str[*i] != '&' && str[*i] != '|' && str[*i] != 0)
     {
