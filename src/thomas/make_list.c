@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Apr 29 09:56:06 2016 thomas lavigne
-** Last update Sat Jun  4 01:33:21 2016 Alexandre Thauvin
+** Last update Sat Jun  4 09:41:46 2016 thomas lavigne
 */
 
 #include <stdlib.h>
@@ -43,10 +43,8 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
 {
   t_pipe	*elem;
 
-  if ((elem = malloc(sizeof(*elem))) == NULL)
-    exit(0);
-  if (elem == NULL)
-    return (1);
+  if ((elem = malloc(sizeof(*elem))) == NULL) exit(0);
+  if (elem == NULL) return (1);
   elem->name = str;
   count_redirection(ini, str);
   if (ini->check.nb_redirection == 0)
@@ -62,8 +60,7 @@ int		my_put_in_list(t_pipe **list, char *str, t_second *ini,
 	exit(1);
       elem->arg[0] = ini->vpath.PATHfinal[ini->error.check];
     }
-  if (my_put_in_next(str, ini, elem) == 1)
-    return (1);
+  if (my_put_in_next(str, ini, elem) == 1) return (1);
   elem->next = *list;
   *list = elem;
   return (0);

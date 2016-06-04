@@ -1,0 +1,45 @@
+/*
+** four2.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/src/alex
+** 
+** Made by thomas lavigne
+** Login   <lavign_t@epitech.net>
+** 
+** Started on  Sat Jun  4 10:04:32 2016 thomas lavigne
+** Last update Sat Jun  4 10:06:57 2016 thomas lavigne
+*/
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "shell.h"
+#include "get_next_line.h"
+
+void	all_exec2(t_second *ini, int fd, char **env)
+{
+  if (ini->check.nb_redirection == -1)
+    {
+      tab_with_redirection(ini, ini->comm.arg2);
+      fd = open(ini->comm.file_name, O_RDWR | O_CREAT, 0555);
+      dup2(fd, 0);
+      execve(ini->comm.arg[0], ini->comm.arg2, env);
+    }
+  if (ini->error.check == -2)
+    execve(ini->comm.arg[0], ini->comm.arg, env);
+  if (ini->comm.arg[0][0] == '.' && ini->comm.arg[0][1] == '/')
+    execve(ini->comm.arg[0], ini->comm.arg, env);
+  if (ini->relative == 1)
+    execve(ini->comm.arg[0], ini->comm.arg, env);
+  if (ini->relative == 0)
+    execve(ini->vpath.PATHfinal[ini->error.check], ini->comm.arg, env);
+  free(ini->comm.arg);
+  if (ini->vpath.pathtemp != NULL)
+    free_tab(ini->vpath.PATHfinal);
+}
+
+void	control_reach()
+{
+  write(1, "$>", 2);
+}

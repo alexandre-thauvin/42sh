@@ -1,0 +1,9 @@
+total 120
+-rwxr-xr-x  1 lavign_t users 94214 Jun  4 10:17 42sh
+-rw-r--r--  1 lavign_t users    45 Jun  3 22:16 auteur
+drwxr-xr-x  2 lavign_t users  4096 Jun  4 10:08 include
+drwxr-xr-x  3 lavign_t users  4096 Jun  3 22:16 lib
+-rw-r--r--  1 lavign_t users  1307 Jun  4 10:08 Makefile
+drwxr-xr-x 10 lavign_t users  4096 Jun  3 22:16 moulinette
+drwxr-xr-x  6 lavign_t users  4096 Jun  3 23:04 src
+-rw-r--r--  1 lavign_t users     0 Jun  4 10:18 toto

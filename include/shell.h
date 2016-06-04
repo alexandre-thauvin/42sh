@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Sat Jun  4 01:35:35 2016 Alexandre Thauvin
+** Last update Sat Jun  4 10:08:29 2016 thomas lavigne
 */
 
 #ifndef SHELL_H_
@@ -260,11 +260,16 @@ void	count_redirection(t_second *, char *);
 ** four.c
 */
 int	malloc_buff(char *);
-void	control_reach();
 void	all_exec(t_second *, char **);
 void	lanceur_commande(char *, t_env *, t_second *);
 void	ini_and_builtin(char *, t_env *, t_second *);
 void	right_redirec(t_second *, char **);
+
+/*
+** four2.c
+*/
+void	all_exec2(t_second *, int , char **);
+void	control_reach();
 
 /*
 ** five.c
@@ -347,5 +352,10 @@ int	redir_verif(char *, t_second *);
 void	check_error_redir(char *);
 void	redir_verif2(char *, int *, int *);
 int	last_check(int *, t_second *);
+
+/*
+** no_more_zomb.c
+*/
+int	no_zomb(char *);
 
 #endif /* !SHELL_H_ */

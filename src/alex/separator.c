@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:09:11 2016
-** Last update Fri Jun  3 22:37:44 2016 thomas lavigne
+** Last update Sat Jun  4 09:40:58 2016 thomas lavigne
 */
 
 #include <stdio.h>
@@ -99,8 +99,7 @@ int	count_separator(char *commande)
   int	z;
   int	nb;
 
-  z = 0;
-  nb = 0;
+  z = nb = 0;
   while (commande[z] != '\0')
     {
       if (commande[z] == ';')
