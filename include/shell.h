@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Fri Jun  3 23:05:54 2016 thomas lavigne
+** Last update Sat Jun  4 01:35:35 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
@@ -36,6 +36,7 @@ typedef struct		s_error
   int			check_ex;
   int			status;
   int			zombie;
+  int			doublons;
 }			t_error;
 
 typedef struct		s_check

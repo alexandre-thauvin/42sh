@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Thu Jun  2 16:11:26 2016 thomas lavigne
-** Last update Sat Jun  4 00:23:49 2016 thomas lavigne
+** Last update Sat Jun  4 01:36:28 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -15,17 +15,17 @@ int	last_check(int *save, t_second *ini)
 {
   if (save[0] > 1 || save[1] > 1)
     {
-      ini->error.check2 = -1;
+      ini->error.doublons = -1;
       return (1);
     }
   if (save[2] > 0 && (save[0] > 0 || save[1] > 0))
     {
-      ini->error.check2 = -1;
+      ini->error.doublons = -1;
       return (1);
     }
   if (save[3] > 0)
     {
-      ini->error.check2 = -1;
+      ini->error.doublons = -1;
       return (1);
     }
   return (0);
