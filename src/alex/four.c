@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Fri Jun  3 12:08:45 2016 Alexandre Thauvin
+** Last update Sat Jun  4 00:00:49 2016 Alexandre Thauvin
 */
 
  #include <sys/types.h>
@@ -90,6 +90,7 @@ void	control_reach()
 
 void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)
 {
+  redir_verif(commande, ini);
   if (ini->error.zombie == 0 && ini->vpath.pathtemp != NULL)
       wait_in_fath(ini, commande, ini2->env2, ini->comm.arg);
   if (ini->error.check2 != -1 && ini->vpath.pathtemp == NULL &&
