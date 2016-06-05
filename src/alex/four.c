@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Sun Jun  5 18:34:32 2016 Theo Labory
+** Last update Sun Jun  5 19:16:33 2016 Alexandre Thauvin
 */
 
 #include <sys/types.h>
@@ -72,7 +72,7 @@ void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)
 
   redir_verif(commande, ini);
   if (ini->check.nb_redirection == -1)
-    if ((fd = open(ini->comm.file_name, O_RDWR)) == -1)
+    if ((fd = open(ini->comm.arg[2], O_RDWR)) == -1)
       {
 	fprintf(stderr, "%s: No such file or directory.\n",
 		ini->comm.arg[2]);
