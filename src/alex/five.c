@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu May  5 03:24:58 2016 Thauvin
-** Last update Sun Jun  5 13:52:39 2016 Alexandre Thauvin
+** Last update Sun Jun  5 18:40:22 2016 Theo Labory
 */
 
 #include <stdlib.h>
@@ -42,8 +42,8 @@ char	*cd_tild(char **arg, char *path_final, char **env)
 
   i = 1;
   home = pars_home(env, path_final);
-  if ((path_final = malloc(((my_strlen(home)) +
-			    (my_strlen(arg[1])) + 1) * sizeof(char))) == NULL)
+  if ((path_final = malloc(((my_strlen(home))
+			    + (my_strlen(arg[1])) + 1) * sizeof(char))) == NULL)
     exit(1);
   z = my_strlen(home);
   path_final = my_strcpy(path_final, home);
