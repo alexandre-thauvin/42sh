@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 ** 
 ** Started on  Sat Jun  4 10:04:32 2016 thomas lavigne
-** Last update Sat Jun  4 10:13:15 2016 thomas lavigne
+** Last update Sun Jun  5 13:54:51 2016 thomas lavigne
 */
 
 #include <sys/types.h>
@@ -19,10 +19,18 @@
 
 void	all_exec2(t_second *ini, int fd, char **env)
 {
+  ini->pip.redir = 0;
   if (ini->check.nb_redirection == -1)
     {
       tab_with_redirection(ini, ini->comm.arg2);
-      fd = open(ini->comm.file_name, O_RDWR | O_CREAT, 0555);
+      if ((fd = open(ini->comm.file_name, O_RDWR)) == -1)
+	{
+	  fprintf(stderr, "%s: No such file or directory.\n",
+		  ini->comm.file_name);
+	  ini->pip.redir = -1;
+	  /* zombie */
+	  return ;
+	}
       dup2(fd, 0);
       execve(ini->comm.arg[0], ini->comm.arg2, env);
     }

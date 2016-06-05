@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Sun Jun  5 13:51:21 2016 Alexandre Thauvin
+** Last update Sun Jun  5 14:02:14 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
@@ -363,5 +363,10 @@ int	last_check(int *, t_second *);
 ** no_more_zomb.c
 */
 int	no_zomb(char *);
+
+/*
+** check_end.c
+*/
+int	check_end(t_second *);
 
 #endif /* !SHELL_H_ */
