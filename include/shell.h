@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Jun  5 14:26:48 2016 Alexandre Thauvin
-** Last update Sun Jun  5 14:27:03 2016 Alexandre Thauvin
+** Last update Sun Jun  5 18:13:56 2016 Theo Labory
 */
 
 #ifndef SHELL_H_
@@ -356,9 +356,9 @@ char	*double_pipe(char *, int *);
 ** redic_verif.c
 */
 int	redir_verif(char *, t_second *);
+int	last_check(int *, t_second *);
 void	check_error_redir(char *);
 void	redir_verif2(char *, int *, int *);
-int	last_check(int *, t_second *);
 
 /*
 ** no_more_zomb.c
