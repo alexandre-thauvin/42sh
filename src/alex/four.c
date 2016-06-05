@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Sat Jun  4 14:07:13 2016 thomas lavigne
+** Last update Sun Jun  5 13:40:38 2016 thomas lavigne
 */
 
 #include <sys/types.h>
@@ -98,7 +98,7 @@ void	right_redirec(t_second *ini, char **env)
     {
       tab_with_redirection(ini, ini->comm.arg2);
       fd = open(ini->comm.file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
-      }
+    }
   dup2(fd, 1);
   execve(ini->comm.arg[0], ini->comm.arg2, env);
 }

@@ -5,7 +5,7 @@
 ## Login   <lavign_t@epitech.net>
 ## 
 ## Started on  Sat Jun  4 09:20:59 2016 thomas lavigne
-## Last update Sat Jun  4 11:03:33 2016 thomas lavigne
+## Last update Sun Jun  5 13:50:10 2016 thomas lavigne
 ##
 
 SRCS	=	src/alex/main.c			\
@@ -37,6 +37,7 @@ SRCS	=	src/alex/main.c			\
 		src/alex/separator_next.c	\
 		src/thomas/redic_verif.c        \
 		src/thomas/no_more_zomb.c	\
+		src/alex/check_end.c		\
 
 NAME	= 42sh
 
