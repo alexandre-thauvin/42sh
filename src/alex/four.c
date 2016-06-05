@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Sun Jun  5 13:40:38 2016 thomas lavigne
+** Last update Sun Jun  5 15:39:06 2016 Alexandre Thauvin
 */
 
 #include <sys/types.h>
@@ -68,7 +68,18 @@ void	all_exec(t_second *ini, char **env)
 
 void	lanceur_commande(char *commande, t_env *ini2, t_second *ini)
 {
+  int	fd;
+
   redir_verif(commande, ini);
+  if (ini->check.nb_redirection == -1)
+    if ((fd = open(ini->comm.file_name, O_RDWR)) == -1)
+      {
+	fprintf(stderr, "%s: No such file or directory.\n",
+		ini->comm.arg[2]);
+	ini->pip.redir = -1;
+	close(fd);
+	return ;
+      }
   if (no_zomb(commande) == 1) ini->error.doublons = -1;
   if (ini->error.zombie == 0 && ini->vpath.pathtemp != NULL &&
       ini->error.doublons != -1)

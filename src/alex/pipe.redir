@@ -1,0 +1,25 @@
+../thomas/alpha_num.c:	  ini->error.check = -1;
+../thomas/alpha_num.c:	    ini->error.check = -1;
+../thomas/cd_verif.c:  ini->error.check2 = -1;
+../thomas/cd_verif.c:      if (ini->comm.arg[1][0] == '~')
+../thomas/cd_verif.c:	fprintf(stderr, "%s: No such file or directory.\n", ini->comm.arg[1]);
+../thomas/cd_verif.c:	fprintf(stderr, "%s: Permission denied.\n", ini->comm.arg[1]);
+../thomas/cd_verif.c:	fprintf(stderr, "%s: Not a directory.\n", ini->comm.arg[1]);
+../thomas/exec_next.c:    if ((ini->error.check = file_exist(ini)) == -1)
+../thomas/exec_next.c:	ini->check.nb_and = 0;
+../thomas/exec_next.c:	if (ini->check.nb_redirection == 0)
+../thomas/exec_next.c:	    elem->arg[0] = ini->vpath.PATHfinal[ini->error.check];
+../thomas/make_list.c:    check_exit(ini->comm.arg, ini->rows_arg);
+../thomas/make_list.c:  if (ini->check.nb_redirection == 0)
+../thomas/make_list.c:  if (ini->check.nb_redirection != 0)
+../thomas/make_list.c:      ini->comm.arg= my_strduptab(str);
+../thomas/make_list.c:      elem->arg[0] = ini->vpath.PATHfinal[ini->error.check];
+../thomas/pipe_exec.c:  dup2(ini->pip.fd, 0);
+../thomas/pipe_exec.c:      if (ini->check.nb_redirection != 0)
+../thomas/pipe_exec.c:	  fd2 = open(ini->comm.file_name, O_RDWR);
+../thomas/pipe_exec.c:  ini->pip.fd = i = 0;
+../thomas/pipe_exec.c:	  ini->pip.fd = p[0];
+../thomas/redic_verif.c:      ini->error.doublons = -1;
+../thomas/redic_verif.c:      ini->error.doublons = -1;
+../thomas/redic_verif.c:      ini->error.doublons = -1;
+../thomas/redic_verif.c:  ini->error.doublons = 0;

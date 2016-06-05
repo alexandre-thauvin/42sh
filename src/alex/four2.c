@@ -1,11 +1,11 @@
 /*
 ** four2.c for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh/src/alex
-** 
+**
 ** Made by thomas lavigne
 ** Login   <lavign_t@epitech.net>
-** 
+**
 ** Started on  Sat Jun  4 10:04:32 2016 thomas lavigne
-** Last update Sun Jun  5 13:54:51 2016 thomas lavigne
+** Last update Sun Jun  5 15:41:16 2016 Alexandre Thauvin
 */
 
 #include <sys/types.h>
@@ -28,7 +28,6 @@ void	all_exec2(t_second *ini, int fd, char **env)
 	  fprintf(stderr, "%s: No such file or directory.\n",
 		  ini->comm.file_name);
 	  ini->pip.redir = -1;
-	  /* zombie */
 	  return ;
 	}
       dup2(fd, 0);

@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Sun Jun  5 13:48:18 2016 thomas lavigne
+** Last update Sun Jun  5 15:36:59 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -111,7 +111,7 @@ int		main(int ac, char **av, char **env)
       ini.comm.commande = get_next_line(0);
       if (ini.comm.commande == NULL)
 	{
-	  if (i != 0 && check_end(&ini) == -1)
+	  if (i != 0 && (check_end(&ini) == -1 || ini.pip.redir == -1))
 	    exit(1);
 	  else exit(0);
 	}
