@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Tue Mar 29 16:58:09 2016 Thauvin
-** Last update Sun Jun  5 15:36:59 2016 Alexandre Thauvin
+** Last update Sun Jun  5 19:26:01 2016 Alexandre Thauvin
 */
 
 #include <stdio.h>
@@ -54,7 +54,7 @@ int	exec_cd(t_second *ini, char *commande, t_env *ini2)
       if (ini->u == -1)
 	if (ini->comm.arg[1] != NULL)
 	  cd_perm(ini->vpath.path_cd, ini);
-      if (ini->u != 1)
+      if (ini->u != -1)
 	complete_pwd(ini);
     }
   if ((ini->error.check_ex = check_exit(ini->comm.arg, ini->rows_arg)) != 0)
