@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Thu Jun  2 19:28:39 2016 thomas lavigne
-** Last update Sun Jun  5 12:44:17 2016 thomas lavigne
+** Last update Sun Jun  5 14:18:45 2016 Alexandre Thauvin
 */
 
 #include <sys/types.h>
@@ -34,7 +34,10 @@ int	cd_perm(char *str, t_second *ini)
   ini->error.check2 = -1;
   if (stat(str, &buf) == -1)
     {
-      fprintf(stderr, "%s: No such file or directory.\n", ini->comm.arg[1]);
+      if (ini->comm.arg[1][0] == '~')
+	fprintf(stderr, "%s: No such file or directory.\n", str);
+      else
+	fprintf(stderr, "%s: No such file or directory.\n", ini->comm.arg[1]);
       return (1);
     }
   if (perm(buf.st_mode) == 1)

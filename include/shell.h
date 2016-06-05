@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Sun Jun  5 14:02:14 2016 Alexandre Thauvin
+** Last update Sun Jun  5 14:03:25 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
@@ -63,6 +63,7 @@ typedef struct		s_pipe
   char			*name;
   char			**arg;
   int			fd;
+  int			redir;
   struct s_pipe		*next;
 }			t_pipe;
 
