@@ -1,11 +1,11 @@
 /*
 ** shell.h for  in /home/thauvi_a/rendu/PSU_2015_42sh
 **
-** Made by
+** Made by Alexandre Thauvin
 ** Login   <thauvi_a@epitech.net>
 **
-** Started on  Thu Jun  2 11:07:47 2016
-** Last update Sun Jun  5 14:03:25 2016 Alexandre Thauvin
+** Started on  Sun Jun  5 14:26:48 2016 Alexandre Thauvin
+** Last update Sun Jun  5 14:27:03 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
