@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:08:49 2016
-** Last update Sun Jun  5 15:39:06 2016 Alexandre Thauvin
+** Last update Sun Jun  5 18:34:32 2016 Theo Labory
 */
 
 #include <sys/types.h>
@@ -103,7 +103,7 @@ void	right_redirec(t_second *ini, char **env)
   if (ini->check.nb_redirection == 1)
     {
       tab_with_redirection(ini, ini->comm.arg2);
-      fd = open(ini->comm.file_name, O_RDWR | O_CREAT, 0666);
+      fd = open(ini->comm.file_name, O_RDWR | O_CREAT | O_TRUNC, 0666);
     }
   if (ini->check.nb_redirection == 2)
     {
