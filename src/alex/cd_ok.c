@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Sun Jan 24 18:28:58 2016 Thauvin
-** Last update Fri Jun  3 12:05:09 2016 Alexandre Thauvin
+** Last update Sun Jun  5 13:41:43 2016 Alexandre Thauvin
 */
 
 #include <unistd.h>
@@ -101,7 +101,9 @@ char	*check_cd(char **arg, char *path_final, char **env)
 	  path_final[ini.a] = '\0';
 	}
     }
-  if (arg[1] == NULL || arg[1][0] == '~')
+  if (arg[1] == NULL || (arg[1][0] == '~' && arg[1][1] == '\0'))
       path_final = pars_home(env, path_final);
+  else if (arg[1][0] == '~' && arg[1][1] != '\0')
+    path_final = cd_tild(arg, path_final, env);
   return (path_final);
 }

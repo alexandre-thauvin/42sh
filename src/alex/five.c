@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu May  5 03:24:58 2016 Thauvin
-** Last update Fri Jun  3 11:52:12 2016 Alexandre Thauvin
+** Last update Sun Jun  5 13:52:39 2016 Alexandre Thauvin
 */
 
 #include <stdlib.h>
@@ -32,4 +32,27 @@ void	count_pipe(char *commande, t_second *ini)
 	ini->check.nb_pipe++;
       z++;
     }
+}
+
+char	*cd_tild(char **arg, char *path_final, char **env)
+{
+  int	z;
+  int	i;
+  char	*home;
+
+  i = 1;
+  home = pars_home(env, path_final);
+  if ((path_final = malloc(((my_strlen(home)) +
+			    (my_strlen(arg[1])) + 1) * sizeof(char))) == NULL)
+    exit(1);
+  z = my_strlen(home);
+  path_final = my_strcpy(path_final, home);
+  while (arg[1][i] != '\0')
+    {
+      path_final[z] = arg[1][i];
+      z++;
+      i++;
+    }
+  path_final[z] = '\0';
+  return (path_final);
 }

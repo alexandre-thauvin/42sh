@@ -5,7 +5,7 @@
 ** Login   <thauvi_a@epitech.net>
 **
 ** Started on  Thu Jun  2 11:07:47 2016
-** Last update Sat Jun  4 10:24:36 2016 thomas lavigne
+** Last update Sun Jun  5 13:51:21 2016 Alexandre Thauvin
 */
 
 #ifndef SHELL_H_
@@ -282,6 +282,7 @@ void	normal2(t_second *, char *, t_env *, char *);
 */
 void	compar_ma2d(t_var_malloc *, char *);
 void	free_tab(char **);
+char	*cd_tild(char **, char *, char **);
 
 /*
 ** lib/my/my_printf.c
