@@ -1,11 +1,11 @@
 /*
-** get_next_line.h for  in /home/thauvi_a
-**
-** Made by Thauvin
-** Login   <thauvi_a@epitech.net>
-**
-** Started on  Sat Feb 27 02:01:10 2016 Thauvin
-** Last update Thu Jun  2 23:36:22 2016 thomas lavigne
+** get_next_line.h for 42sh in /home/lavign_t/rendu/C/PSU/42sh/PSU_2015_42sh
+** 
+** Made by thomas lavigne
+** Login   <lavign_t@epitech.net>
+** 
+** Started on  Sat Jun  4 14:40:56 2016 thomas lavigne
+** Last update Sat Jun  4 14:40:57 2016 thomas lavigne
 */
 
 #ifndef GET_NEXT_LINE_H_

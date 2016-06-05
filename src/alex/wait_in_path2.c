@@ -5,7 +5,7 @@
 ** Login   <lavign_t@epitech.net>
 **
 ** Started on  Fri Jun  3 10:35:52 2016 thomas lavigne
-** Last update Sat Jun  4 09:32:32 2016 thomas lavigne
+** Last update Sun Jun  5 13:01:14 2016 thomas lavigne
 */
 
 #include <sys/wait.h>
@@ -24,6 +24,11 @@ void	wait_in_fath_norm(t_second *ini)
       if (ini->error.status == 11 || ini->error.status == 139 ||
 	  ini->error.status == SIGSEGV)
 	write(2, "Segmentation fault\n", 19);
+      if  (WEXITSTATUS(ini->error.status) != 0)
+	{
+	  ini->check.nb_or = 1;
+	  ini->check.nb_and = 0;
+	}
       if (ini->cpid != ini->pid)
 	kill(ini->cpid, SIGKILL);
       if (ini->cpid == -1)
